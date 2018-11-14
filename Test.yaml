@@ -1,0 +1,182 @@
+---
+openapi: 3.0.0
+info:
+  title: Data Catalog
+  description: An API for managing and querying items within the Data Catalog.
+  version: 1.0.0
+paths:
+  /api/v1/datacatalog/query:
+    get:
+      summary: Query data catalog with query params.
+      description: 'Queries the data catalog, using query params to form the search
+        query.  Supported query params are: (TBD).'
+      responses:
+        200:
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/DataCatalogItem'
+        400:
+          content:
+            application/json: {}
+        401:
+          content:
+            application/json: {}
+        403:
+          content:
+            application/json: {}
+    servers:
+    - url: http://localhost:3000/cloud/data-catalog
+      description: ""
+  /api/v1/datacatalog/items:
+    get:
+      summary: Get data catalog items.
+      description: Retrieves all data catalog items visible to the authenticated user.
+      responses:
+        200:
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/DataCatalogItem'
+        401:
+          content:
+            application/json: {}
+        403:
+          content:
+            application/json: {}
+    post:
+      summary: Create data catalog item.
+      description: Creates a new data catalog item associated with a specific tenant
+        and data set.
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DataCatalogItem'
+        required: true
+      responses:
+        201:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DataCatalogItem'
+        400:
+          content:
+            application/json: {}
+        401:
+          content:
+            application/json: {}
+        403:
+          content:
+            application/json: {}
+    servers:
+    - url: http://localhost:3000/cloud/data-catalog
+      description: ""
+  /api/v1/datacatalog/items/{itemId}/:
+    get:
+      summary: Get a data catalog item.
+      description: Retrieves the data catalog entry specified by itemId.
+      responses:
+        200:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DataCatalogItem'
+        401:
+          content:
+            application/json: {}
+        403:
+          content:
+            application/json: {}
+        404:
+          content:
+            application/json: {}
+    put:
+      summary: Update a data catalog item.
+      description: Updates the data catalog entry specified by itemId.
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DataCatalogItem'
+        required: true
+      responses:
+        200:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DataCatalogItem'
+        400:
+          content:
+            application/json: {}
+        401:
+          content:
+            application/json: {}
+        403:
+          content:
+            application/json: {}
+        404:
+          content:
+            application/json: {}
+    delete:
+      summary: Delete a data catalog item.
+      description: Deletes the data catalog entry specified by itemId.
+      responses:
+        204:
+          content:
+            application/json: {}
+        401:
+          content:
+            application/json: {}
+        403:
+          content:
+            application/json: {}
+        404:
+          content:
+            application/json: {}
+    servers:
+    - url: http://localhost:3000/cloud/data-catalog
+      description: ""
+    parameters:
+    - name: itemId
+      in: path
+      description: The unique identifier assigned to a data catalog item.
+      required: true
+components:
+  schemas:
+    DataCatalogItem:
+      required:
+      - path
+      - tenantId
+      - dataSourceId
+      - dataSetId
+      - createdAt
+      properties:
+        path:
+          description: The path locator of the actual data set.
+          type: string
+        metadata:
+          description: A map of name/value pairs specifying required and optional
+            metadata about the data set.
+        tenantId:
+          description: The unique identifer assigned to the tenant which owns the
+            Data Set.
+          type: string
+        expiresAt:
+          format: date-time
+          description: Time when Data Set within the data lake expires.
+          type: string
+        dataSourceId:
+          description: The unique identifier assigned to the associated Data Source.
+          type: string
+        dataSetId:
+          description: The unique identifier assigned to the Data Set upon creation.
+          type: string
+        createdAt:
+          format: date-time
+          description: Time when referenced Data Set was created within the data lake.
+          type: string
