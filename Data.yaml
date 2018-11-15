@@ -1,0 +1,346 @@
+---
+openapi: 3.0.0
+info:
+  title: Data
+  description: Data integration service API.
+  version: "0.1"
+paths:
+  /api/v1/data/sources:
+    get:
+      summary: Get data sources.
+      description: Returns all visible data sources.
+      responses:
+        200:
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/DataSource'
+        401:
+          content:
+            application/json: {}
+        403:
+          content:
+            application/json: {}
+        404:
+          content:
+            application/json: {}
+    post:
+      summary: Create data source.
+      description: Creates a new data source.
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DataSource'
+        required: true
+      responses:
+        201:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DataSource'
+        400:
+          content:
+            application/json: {}
+        401:
+          content:
+            application/json: {}
+        403:
+          content:
+            application/json: {}
+  /api/v1/data/sets/{dataSetId}:
+    get:
+      summary: Get data set.
+      description: Gets the data set specified by dataSetId.
+      parameters:
+      - name: dataSetId
+        in: path
+        description: A unique identifier for a data set.
+        required: true
+        schema:
+          type: string
+      responses:
+        200:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DataSet'
+        401:
+          content:
+            application/json: {}
+        403:
+          content:
+            application/json: {}
+        404:
+          content:
+            application/json: {}
+    delete:
+      summary: Delete data set.
+      description: Deletes the data set specified by dataSetId.
+      responses:
+        200:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DataSet'
+        401:
+          content:
+            application/json: {}
+        403:
+          content:
+            application/json: {}
+        404:
+          content:
+            application/json: {}
+  /api/v1/data/sources/{dataSourceId}:
+    get:
+      summary: Get data source.
+      description: Gets the data source specified by dataSourceId.
+      responses:
+        200:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DataSource'
+        401:
+          content:
+            application/json: {}
+        403:
+          content:
+            application/json: {}
+        404:
+          content:
+            application/json: {}
+    put:
+      summary: Update data source.
+      description: Updates the data source specified by dataSourceId.  The existing
+        data source is fully replaced by the document in the body of this request.
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DataSource'
+        required: true
+      responses:
+        200:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DataSource'
+        400:
+          content:
+            application/json: {}
+        401:
+          content:
+            application/json: {}
+        403:
+          content:
+            application/json: {}
+        404:
+          content:
+            application/json: {}
+    delete:
+      summary: Delete data source.
+      description: Deletes the data source specified by dataSourceId.
+      responses:
+        200:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DataSource'
+        401:
+          content:
+            application/json: {}
+        403:
+          content:
+            application/json: {}
+        404:
+          content:
+            application/json: {}
+    parameters:
+    - name: dataSourceId
+      in: path
+      description: A unique identifier for a data source.
+      required: true
+      schema:
+        type: string
+  /api/v1/data/sets:
+    get:
+      summary: Get data sets.
+      description: Return all visible data sets.
+      responses:
+        200:
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/DataSet'
+        401:
+          content:
+            application/json: {}
+        403:
+          content:
+            application/json: {}
+    post:
+      summary: Upload a data set.
+      description: Uploads a new data set to the data lake.
+      requestBody:
+        content:
+          multipart/related:
+            schema:
+              $ref: '#/components/schemas/DataSet'
+        required: true
+      responses:
+        201:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DataSet'
+        400:
+          content:
+            application/json: {}
+        401:
+          content:
+            application/json: {}
+        403:
+          content:
+            application/json: {}
+  /api/v1/data/sets/{dataSetId}/state:
+    get:
+      summary: Get data set state.
+      description: Gets the state of the data set specified by dataSetId.
+      parameters:
+      - name: dataSetId
+        in: path
+        description: A unique identifier for a Data Set.
+        required: true
+        schema:
+          type: string
+      responses:
+        200:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/State'
+        401:
+          content:
+            application/json: {}
+        403:
+          content:
+            application/json: {}
+        404:
+          content:
+            application/json: {}
+    put:
+      summary: Update data set state.
+      description: Updates the state of a data set when the state has changed.  The
+        request body must include the new state value.  If the timestamp is omitted,
+        the current server time will be used.
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/State'
+        required: true
+      responses:
+        200:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/State'
+        400:
+          content:
+            application/json: {}
+        401:
+          content:
+            application/json: {}
+        403:
+          content:
+            application/json: {}
+        404:
+          content:
+            application/json: {}
+components:
+  schemas:
+    DataSet:
+      required:
+      - metadata
+      - dataSourceId
+      - dataSetMode
+      properties:
+        metadata:
+          description: A map of name/value pairs specifying required and optional
+            metadata about this Data Set.  The set of required metadata fields is
+            defined within the Data Source.
+        _id:
+          description: A unique identifier for the Data Set, which is assigned when
+            the Data Set is created.
+          type: string
+        dataSourceId:
+          description: The Data Source to which this Data Set belongs.
+          type: string
+        stateId:
+          description: An ID used to track processing state for the Data Set.  The
+            value is created by the platform once, and is immutable (it is ignored
+            in any POST or PUT).
+          type: string
+        dataSetMode:
+          description: Indicates the operation that is intended to be performed with
+            this Data Set.  Valid values are FULL, INC_INSERT, INC_UPSERT, INC_UPDATE,
+            INC_DELETE.
+          type: string
+    DataSource:
+      required:
+      - fileType
+      - tenantId
+      properties:
+        _id:
+          description: A unique identifier for the data source, which is assigned
+            when the data source is created.
+          type: string
+        fileType:
+          description: The type of file(s) of the dataset.  Valid values are "csv",
+            "avro".
+          type: string
+        requiredMetadata:
+          description: A list of metadata fields that are specifically required for
+            Data Dets received from the Data Source.  Globally required metadata fields
+            should not be included in this set.
+          type: array
+          items:
+            type: string
+        transformFnId:
+          description: A function that transforms the data set.
+          type: string
+        validateFnId:
+          description: A function that validates the data set.
+          type: string
+        tenantId:
+          description: The unique ID (UUID) assigned to the tenant providing the Data
+            Source.
+          type: string
+    State:
+      required:
+      - state
+      - message
+      - timestamp
+      properties:
+        state:
+          description: One of a valid set of states (TBD).
+          type: string
+        message:
+          description: A meaningful message associated with the state.
+          type: string
+        timestamp:
+          format: date-time
+          description: The server timestamp when the state was entered.
+          type: string
+        history:
+          description: An ordered array of previous states (oldest to newest, each
+            an object containing state, optional message, and timestamp).
+        _id:
+          description: A unique identifier for the state, which is assigned upon creation.
+          type: string
