@@ -12,6 +12,7 @@ paths:
         query.  Supported query params are: (TBD).'
       responses:
         200:
+          description: Success
           content:
             application/json:
               schema:
@@ -19,23 +20,38 @@ paths:
                 items:
                   $ref: '#/components/schemas/DataCatalogItem'
         400:
+          description: Bad Request
           content:
             application/json: {}
         401:
+          description: Unauthorized
           content:
             application/json: {}
         403:
+          description: Forbidden
           content:
             application/json: {}
     servers:
     - url: http://localhost:3000/cloud/data-catalog
-      description: ""
+      description: Local Node server
+    parameters:
+    - name: expiresAt
+      in: query
+      description: Time when Data Set within the data lake expires.
+      schema:
+        type: string
+    - name: createdAt
+      in: query
+      description: Time when referenced Data Set was created within the data lake.
+      schema:
+        type: string
   /api/v1/datacatalog/items:
     get:
       summary: Get data catalog items.
       description: Retrieves all data catalog items visible to the authenticated user.
       responses:
         200:
+          description: Success
           content:
             application/json:
               schema:
@@ -43,9 +59,11 @@ paths:
                 items:
                   $ref: '#/components/schemas/DataCatalogItem'
         401:
+          description: Unauthorized
           content:
             application/json: {}
         403:
+          description: Forbidden
           content:
             application/json: {}
     post:
@@ -53,99 +71,168 @@ paths:
       description: Creates a new data catalog item associated with a specific tenant
         and data set.
       requestBody:
+        description: Data Catalog item
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/DataCatalogItem'
+              type: array
+              items:
+                $ref: '#/components/schemas/DataCatalogItem'
+            examples:
+              POSTsource:
+                value: |-
+                  [
+                      {
+                          "path": "some text",
+                          "metadata": {},
+                          "tenantId": "some text",
+                          "expiresAt": "2018-02-10T09:30Z",
+                          "dataSourceId": "some text",
+                          "dataSetId": "some text",
+                          "createdAt": "2018-02-10T09:30Z"
+                      },
+                      {
+                          "path": "some text",
+                          "metadata": {},
+                          "tenantId": "some text",
+                          "expiresAt": "2018-02-10T09:30Z",
+                          "dataSourceId": "some text",
+                          "dataSetId": "some text",
+                          "createdAt": "2018-02-10T09:30Z"
+                      }
+                  ]
         required: true
       responses:
         201:
+          description: Success
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/DataCatalogItem'
         400:
+          description: Bad Request
           content:
             application/json: {}
         401:
+          description: Unauthorized
           content:
             application/json: {}
         403:
+          description: Forbidden
           content:
             application/json: {}
     servers:
     - url: http://localhost:3000/cloud/data-catalog
-      description: ""
+      description: Local Node server
   /api/v1/datacatalog/items/{itemId}/:
     get:
       summary: Get a data catalog item.
       description: Retrieves the data catalog entry specified by itemId.
       responses:
         200:
+          description: Success
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/DataCatalogItem'
         401:
+          description: Unauthorized
           content:
             application/json: {}
         403:
+          description: Forbidden
           content:
             application/json: {}
         404:
+          description: Not Found
           content:
             application/json: {}
     put:
       summary: Update a data catalog item.
       description: Updates the data catalog entry specified by itemId.
       requestBody:
+        description: Data Catalog item
         content:
           application/json:
             schema:
               $ref: '#/components/schemas/DataCatalogItem'
+            examples:
+              PUTitem:
+                description: Update an existing Data Catalog item
+                value: |-
+                  {
+                    "_id": "5bdb5ae12d1dd1000127c994",
+                    "tenantId": "81b3853c-b8a0-4e5d-808a-cbfc23bd5e13",
+                    "dataSourceId": "5bdb5a41e4fe99273729670f",
+                    "dataSetId": "5bdb5a40af185c7e50981ced",
+                    "path": "/an/artifact/path",
+                    "createdAt": "2018-11-01T19:55:45.000+0000",
+                    "metadata": {
+                      "testProp": "testing123",
+                      "fake": "data"
+                    }
+                  }
         required: true
       responses:
         200:
+          description: Success
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/DataCatalogItem'
         400:
+          description: Bad Request
           content:
             application/json: {}
         401:
+          description: Unauthorized
           content:
             application/json: {}
         403:
+          description: Forbidden
           content:
             application/json: {}
         404:
+          description: Not Found
           content:
             application/json: {}
     delete:
       summary: Delete a data catalog item.
       description: Deletes the data catalog entry specified by itemId.
+      parameters:
+      - name: itemId
+        in: path
+        description: The unique identifier assigned to a data catalog item.
+        required: true
+        schema:
+          type: string
       responses:
         204:
+          description: Success
           content:
             application/json: {}
         401:
+          description: Unauthorized
           content:
             application/json: {}
         403:
+          description: Forbidden
           content:
             application/json: {}
         404:
+          description: Not Found
           content:
             application/json: {}
     servers:
     - url: http://localhost:3000/cloud/data-catalog
-      description: ""
+      description: Local Node server
     parameters:
     - name: itemId
       in: path
       description: The unique identifier assigned to a data catalog item.
       required: true
+      schema:
+        type: string
 components:
   schemas:
     DataCatalogItem:
