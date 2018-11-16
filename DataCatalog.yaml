@@ -7,7 +7,7 @@ info:
 paths:
   /api/v1/datacatalog/query:
     get:
-      summary: Query data catalog with query params.
+      summary: Query data catalog with query params.  Added to summary
       description: Queries the data catalog, using query params to form the search
         query.  Query params may include createdAt or expiresAt.
       parameters:
