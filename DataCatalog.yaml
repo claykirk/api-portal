@@ -5,57 +5,6 @@ info:
   description: An API for managing and querying items within the Data Catalog.
   version: 1.0.0
 paths:
-  /api/v1/datacatalog/query:
-    get:
-      summary: Query data catalog with query params.  Added to summary
-      description: Queries the data catalog, using query params to form the search
-        query.  Query params may include createdAt or expiresAt.
-      parameters:
-      - name: createdAt
-        in: query
-        description: Time when referenced Data Set was created within the data lake.
-        schema:
-          type: string
-      - name: expiresAt
-        in: query
-        description: Time when Data Set within the data lake expires.
-        schema:
-          type: string
-      responses:
-        200:
-          description: Success
-          content:
-            application/json:
-              schema:
-                type: array
-                items:
-                  $ref: '#/components/schemas/DataCatalogItem'
-        400:
-          description: Bad Request
-          content:
-            application/json: {}
-        401:
-          description: Unauthorized
-          content:
-            application/json: {}
-        403:
-          description: Forbidden
-          content:
-            application/json: {}
-    servers:
-    - url: http://localhost:3000/cloud/data-catalog
-      description: Local Node server
-    parameters:
-    - name: expiresAt
-      in: query
-      description: Time when Data Set within the data lake expires.
-      schema:
-        type: string
-    - name: createdAt
-      in: query
-      description: Time when referenced Data Set was created within the data lake.
-      schema:
-        type: string
   /api/v1/datacatalog/items:
     summary: This is the api endpoint to fetch all data catalog items
     get:
@@ -243,6 +192,57 @@ paths:
       in: path
       description: The unique identifier assigned to a data catalog item.
       required: true
+      schema:
+        type: string
+  /api/v1/datacatalog/query:
+    get:
+      summary: Query data catalog with query params.
+      description: Queries the data catalog, using query params to form the search
+        query.  Query params may include createdAt or expiresAt.
+      parameters:
+      - name: createdAt
+        in: query
+        description: Time when referenced Data Set was created within the data lake.
+        schema:
+          type: string
+      - name: expiresAt
+        in: query
+        description: Time when Data Set within the data lake expires.
+        schema:
+          type: string
+      responses:
+        200:
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/DataCatalogItem'
+        400:
+          description: Bad Request
+          content:
+            application/json: {}
+        401:
+          description: Unauthorized
+          content:
+            application/json: {}
+        403:
+          description: Forbidden
+          content:
+            application/json: {}
+    servers:
+    - url: http://localhost:3000/cloud/data-catalog
+      description: Local Node server
+    parameters:
+    - name: expiresAt
+      in: query
+      description: Time when Data Set within the data lake expires.
+      schema:
+        type: string
+    - name: createdAt
+      in: query
+      description: Time when referenced Data Set was created within the data lake.
       schema:
         type: string
 components:
