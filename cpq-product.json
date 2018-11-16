@@ -4,7 +4,7 @@
     "title" : "GuidedSelling.Services.Host",
     "version" : "v3"
   },
-  "host" : "localhost:3000",
+  "host" : "localhost:3000/cpq",
   "basePath" : "/v3",
   "schemes" : [ "http" ],
   "paths" : {
