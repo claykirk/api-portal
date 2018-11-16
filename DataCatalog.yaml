@@ -10,7 +10,8 @@ paths:
       items summary
     get:
       summary: Get data catalog items.
-      description: Retrieves all data catalog items visible to the authenticated user.
+      description: Retrieves all data catalog items visible to the authenticated user.  Added
+        to description
       responses:
         200:
           description: Success
