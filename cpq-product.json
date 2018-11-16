@@ -1,0 +1,10188 @@
+{
+	"swagger": "2.0",
+	"info": {
+		"version": "v3",
+		"title": "GuidedSelling.Services.Host"
+	},
+	"host": "dev.endeavorcpq.com",
+	"basePath": "/v3",
+	"schemes": ["http"],
+	"paths": {
+		"/api/basketengine/{basketId}": {
+			"get": {
+				"tags": ["BasketEngine"],
+				"operationId": "BasketEngine_Get",
+				"consumes": [],
+				"produces": ["application/json", "text/json", "text/html", "application/xml", "text/xml"],
+				"parameters": [{
+						"name": "basketId",
+						"in": "path",
+						"required": true,
+						"type": "string"
+					}, {
+						"name": "processRules",
+						"in": "query",
+						"required": false,
+						"type": "boolean"
+					}, {
+						"name": "timeZoneId",
+						"in": "query",
+						"required": false,
+						"type": "string"
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"$ref": "#/definitions/Basket"
+						}
+					}
+				},
+				"deprecated": false
+			}
+		},
+		"/api/basketengine/Update/{basketId}": {
+			"put": {
+				"tags": ["BasketEngine"],
+				"operationId": "BasketEngine_Update",
+				"consumes": ["application/json", "text/json", "text/html", "application/xml", "text/xml", "application/x-www-form-urlencoded"],
+				"produces": ["application/json", "text/json", "text/html", "application/xml", "text/xml"],
+				"parameters": [{
+						"name": "basketId",
+						"in": "path",
+						"required": true,
+						"type": "string"
+					}, {
+						"name": "propertyUpdates",
+						"in": "body",
+						"required": true,
+						"schema": {
+							"type": "array",
+							"items": {
+								"$ref": "#/definitions/PropertyUpdate"
+							}
+						}
+					}, {
+						"name": "processRules",
+						"in": "query",
+						"required": false,
+						"type": "boolean"
+					}, {
+						"name": "timeZoneId",
+						"in": "query",
+						"required": false,
+						"type": "string"
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"$ref": "#/definitions/Basket"
+						}
+					}
+				},
+				"deprecated": false
+			}
+		},
+		"/api/basketengine/SaveAsQuote/{basketId}": {
+			"post": {
+				"tags": ["BasketEngine"],
+				"operationId": "BasketEngine_SaveAsQuote",
+				"consumes": ["application/json", "text/json", "text/html", "application/xml", "text/xml", "application/x-www-form-urlencoded"],
+				"produces": ["application/json", "text/json", "text/html", "application/xml", "text/xml"],
+				"parameters": [{
+						"name": "basketId",
+						"in": "path",
+						"required": true,
+						"type": "string"
+					}, {
+						"name": "propertyUpdates",
+						"in": "body",
+						"required": true,
+						"schema": {
+							"type": "array",
+							"items": {
+								"$ref": "#/definitions/PropertyUpdate"
+							}
+						}
+					}, {
+						"name": "processRules",
+						"in": "query",
+						"required": false,
+						"type": "boolean"
+					}, {
+						"name": "returnEntireObjectResult",
+						"in": "query",
+						"required": false,
+						"type": "boolean"
+					}, {
+						"name": "timeZoneId",
+						"in": "query",
+						"required": false,
+						"type": "string"
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"$ref": "#/definitions/Quote"
+						}
+					}
+				},
+				"deprecated": false
+			}
+		},
+		"/api/bulk/Update": {
+			"put": {
+				"tags": ["Bulk"],
+				"operationId": "Bulk_Update",
+				"consumes": ["application/json", "text/json", "text/html", "application/xml", "text/xml", "application/x-www-form-urlencoded"],
+				"produces": ["application/json", "text/json", "text/html", "application/xml", "text/xml"],
+				"parameters": [{
+						"name": "changes",
+						"in": "body",
+						"required": true,
+						"schema": {
+							"type": "array",
+							"items": {
+								"$ref": "#/definitions/EntityChange"
+							}
+						}
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"$ref": "#/definitions/Object"
+						}
+					}
+				},
+				"deprecated": false
+			}
+		},
+		"/api/bulk/FtpImport": {
+			"get": {
+				"tags": ["Bulk"],
+				"operationId": "Bulk_FtpImport",
+				"consumes": [],
+				"produces": ["application/json", "text/json", "text/html", "application/xml", "text/xml"],
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"$ref": "#/definitions/Object"
+						}
+					}
+				},
+				"deprecated": false
+			}
+		},
+		"/api/bulk/Import/{entityName}": {
+			"post": {
+				"tags": ["Bulk"],
+				"operationId": "Bulk_Import",
+				"consumes": ["application/json", "text/json", "text/html", "application/xml", "text/xml", "application/x-www-form-urlencoded"],
+				"produces": ["application/json", "text/json", "text/html", "application/xml", "text/xml"],
+				"parameters": [{
+						"name": "entityName",
+						"in": "path",
+						"required": true,
+						"type": "string"
+					}, {
+						"name": "importData",
+						"in": "body",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					}, {
+						"name": "importDataIsCompressed",
+						"in": "query",
+						"required": false,
+						"type": "boolean"
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"$ref": "#/definitions/Object"
+						}
+					}
+				},
+				"deprecated": false
+			}
+		},
+		"/api/bulk/Sync/{entityName}": {
+			"get": {
+				"tags": ["Bulk"],
+				"operationId": "Bulk_Sync",
+				"consumes": [],
+				"produces": ["application/json", "text/json", "text/html", "application/xml", "text/xml"],
+				"parameters": [{
+						"name": "entityName",
+						"in": "path",
+						"required": true,
+						"type": "string"
+					}, {
+						"name": "syncAll",
+						"in": "query",
+						"required": false,
+						"type": "boolean"
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"type": "array",
+							"items": {
+								"$ref": "#/definitions/SaveResult"
+							}
+						}
+					}
+				},
+				"deprecated": false
+			}
+		},
+		"/api/bulk/ExportXml/{entityName}": {
+			"get": {
+				"tags": ["Bulk"],
+				"operationId": "Bulk_ExportXml",
+				"consumes": [],
+				"produces": ["application/json", "text/json", "text/html", "application/xml", "text/xml"],
+				"parameters": [{
+						"name": "entityName",
+						"in": "path",
+						"required": true,
+						"type": "string"
+					}, {
+						"name": "entityId",
+						"in": "query",
+						"required": false,
+						"type": "string"
+					}, {
+						"name": "importDataIsCompressed",
+						"in": "query",
+						"required": false,
+						"type": "boolean"
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"$ref": "#/definitions/Object"
+						}
+					}
+				},
+				"deprecated": false
+			}
+		},
+		"/api/entities/{entityName}": {
+			"get": {
+				"tags": ["Entities"],
+				"operationId": "Entities_Index",
+				"consumes": [],
+				"produces": ["application/json", "text/json", "text/html", "application/xml", "text/xml"],
+				"parameters": [{
+						"name": "entityName",
+						"in": "path",
+						"required": true,
+						"type": "string"
+					}, {
+						"name": "entityId",
+						"in": "query",
+						"required": false,
+						"type": "string"
+					}, {
+						"name": "fields",
+						"in": "query",
+						"required": false,
+						"type": "string"
+					}, {
+						"name": "filter",
+						"in": "query",
+						"required": false,
+						"type": "string"
+					}, {
+						"name": "orderby",
+						"in": "query",
+						"required": false,
+						"type": "string"
+					}, {
+						"name": "sorttype",
+						"in": "query",
+						"required": false,
+						"type": "string"
+					}, {
+						"name": "page",
+						"in": "query",
+						"required": false,
+						"type": "integer",
+						"format": "int32"
+					}, {
+						"name": "perPage",
+						"in": "query",
+						"required": false,
+						"type": "integer",
+						"format": "int32"
+					}, {
+						"name": "includeDeleted",
+						"in": "query",
+						"required": false,
+						"type": "boolean"
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"$ref": "#/definitions/QueryResponse"
+						}
+					}
+				},
+				"deprecated": false
+			}
+		},
+		"/api/entities/{entityName}/{entityId}": {
+			"get": {
+				"tags": ["Entities"],
+				"operationId": "Entities_Index",
+				"consumes": [],
+				"produces": ["application/json", "text/json", "text/html", "application/xml", "text/xml"],
+				"parameters": [{
+						"name": "entityName",
+						"in": "path",
+						"required": true,
+						"type": "string"
+					}, {
+						"name": "entityId",
+						"in": "path",
+						"required": false,
+						"type": "string"
+					}, {
+						"name": "fields",
+						"in": "query",
+						"required": false,
+						"type": "string"
+					}, {
+						"name": "filter",
+						"in": "query",
+						"required": false,
+						"type": "string"
+					}, {
+						"name": "orderby",
+						"in": "query",
+						"required": false,
+						"type": "string"
+					}, {
+						"name": "sorttype",
+						"in": "query",
+						"required": false,
+						"type": "string"
+					}, {
+						"name": "page",
+						"in": "query",
+						"required": false,
+						"type": "integer",
+						"format": "int32"
+					}, {
+						"name": "perPage",
+						"in": "query",
+						"required": false,
+						"type": "integer",
+						"format": "int32"
+					}, {
+						"name": "includeDeleted",
+						"in": "query",
+						"required": false,
+						"type": "boolean"
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"$ref": "#/definitions/QueryResponse"
+						}
+					}
+				},
+				"deprecated": false
+			},
+			"put": {
+				"tags": ["Entities"],
+				"operationId": "Entities_Update",
+				"consumes": ["application/json", "text/json", "text/html", "application/xml", "text/xml", "application/x-www-form-urlencoded"],
+				"produces": ["application/json", "text/json", "text/html", "application/xml", "text/xml"],
+				"parameters": [{
+						"name": "entityName",
+						"in": "path",
+						"required": true,
+						"type": "string"
+					}, {
+						"name": "entity",
+						"in": "body",
+						"required": true,
+						"schema": {
+							"$ref": "#/definitions/Object"
+						}
+					}, {
+						"name": "entityId",
+						"in": "path",
+						"required": true,
+						"type": "string"
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"$ref": "#/definitions/Object"
+						}
+					}
+				},
+				"deprecated": false
+			},
+			"post": {
+				"tags": ["Entities"],
+				"operationId": "Entities_Create",
+				"consumes": ["application/json", "text/json", "text/html", "application/xml", "text/xml", "application/x-www-form-urlencoded"],
+				"produces": ["application/json", "text/json", "text/html", "application/xml", "text/xml"],
+				"parameters": [{
+						"name": "entityName",
+						"in": "path",
+						"required": true,
+						"type": "string"
+					}, {
+						"name": "entity",
+						"in": "body",
+						"required": true,
+						"schema": {
+							"$ref": "#/definitions/Object"
+						}
+					}, {
+						"name": "entityId",
+						"in": "path",
+						"required": true,
+						"type": "string"
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"$ref": "#/definitions/Object"
+						}
+					}
+				},
+				"deprecated": false
+			},
+			"delete": {
+				"tags": ["Entities"],
+				"operationId": "Entities_Delete",
+				"consumes": [],
+				"produces": ["application/json", "text/json", "text/html", "application/xml", "text/xml"],
+				"parameters": [{
+						"name": "entityName",
+						"in": "path",
+						"required": true,
+						"type": "string"
+					}, {
+						"name": "entityId",
+						"in": "path",
+						"required": true,
+						"type": "string"
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"$ref": "#/definitions/Object"
+						}
+					}
+				},
+				"deprecated": false
+			}
+		},
+		"/api/guidedsellingengine/GetGuidedSellingTree/{instanceId}": {
+			"get": {
+				"tags": ["GuidedSellingEngine"],
+				"operationId": "GuidedSellingEngine_GetGuidedSellingTree",
+				"consumes": [],
+				"produces": ["application/json", "text/json", "text/html", "application/xml", "text/xml"],
+				"parameters": [{
+						"name": "instanceId",
+						"in": "path",
+						"required": true,
+						"type": "string"
+					}, {
+						"name": "removeHiddenElements",
+						"in": "query",
+						"required": false,
+						"type": "boolean"
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"$ref": "#/definitions/GuidedSellingTree"
+						}
+					}
+				},
+				"deprecated": false
+			}
+		},
+		"/api/guidedsellingengine/GoToPage/{instanceId}": {
+			"get": {
+				"tags": ["GuidedSellingEngine"],
+				"operationId": "GuidedSellingEngine_GoToPage",
+				"consumes": [],
+				"produces": ["application/json", "text/json", "text/html", "application/xml", "text/xml"],
+				"parameters": [{
+						"name": "instanceId",
+						"in": "path",
+						"required": true,
+						"type": "string"
+					}, {
+						"name": "pageId",
+						"in": "query",
+						"required": true,
+						"type": "string"
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"$ref": "#/definitions/GuidedSellingTree"
+						}
+					}
+				},
+				"deprecated": false
+			}
+		},
+		"/api/guidedsellingengine/StartOver/{instanceId}": {
+			"get": {
+				"tags": ["GuidedSellingEngine"],
+				"operationId": "GuidedSellingEngine_StartOver",
+				"consumes": [],
+				"produces": ["application/json", "text/json", "text/html", "application/xml", "text/xml"],
+				"parameters": [{
+						"name": "instanceId",
+						"in": "path",
+						"required": true,
+						"type": "string"
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"$ref": "#/definitions/GuidedSellingTree"
+						}
+					}
+				},
+				"deprecated": false
+			}
+		},
+		"/api/guidedsellingengine/GoToPreviousPage/{instanceId}": {
+			"get": {
+				"tags": ["GuidedSellingEngine"],
+				"operationId": "GuidedSellingEngine_GoToPreviousPage",
+				"consumes": [],
+				"produces": ["application/json", "text/json", "text/html", "application/xml", "text/xml"],
+				"parameters": [{
+						"name": "instanceId",
+						"in": "path",
+						"required": true,
+						"type": "string"
+					}, {
+						"name": "currentPageId",
+						"in": "query",
+						"required": true,
+						"type": "string"
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"$ref": "#/definitions/GuidedSellingTree"
+						}
+					}
+				},
+				"deprecated": false
+			}
+		},
+		"/api/guidedsellingengine/Initialize/{instanceId}": {
+			"get": {
+				"tags": ["GuidedSellingEngine"],
+				"operationId": "GuidedSellingEngine_Initialize",
+				"consumes": [],
+				"produces": ["application/json", "text/json", "text/html", "application/xml", "text/xml"],
+				"parameters": [{
+						"name": "guidedSellingTreeId",
+						"in": "query",
+						"required": true,
+						"type": "string"
+					}, {
+						"name": "basketId",
+						"in": "query",
+						"required": true,
+						"type": "string"
+					}, {
+						"name": "instanceId",
+						"in": "path",
+						"required": true,
+						"type": "string"
+					}, {
+						"name": "currentElementId",
+						"in": "query",
+						"required": false,
+						"type": "string"
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"$ref": "#/definitions/GuidedSellingTree"
+						}
+					}
+				},
+				"deprecated": false
+			}
+		},
+		"/api/guidedsellingengine/Edit/{instanceId}": {
+			"get": {
+				"tags": ["GuidedSellingEngine"],
+				"operationId": "GuidedSellingEngine_Edit",
+				"consumes": [],
+				"produces": ["application/json", "text/json", "text/html", "application/xml", "text/xml"],
+				"parameters": [{
+						"name": "instanceId",
+						"in": "path",
+						"required": true,
+						"type": "string"
+					}, {
+						"name": "savedGuidedSellingId",
+						"in": "query",
+						"required": true,
+						"type": "string"
+					}, {
+						"name": "basketConfigurationId",
+						"in": "query",
+						"required": true,
+						"type": "string"
+					}, {
+						"name": "currentElementId",
+						"in": "query",
+						"required": false,
+						"type": "string"
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"$ref": "#/definitions/GuidedSellingTree"
+						}
+					}
+				},
+				"deprecated": false
+			}
+		},
+		"/api/guidedsellingengine/Update/{instanceId}": {
+			"put": {
+				"tags": ["GuidedSellingEngine"],
+				"operationId": "GuidedSellingEngine_Update",
+				"consumes": ["application/json", "text/json", "text/html", "application/xml", "text/xml", "application/x-www-form-urlencoded"],
+				"produces": ["application/json", "text/json", "text/html", "application/xml", "text/xml"],
+				"parameters": [{
+						"name": "instanceId",
+						"in": "path",
+						"required": true,
+						"type": "string"
+					}, {
+						"name": "answers",
+						"in": "body",
+						"required": true,
+						"schema": {
+							"type": "array",
+							"items": {
+								"$ref": "#/definitions/Answer"
+							}
+						}
+					}, {
+						"name": "currentPageId",
+						"in": "query",
+						"required": false,
+						"type": "string"
+					}, {
+						"name": "moveToNextPage",
+						"in": "query",
+						"required": false,
+						"type": "boolean"
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"$ref": "#/definitions/GuidedSellingTree"
+						}
+					}
+				},
+				"deprecated": false
+			}
+		},
+		"/api/guidedsellingengine/Save/{instanceId}": {
+			"post": {
+				"tags": ["GuidedSellingEngine"],
+				"operationId": "GuidedSellingEngine_Save",
+				"consumes": [],
+				"produces": ["application/json", "text/json", "text/html", "application/xml", "text/xml"],
+				"parameters": [{
+						"name": "instanceId",
+						"in": "path",
+						"required": true,
+						"type": "string"
+					}, {
+						"name": "savedGuidedSellingId",
+						"in": "query",
+						"required": true,
+						"type": "string"
+					}, {
+						"name": "savedTreeName",
+						"in": "query",
+						"required": false,
+						"type": "string"
+					}, {
+						"name": "saveAsTemplate",
+						"in": "query",
+						"required": false,
+						"type": "boolean"
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"$ref": "#/definitions/SavedGuidedSelling"
+						}
+					}
+				},
+				"deprecated": false
+			}
+		},
+		"/api/oauth2/token": {
+			"post": {
+				"tags": ["OAuth2"],
+				"operationId": "OAuth2_Token",
+				"consumes": ["application/json", "text/json", "text/html", "application/xml", "text/xml", "application/x-www-form-urlencoded"],
+				"produces": ["application/json", "text/json", "text/html", "application/xml", "text/xml"],
+				"parameters": [{
+						"name": "authRequest",
+						"in": "body",
+						"required": true,
+						"schema": {
+							"$ref": "#/definitions/AuthTokenRequest"
+						}
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"$ref": "#/definitions/AuthToken"
+						}
+					}
+				},
+				"deprecated": false
+			}
+		},
+		"/api/smartcatalogengine/Initialize/{instanceId}": {
+			"get": {
+				"tags": ["SmartCatalogEngine"],
+				"operationId": "SmartCatalogEngine_Initialize",
+				"consumes": [],
+				"produces": ["application/json", "text/json", "text/html", "application/xml", "text/xml"],
+				"parameters": [{
+						"name": "instanceId",
+						"in": "path",
+						"required": true,
+						"type": "string"
+					}, {
+						"name": "smartCatalogId",
+						"in": "query",
+						"required": true,
+						"type": "string"
+					}, {
+						"name": "basketId",
+						"in": "query",
+						"required": true,
+						"type": "string"
+					}, {
+						"name": "basketConfigurationId",
+						"in": "query",
+						"required": false,
+						"type": "string"
+					}, {
+						"name": "guidedSellingInstanceId",
+						"in": "query",
+						"required": false,
+						"type": "string"
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"$ref": "#/definitions/SmartCatalog"
+						}
+					}
+				},
+				"deprecated": false
+			}
+		},
+		"/api/smartcatalogengine/UpdateProperties/{instanceId}": {
+			"put": {
+				"tags": ["SmartCatalogEngine"],
+				"operationId": "SmartCatalogEngine_UpdateProperties",
+				"consumes": ["application/json", "text/json", "text/html", "application/xml", "text/xml", "application/x-www-form-urlencoded"],
+				"produces": ["application/json", "text/json", "text/html", "application/xml", "text/xml"],
+				"parameters": [{
+						"name": "instanceId",
+						"in": "path",
+						"required": true,
+						"type": "string"
+					}, {
+						"name": "propertyUpdates",
+						"in": "body",
+						"required": true,
+						"schema": {
+							"type": "array",
+							"items": {
+								"$ref": "#/definitions/PropertyUpdate"
+							}
+						}
+					}, {
+						"name": "processRules",
+						"in": "query",
+						"required": false,
+						"type": "boolean"
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"$ref": "#/definitions/SmartCatalog"
+						}
+					}
+				},
+				"deprecated": false
+			}
+		},
+		"/api/smartcatalogengine/UpdateEntities/{instanceId}": {
+			"put": {
+				"tags": ["SmartCatalogEngine"],
+				"operationId": "SmartCatalogEngine_UpdateEntities",
+				"consumes": ["application/json", "text/json", "text/html", "application/xml", "text/xml", "application/x-www-form-urlencoded"],
+				"produces": ["application/json", "text/json", "text/html", "application/xml", "text/xml"],
+				"parameters": [{
+						"name": "instanceId",
+						"in": "path",
+						"required": true,
+						"type": "string"
+					}, {
+						"name": "entityUpdates",
+						"in": "body",
+						"required": true,
+						"schema": {
+							"type": "array",
+							"items": {
+								"$ref": "#/definitions/EntityChange"
+							}
+						}
+					}, {
+						"name": "processRules",
+						"in": "query",
+						"required": false,
+						"type": "boolean"
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"$ref": "#/definitions/SmartCatalog"
+						}
+					}
+				},
+				"deprecated": false
+			}
+		},
+		"/api/smartcatalogengine/AddToBasket/{instanceId}": {
+			"post": {
+				"tags": ["SmartCatalogEngine"],
+				"operationId": "SmartCatalogEngine_AddToBasket",
+				"consumes": ["application/json", "text/json", "text/html", "application/xml", "text/xml", "application/x-www-form-urlencoded"],
+				"produces": ["application/json", "text/json", "text/html", "application/xml", "text/xml"],
+				"parameters": [{
+						"name": "instanceId",
+						"in": "path",
+						"required": true,
+						"type": "string"
+					}, {
+						"name": "propertyUpdates",
+						"in": "body",
+						"required": true,
+						"schema": {
+							"type": "array",
+							"items": {
+								"$ref": "#/definitions/PropertyUpdate"
+							}
+						}
+					}, {
+						"name": "processRules",
+						"in": "query",
+						"required": false,
+						"type": "boolean"
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"$ref": "#/definitions/SmartCatalog"
+						}
+					}
+				},
+				"deprecated": false
+			}
+		},
+		"/api/smartcatalogengine/Search/{instanceId}": {
+			"post": {
+				"tags": ["SmartCatalogEngine"],
+				"operationId": "SmartCatalogEngine_Search",
+				"consumes": ["application/json", "text/json", "text/html", "application/xml", "text/xml", "application/x-www-form-urlencoded"],
+				"produces": ["application/json", "text/json", "text/html", "application/xml", "text/xml"],
+				"parameters": [{
+						"name": "instanceId",
+						"in": "path",
+						"required": true,
+						"type": "string"
+					}, {
+						"name": "searchText",
+						"in": "query",
+						"required": true,
+						"type": "string"
+					}, {
+						"name": "propertyUpdates",
+						"in": "body",
+						"required": true,
+						"schema": {
+							"type": "array",
+							"items": {
+								"$ref": "#/definitions/PropertyUpdate"
+							}
+						}
+					}, {
+						"name": "processRules",
+						"in": "query",
+						"required": true,
+						"type": "boolean"
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"$ref": "#/definitions/SmartCatalog"
+						}
+					}
+				},
+				"deprecated": false
+			}
+		},
+		"/api/smartcatalogengine/GetSmartCatalog/{instanceId}": {
+			"get": {
+				"tags": ["SmartCatalogEngine"],
+				"operationId": "SmartCatalogEngine_GetSmartCatalog",
+				"consumes": [],
+				"produces": ["application/json", "text/json", "text/html", "application/xml", "text/xml"],
+				"parameters": [{
+						"name": "instanceId",
+						"in": "path",
+						"required": true,
+						"type": "string"
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"$ref": "#/definitions/SmartCatalog"
+						}
+					}
+				},
+				"deprecated": false
+			}
+		},
+		"/api/smartcatalogengine/GetSmartCategoryProducts/{instanceId}": {
+			"get": {
+				"tags": ["SmartCatalogEngine"],
+				"operationId": "SmartCatalogEngine_GetSmartCategoryProducts",
+				"consumes": [],
+				"produces": ["application/json", "text/json", "text/html", "application/xml", "text/xml"],
+				"parameters": [{
+						"name": "instanceId",
+						"in": "path",
+						"required": true,
+						"type": "string"
+					}, {
+						"name": "smartCategoryId",
+						"in": "query",
+						"required": true,
+						"type": "string"
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"type": "array",
+							"items": {
+								"$ref": "#/definitions/SmartProduct"
+							}
+						}
+					}
+				},
+				"deprecated": false
+			}
+		},
+		"/api/smartcatalogengine/GoToPreviousSmartCategory/{instanceId}": {
+			"post": {
+				"tags": ["SmartCatalogEngine"],
+				"operationId": "SmartCatalogEngine_GoToPreviousSmartCategory",
+				"consumes": ["application/json", "text/json", "text/html", "application/xml", "text/xml", "application/x-www-form-urlencoded"],
+				"produces": ["application/json", "text/json", "text/html", "application/xml", "text/xml"],
+				"parameters": [{
+						"name": "instanceId",
+						"in": "path",
+						"required": true,
+						"type": "string"
+					}, {
+						"name": "propertyUpdates",
+						"in": "body",
+						"required": true,
+						"schema": {
+							"type": "array",
+							"items": {
+								"$ref": "#/definitions/PropertyUpdate"
+							}
+						}
+					}, {
+						"name": "processRules",
+						"in": "query",
+						"required": true,
+						"type": "boolean"
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"$ref": "#/definitions/SmartCatalog"
+						}
+					}
+				},
+				"deprecated": false
+			}
+		},
+		"/api/smartcatalogengine/GoToNextSmartCategory/{instanceId}": {
+			"post": {
+				"tags": ["SmartCatalogEngine"],
+				"operationId": "SmartCatalogEngine_GoToNextSmartCategory",
+				"consumes": ["application/json", "text/json", "text/html", "application/xml", "text/xml", "application/x-www-form-urlencoded"],
+				"produces": ["application/json", "text/json", "text/html", "application/xml", "text/xml"],
+				"parameters": [{
+						"name": "instanceId",
+						"in": "path",
+						"required": true,
+						"type": "string"
+					}, {
+						"name": "propertyUpdates",
+						"in": "body",
+						"required": true,
+						"schema": {
+							"type": "array",
+							"items": {
+								"$ref": "#/definitions/PropertyUpdate"
+							}
+						}
+					}, {
+						"name": "processRules",
+						"in": "query",
+						"required": true,
+						"type": "boolean"
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"$ref": "#/definitions/SmartCatalog"
+						}
+					}
+				},
+				"deprecated": false
+			}
+		},
+		"/api/smartcatalogengine/GetSmartProduct/{instanceId}": {
+			"get": {
+				"tags": ["SmartCatalogEngine"],
+				"operationId": "SmartCatalogEngine_GetSmartProduct",
+				"consumes": [],
+				"produces": ["application/json", "text/json", "text/html", "application/xml", "text/xml"],
+				"parameters": [{
+						"name": "instanceId",
+						"in": "path",
+						"required": true,
+						"type": "string"
+					}, {
+						"name": "smartProductId",
+						"in": "query",
+						"required": true,
+						"type": "string"
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"$ref": "#/definitions/SmartProduct"
+						}
+					}
+				},
+				"deprecated": false
+			}
+		},
+		"/api/smartcatalogengine/GetGroupConstraint/{instanceId}": {
+			"get": {
+				"tags": ["SmartCatalogEngine"],
+				"operationId": "SmartCatalogEngine_GetGroupConstraint",
+				"consumes": [],
+				"produces": ["application/json", "text/json", "text/html", "application/xml", "text/xml"],
+				"parameters": [{
+						"name": "instanceId",
+						"in": "path",
+						"required": true,
+						"type": "string"
+					}, {
+						"name": "groupId",
+						"in": "query",
+						"required": true,
+						"type": "string"
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"$ref": "#/definitions/GroupConstraint"
+						}
+					}
+				},
+				"deprecated": false
+			}
+		},
+		"/api/workflows/CreateQuoteFromBasket/{entityid}": {
+			"get": {
+				"tags": ["Workflows"],
+				"operationId": "Workflows_CreateQuoteFromBasket",
+				"consumes": [],
+				"produces": ["application/json", "text/json", "text/html", "application/xml", "text/xml"],
+				"parameters": [{
+						"name": "entityid",
+						"in": "path",
+						"required": true,
+						"type": "string"
+					}, {
+						"name": "quoteId",
+						"in": "query",
+						"required": false,
+						"type": "string"
+					}, {
+						"name": "returnEntireObjectResult",
+						"in": "query",
+						"required": false,
+						"type": "boolean"
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"$ref": "#/definitions/Quote"
+						}
+					}
+				},
+				"deprecated": false
+			}
+		},
+		"/api/workflows/CreateBasketFromQuote/{entityid}": {
+			"get": {
+				"tags": ["Workflows"],
+				"operationId": "Workflows_CreateBasketFromQuote",
+				"consumes": [],
+				"produces": ["application/json", "text/json", "text/html", "application/xml", "text/xml"],
+				"parameters": [{
+						"name": "entityid",
+						"in": "path",
+						"required": true,
+						"type": "string"
+					}, {
+						"name": "basketId",
+						"in": "query",
+						"required": false,
+						"type": "string"
+					}, {
+						"name": "returnEntireObjectResult",
+						"in": "query",
+						"required": false,
+						"type": "boolean"
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"$ref": "#/definitions/Basket"
+						}
+					}
+				},
+				"deprecated": false
+			}
+		},
+		"/api/workflows/SubmitOrder/{entityid}": {
+			"get": {
+				"tags": ["Workflows"],
+				"operationId": "Workflows_SubmitOrder",
+				"consumes": [],
+				"produces": ["application/json", "text/json", "text/html", "application/xml", "text/xml"],
+				"parameters": [{
+						"name": "entityid",
+						"in": "path",
+						"required": true,
+						"type": "string"
+					}, {
+						"name": "returnEntireObjectResult",
+						"in": "query",
+						"required": false,
+						"type": "boolean"
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"$ref": "#/definitions/Order"
+						}
+					}
+				},
+				"deprecated": false
+			}
+		},
+		"/api/workflows/GenerateProposal/{entityId}": {
+			"post": {
+				"tags": ["Workflows"],
+				"operationId": "Workflows_GenerateProposal",
+				"consumes": ["application/json", "text/json", "text/html", "application/xml", "text/xml", "application/x-www-form-urlencoded"],
+				"produces": ["application/json", "text/json", "text/html", "application/xml", "text/xml"],
+				"parameters": [{
+						"name": "entityId",
+						"in": "path",
+						"required": true,
+						"type": "string"
+					}, {
+						"name": "templates",
+						"in": "body",
+						"required": true,
+						"schema": {
+							"type": "array",
+							"items": {
+								"$ref": "#/definitions/Template"
+							}
+						}
+					}, {
+						"name": "proposalId",
+						"in": "query",
+						"required": false,
+						"type": "string"
+					}, {
+						"name": "timeZoneId",
+						"in": "query",
+						"required": false,
+						"type": "string"
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"$ref": "#/definitions/ProposalResponse"
+						}
+					}
+				},
+				"deprecated": false
+			}
+		},
+		"/api/workflows/SetQuoteRenewalDate/{entityId}": {
+			"get": {
+				"tags": ["Workflows"],
+				"operationId": "Workflows_SetQuoteRenewalDate",
+				"consumes": [],
+				"produces": ["application/json", "text/json", "text/html", "application/xml", "text/xml"],
+				"parameters": [{
+						"name": "entityId",
+						"in": "path",
+						"required": true,
+						"type": "string"
+					}, {
+						"name": "renewalDate",
+						"in": "query",
+						"required": true,
+						"type": "string",
+						"format": "date-time"
+					}, {
+						"name": "returnEntireObjectResult",
+						"in": "query",
+						"required": false,
+						"type": "boolean"
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"$ref": "#/definitions/Quote"
+						}
+					}
+				},
+				"deprecated": false
+			}
+		},
+		"/api/workflows/ProcessRenewals/{entityId}": {
+			"get": {
+				"tags": ["Workflows"],
+				"operationId": "Workflows_ProcessRenewals",
+				"consumes": [],
+				"produces": ["application/json", "text/json", "text/html", "application/xml", "text/xml"],
+				"parameters": [{
+						"name": "entityId",
+						"in": "path",
+						"required": true,
+						"type": "string"
+					}, {
+						"name": "renewalDate",
+						"in": "query",
+						"required": true,
+						"type": "string",
+						"format": "date-time"
+					}, {
+						"name": "returnEntireObjectResult",
+						"in": "query",
+						"required": false,
+						"type": "boolean"
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"$ref": "#/definitions/Quote"
+						}
+					}
+				},
+				"deprecated": false
+			}
+		},
+		"/api/workflows/CancelRenewal/{entityId}": {
+			"get": {
+				"tags": ["Workflows"],
+				"operationId": "Workflows_CancelRenewal",
+				"consumes": [],
+				"produces": ["application/json", "text/json", "text/html", "application/xml", "text/xml"],
+				"parameters": [{
+						"name": "entityId",
+						"in": "path",
+						"required": true,
+						"type": "string"
+					}, {
+						"name": "renewalDate",
+						"in": "query",
+						"required": false,
+						"type": "string",
+						"format": "date-time"
+					}, {
+						"name": "returnEntireObjectResult",
+						"in": "query",
+						"required": false,
+						"type": "boolean"
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"$ref": "#/definitions/Quote"
+						}
+					}
+				},
+				"deprecated": false
+			}
+		},
+		"/api/workflows/CopyQuote/{entityid}": {
+			"get": {
+				"tags": ["Workflows"],
+				"operationId": "Workflows_CopyQuote",
+				"consumes": [],
+				"produces": ["application/json", "text/json", "text/html", "application/xml", "text/xml"],
+				"parameters": [{
+						"name": "entityid",
+						"in": "path",
+						"required": true,
+						"type": "string"
+					}, {
+						"name": "newEntityId",
+						"in": "query",
+						"required": false,
+						"type": "string"
+					}, {
+						"name": "newOpportunityId",
+						"in": "query",
+						"required": false,
+						"type": "string"
+					}, {
+						"name": "newQuoteNumber",
+						"in": "query",
+						"required": false,
+						"type": "string"
+					}, {
+						"name": "newRevisionNumber",
+						"in": "query",
+						"required": false,
+						"type": "string"
+					}, {
+						"name": "returnEntireObjectResult",
+						"in": "query",
+						"required": false,
+						"type": "boolean"
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"$ref": "#/definitions/Quote"
+						}
+					}
+				},
+				"deprecated": false
+			}
+		},
+		"/api/workflows/CopyRuleSet/{entityid}": {
+			"get": {
+				"tags": ["Workflows"],
+				"operationId": "Workflows_CopyRuleSet",
+				"consumes": [],
+				"produces": ["application/json", "text/json", "text/html", "application/xml", "text/xml"],
+				"parameters": [{
+						"name": "entityid",
+						"in": "path",
+						"required": true,
+						"type": "string"
+					}, {
+						"name": "returnEntireObjectResult",
+						"in": "query",
+						"required": false,
+						"type": "boolean"
+					}, {
+						"name": "newEntityId",
+						"in": "query",
+						"required": false,
+						"type": "string"
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"$ref": "#/definitions/ProcessWorkflowResult"
+						}
+					}
+				},
+				"deprecated": false
+			}
+		},
+		"/api/workflows/Copy/{entityid}": {
+			"get": {
+				"tags": ["Workflows"],
+				"operationId": "Workflows_Copy",
+				"consumes": [],
+				"produces": ["application/json", "text/json", "text/html", "application/xml", "text/xml"],
+				"parameters": [{
+						"name": "entityid",
+						"in": "path",
+						"required": true,
+						"type": "string"
+					}, {
+						"name": "entityName",
+						"in": "query",
+						"required": true,
+						"type": "string"
+					}, {
+						"name": "returnEntireObjectResult",
+						"in": "query",
+						"required": false,
+						"type": "boolean"
+					}, {
+						"name": "newEntityId",
+						"in": "query",
+						"required": false,
+						"type": "string"
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"$ref": "#/definitions/ProcessWorkflowResult"
+						}
+					}
+				},
+				"deprecated": false
+			}
+		}
+	},
+	"definitions": {
+		"Basket": {
+			"type": "object",
+			"properties": {
+				"QuoteActivity": {
+					"type": "array",
+					"items": {
+						"$ref": "#/definitions/QuoteActivity"
+					}
+				},
+				"BasketId": {
+					"type": "string"
+				},
+				"ProfileId": {
+					"type": "string"
+				},
+				"OwningTeamId": {
+					"type": "string"
+				},
+				"IsPrivate": {
+					"type": "boolean"
+				},
+				"RequiresApproval": {
+					"type": "boolean"
+				},
+				"ApproverId": {
+					"type": "string"
+				},
+				"CustomerId": {
+					"type": "string"
+				},
+				"CustomerName": {
+					"type": "string"
+				},
+				"CustomerType": {
+					"type": "string"
+				},
+				"ContactId": {
+					"type": "string"
+				},
+				"QuoteId": {
+					"type": "string"
+				},
+				"OpportunityId": {
+					"type": "string"
+				},
+				"OrderId": {
+					"type": "string"
+				},
+				"LeadId": {
+					"type": "string"
+				},
+				"IsCurrent": {
+					"type": "boolean"
+				},
+				"ExpiresOn": {
+					"format": "date-time",
+					"type": "string"
+				},
+				"Note": {
+					"type": "string"
+				},
+				"ApprovalNotes": {
+					"type": "string"
+				},
+				"Description": {
+					"type": "string"
+				},
+				"QuoteNumber": {
+					"type": "string"
+				},
+				"OrderNumber": {
+					"type": "string"
+				},
+				"PriceLevelId": {
+					"type": "string"
+				},
+				"PriceLevelName": {
+					"type": "string"
+				},
+				"Revision": {
+					"format": "int32",
+					"type": "integer"
+				},
+				"ShippingMethod": {
+					"type": "string"
+				},
+				"ShippingMethodId": {
+					"type": "string"
+				},
+				"ShipToName": {
+					"type": "string"
+				},
+				"ShipToAddress1": {
+					"type": "string"
+				},
+				"ShipToAddress2": {
+					"type": "string"
+				},
+				"ShipToAddress3": {
+					"type": "string"
+				},
+				"ShipToCity": {
+					"type": "string"
+				},
+				"ShipToState": {
+					"type": "string"
+				},
+				"ShipToCountry": {
+					"type": "string"
+				},
+				"ShipToPostalCode": {
+					"type": "string"
+				},
+				"ShipToAddressId": {
+					"type": "string"
+				},
+				"ShipFromAddressId": {
+					"type": "string"
+				},
+				"BillToName": {
+					"type": "string"
+				},
+				"BillToAddress1": {
+					"type": "string"
+				},
+				"BillToAddress2": {
+					"type": "string"
+				},
+				"BillToAddress3": {
+					"type": "string"
+				},
+				"BillToCity": {
+					"type": "string"
+				},
+				"BillToState": {
+					"type": "string"
+				},
+				"BillToCountry": {
+					"type": "string"
+				},
+				"BillToPostalCode": {
+					"type": "string"
+				},
+				"BillToAddressId": {
+					"type": "string"
+				},
+				"PurchaseOrderNumber": {
+					"type": "string"
+				},
+				"CreditCardInfoId": {
+					"type": "string"
+				},
+				"Total": {
+					"format": "double",
+					"type": "number"
+				},
+				"TaxTotal": {
+					"format": "double",
+					"type": "number"
+				},
+				"ShippingTotal": {
+					"format": "double",
+					"type": "number"
+				},
+				"CurrencyId": {
+					"type": "string"
+				},
+				"CurrencyCode": {
+					"type": "string"
+				},
+				"ExchangeRate": {
+					"format": "double",
+					"type": "number"
+				},
+				"Status": {
+					"type": "string"
+				},
+				"StatusReason": {
+					"type": "string"
+				},
+				"DiscountPercentage": {
+					"format": "double",
+					"type": "number"
+				},
+				"DiscountAmount": {
+					"format": "double",
+					"type": "number"
+				},
+				"MarkupPercentage": {
+					"format": "double",
+					"type": "number"
+				},
+				"MarkupAmount": {
+					"format": "double",
+					"type": "number"
+				},
+				"OrganizationId": {
+					"type": "string"
+				},
+				"ReviseOnSave": {
+					"type": "boolean"
+				},
+				"DeletionState": {
+					"type": "boolean"
+				},
+				"CreatedOn": {
+					"format": "date-time",
+					"type": "string"
+				},
+				"ModifiedOn": {
+					"format": "date-time",
+					"type": "string"
+				},
+				"CreatedBy": {
+					"type": "string"
+				},
+				"ModifiedBy": {
+					"type": "string"
+				},
+				"UserText1": {
+					"type": "string"
+				},
+				"UserText2": {
+					"type": "string"
+				},
+				"UserText3": {
+					"type": "string"
+				},
+				"UserText4": {
+					"type": "string"
+				},
+				"UserText5": {
+					"type": "string"
+				},
+				"UserText6": {
+					"type": "string"
+				},
+				"UserText7": {
+					"type": "string"
+				},
+				"UserText8": {
+					"type": "string"
+				},
+				"UserText9": {
+					"type": "string"
+				},
+				"UserText10": {
+					"type": "string"
+				},
+				"ContactName": {
+					"type": "string"
+				},
+				"Culture": {
+					"type": "string"
+				},
+				"ApprovalStatus": {
+					"type": "string"
+				},
+				"CustomerRiskScore": {
+					"format": "double",
+					"type": "number"
+				},
+				"CustomerRiskLevel": {
+					"type": "string"
+				},
+				"CustomerRiskDescription": {
+					"type": "string"
+				},
+				"PricingSegmentId": {
+					"type": "string"
+				},
+				"LanguageId": {
+					"type": "string"
+				},
+				"Mode": {
+					"type": "string"
+				},
+				"PriceAgreementId": {
+					"type": "string"
+				},
+				"BasketConfiguration": {
+					"type": "array",
+					"items": {
+						"$ref": "#/definitions/BasketConfiguration"
+					}
+				},
+				"BasketExt": {
+					"type": "array",
+					"items": {
+						"$ref": "#/definitions/BasketExt"
+					}
+				},
+				"BasketApprovalGroup": {
+					"type": "array",
+					"items": {
+						"$ref": "#/definitions/BasketApprovalGroup"
+					}
+				},
+				"BasketGlobalParameter": {
+					"type": "array",
+					"items": {
+						"$ref": "#/definitions/BasketGlobalParameter"
+					}
+				},
+				"Organization": {
+					"type": "string"
+				},
+				"CurrencySymbol": {
+					"type": "string"
+				},
+				"Page": {
+					"$ref": "#/definitions/Page"
+				},
+				"Message": {
+					"type": "string"
+				},
+				"SystemMessages": {
+					"type": "array",
+					"items": {
+						"$ref": "#/definitions/MessageDetail"
+					}
+				},
+				"EntityMetadata": {
+					"type": "array",
+					"items": {
+						"$ref": "#/definitions/EntityInfo"
+					}
+				},
+				"GlobalParameter": {
+					"type": "array",
+					"items": {
+						"$ref": "#/definitions/GlobalParameter"
+					}
+				},
+				"DisplayLog": {
+					"type": "boolean"
+				},
+				"PreserveQuoteId": {
+					"type": "boolean"
+				},
+				"CurrentUserIsApprover": {
+					"type": "boolean"
+				},
+				"CreatedOnFormatted": {
+					"type": "string"
+				},
+				"ModifiedOnFormatted": {
+					"type": "string"
+				},
+				"ExistsInDatabase": {
+					"type": "boolean"
+				},
+				"AdjustedPrice": {
+					"format": "double",
+					"type": "number"
+				},
+				"SubTotal": {
+					"format": "double",
+					"type": "number"
+				},
+				"SubscriberOrganizationName": {
+					"type": "string"
+				},
+				"SubscriberUserFullName": {
+					"type": "string"
+				},
+				"PreviousQuoteId": {
+					"type": "string"
+				}
+			}
+		},
+		"QuoteActivity": {
+			"type": "object",
+			"properties": {
+				"QuoteActivityId": {
+					"type": "string"
+				},
+				"QuoteId": {
+					"type": "string"
+				},
+				"ActivityType": {
+					"type": "string"
+				},
+				"Note": {
+					"type": "string"
+				},
+				"OrganizationId": {
+					"type": "string"
+				},
+				"CreatedOn": {
+					"format": "date-time",
+					"type": "string"
+				},
+				"ModifiedOn": {
+					"format": "date-time",
+					"type": "string"
+				},
+				"CreatedBy": {
+					"type": "string"
+				},
+				"ModifiedBy": {
+					"type": "string"
+				},
+				"QuoteNumber": {
+					"type": "string"
+				},
+				"ProfileFirstLast": {
+					"type": "string"
+				},
+				"RelatedEntity": {
+					"type": "string"
+				},
+				"RelatedEntityId": {
+					"type": "string"
+				}
+			}
+		},
+		"BasketConfiguration": {
+			"type": "object",
+			"properties": {
+				"BasketConfigurationId": {
+					"type": "string"
+				},
+				"BasketId": {
+					"type": "string"
+				},
+				"SmartCatalogId": {
+					"type": "string"
+				},
+				"SmartCatalogInstanceId": {
+					"type": "string"
+				},
+				"SavedGuidedSellingId": {
+					"type": "string"
+				},
+				"Name": {
+					"type": "string"
+				},
+				"ImagePath": {
+					"type": "string"
+				},
+				"Quantity": {
+					"format": "double",
+					"type": "number"
+				},
+				"Type": {
+					"type": "string"
+				},
+				"BaseProductId": {
+					"type": "string"
+				},
+				"SortOrder": {
+					"format": "int32",
+					"type": "integer"
+				},
+				"DiscountPercentage": {
+					"format": "double",
+					"type": "number"
+				},
+				"DiscountAmount": {
+					"format": "double",
+					"type": "number"
+				},
+				"MarkupPercentage": {
+					"format": "double",
+					"type": "number"
+				},
+				"MarkupAmount": {
+					"format": "double",
+					"type": "number"
+				},
+				"ExtendedPrice": {
+					"format": "double",
+					"type": "number"
+				},
+				"AdjustedPrice": {
+					"format": "double",
+					"type": "number"
+				},
+				"Price": {
+					"format": "double",
+					"type": "number"
+				},
+				"OrganizationId": {
+					"type": "string"
+				},
+				"DeletionState": {
+					"type": "boolean"
+				},
+				"CreatedOn": {
+					"format": "date-time",
+					"type": "string"
+				},
+				"ModifiedOn": {
+					"format": "date-time",
+					"type": "string"
+				},
+				"CreatedBy": {
+					"type": "string"
+				},
+				"ModifiedBy": {
+					"type": "string"
+				},
+				"IsUpsell": {
+					"type": "boolean"
+				},
+				"UserText1": {
+					"type": "string"
+				},
+				"UserText2": {
+					"type": "string"
+				},
+				"UserText3": {
+					"type": "string"
+				},
+				"UserText4": {
+					"type": "string"
+				},
+				"UserText5": {
+					"type": "string"
+				},
+				"UserText6": {
+					"type": "string"
+				},
+				"UserText7": {
+					"type": "string"
+				},
+				"UserText8": {
+					"type": "string"
+				},
+				"UserText9": {
+					"type": "string"
+				},
+				"UserText10": {
+					"type": "string"
+				},
+				"SmartCatalogName": {
+					"type": "string"
+				},
+				"GuidedSellingTreeName": {
+					"type": "string"
+				},
+				"QuoteConfigurationNumber": {
+					"type": "string"
+				},
+				"SavedCatalogGuidedSellingId": {
+					"type": "string"
+				},
+				"EnableUndoPricing": {
+					"type": "boolean"
+				},
+				"BasketConfigurationExt": {
+					"type": "array",
+					"items": {
+						"$ref": "#/definitions/BasketConfigurationExt"
+					}
+				},
+				"BasketProduct": {
+					"type": "array",
+					"items": {
+						"$ref": "#/definitions/BasketProduct"
+					}
+				},
+				"BasketConfigurationGlobalParameter": {
+					"type": "array",
+					"items": {
+						"$ref": "#/definitions/BasketConfigurationGlobalParameter"
+					}
+				}
+			}
+		},
+		"BasketExt": {
+			"type": "object",
+			"properties": {
+				"BasketExtId": {
+					"type": "string"
+				},
+				"BasketId": {
+					"type": "string"
+				},
+				"Name": {
+					"type": "string"
+				},
+				"DataType": {
+					"type": "string"
+				},
+				"Value": {
+					"type": "string"
+				},
+				"MessageId": {
+					"type": "string"
+				}
+			}
+		},
+		"BasketApprovalGroup": {
+			"type": "object",
+			"properties": {
+				"ApprovalGroupName": {
+					"type": "string"
+				},
+				"ApprovalGroupId": {
+					"type": "string"
+				},
+				"Status": {
+					"type": "string"
+				},
+				"OrganizationId": {
+					"type": "string"
+				},
+				"CreatedOn": {
+					"format": "date-time",
+					"type": "string"
+				},
+				"CreatedBy": {
+					"type": "string"
+				},
+				"ModifiedOn": {
+					"format": "date-time",
+					"type": "string"
+				},
+				"ModifiedBy": {
+					"type": "string"
+				},
+				"DeletionState": {
+					"type": "boolean"
+				},
+				"ApprovalMemberBase": {
+					"type": "array",
+					"items": {
+						"$ref": "#/definitions/ApprovalMemberBase"
+					}
+				},
+				"ApprovalGroupBaseId": {
+					"type": "string"
+				},
+				"ParentId": {
+					"type": "string"
+				},
+				"QuoteApprovalGroupId": {
+					"type": "string"
+				},
+				"BasketApprovalGroupId": {
+					"type": "string"
+				}
+			}
+		},
+		"BasketGlobalParameter": {
+			"type": "object",
+			"properties": {
+				"BasketGlobalParameterId": {
+					"type": "string"
+				},
+				"BasketId": {
+					"type": "string"
+				},
+				"GlobalParameterId": {
+					"type": "string"
+				},
+				"Name": {
+					"type": "string"
+				},
+				"Value": {
+					"type": "string"
+				},
+				"CreatedOn": {
+					"format": "date-time",
+					"type": "string"
+				},
+				"CreatedBy": {
+					"type": "string"
+				},
+				"ModifiedOn": {
+					"format": "date-time",
+					"type": "string"
+				},
+				"ModifiedBy": {
+					"type": "string"
+				}
+			}
+		},
+		"Page": {
+			"type": "object",
+			"properties": {
+				"PageId": {
+					"type": "string"
+				},
+				"Name": {
+					"type": "string"
+				},
+				"DisplayName": {
+					"type": "string"
+				},
+				"MessageId": {
+					"type": "string"
+				},
+				"Description": {
+					"type": "string"
+				},
+				"Url": {
+					"type": "string"
+				},
+				"PresenterUrl": {
+					"type": "string"
+				},
+				"SortOrder": {
+					"format": "int32",
+					"type": "integer"
+				},
+				"Entity": {
+					"type": "string"
+				},
+				"Template": {
+					"type": "string"
+				},
+				"OnLoadScript": {
+					"type": "string"
+				},
+				"OnSubmitScript": {
+					"type": "string"
+				},
+				"IsActive": {
+					"type": "boolean"
+				},
+				"DisplayOnHeader": {
+					"type": "boolean"
+				},
+				"DisplayOnSubHeader": {
+					"type": "boolean"
+				},
+				"DisplayAsTile": {
+					"type": "boolean"
+				},
+				"EnforceRoleSecurity": {
+					"type": "boolean"
+				},
+				"Role": {
+					"type": "string"
+				},
+				"IsSystemDefined": {
+					"type": "boolean"
+				},
+				"OrganizationId": {
+					"type": "string"
+				},
+				"DeletionState": {
+					"type": "boolean"
+				},
+				"CreatedOn": {
+					"format": "date-time",
+					"type": "string"
+				},
+				"ModifiedOn": {
+					"format": "date-time",
+					"type": "string"
+				},
+				"CreatedBy": {
+					"type": "string"
+				},
+				"ModifiedBy": {
+					"type": "string"
+				},
+				"Icon": {
+					"type": "string"
+				},
+				"PageRuleSet": {
+					"type": "array",
+					"items": {
+						"$ref": "#/definitions/PageRuleSet"
+					}
+				},
+				"PageSetting": {
+					"type": "array",
+					"items": {
+						"$ref": "#/definitions/PageSetting"
+					}
+				},
+				"PageView": {
+					"type": "array",
+					"items": {
+						"$ref": "#/definitions/PageView"
+					}
+				},
+				"RolePage": {
+					"type": "array",
+					"items": {
+						"$ref": "#/definitions/RolePage"
+					}
+				}
+			}
+		},
+		"MessageDetail": {
+			"type": "object",
+			"properties": {
+				"MessageType": {
+					"format": "int32",
+					"enum": [0, 1, 2, 3],
+					"type": "integer"
+				},
+				"ErrorCode": {
+					"format": "int32",
+					"enum": [0, 100, 200, 201, 3001, 3002, 3003, 3004, 3005, 3006, 3007, 3008, 4000, 4001, 4002, 4003, 4004, 4005, 4006, 4007, 4008, 4009, 4010, 4011, 4012, 4013, 4014, 4015, 4016, 4017, 4018, 4019, 4100, 4101, 4102, 5000, 5001, 5002, 5003, 5004, 5005, 5006, 5007, 6001, 6002, 6003, 6004, 6005, 6006, 6007, 7000, 7001, 7002, 8001, 8010, 8011, 9010, 9020, 9021, 9022, 9023, 9024, 9025],
+					"type": "integer"
+				},
+				"ActionType": {
+					"type": "string"
+				},
+				"MessageDetailId": {
+					"type": "string"
+				},
+				"MessageId": {
+					"type": "string"
+				},
+				"LanguageId": {
+					"type": "string"
+				},
+				"MessageDetail1": {
+					"type": "string"
+				},
+				"OrganizationId": {
+					"type": "string"
+				},
+				"DeletionState": {
+					"type": "boolean"
+				},
+				"CreatedOn": {
+					"format": "date-time",
+					"type": "string"
+				},
+				"ModifiedOn": {
+					"format": "date-time",
+					"type": "string"
+				},
+				"CreatedBy": {
+					"type": "string"
+				},
+				"ModifiedBy": {
+					"type": "string"
+				},
+				"MessageDetailExt": {
+					"type": "array",
+					"items": {
+						"$ref": "#/definitions/MessageDetailExt"
+					}
+				}
+			}
+		},
+		"EntityInfo": {
+			"type": "object",
+			"properties": {
+				"EntityInfoId": {
+					"type": "string"
+				},
+				"Name": {
+					"type": "string"
+				},
+				"DisplayName": {
+					"type": "string"
+				},
+				"MessageId": {
+					"type": "string"
+				},
+				"AllowInRules": {
+					"type": "boolean"
+				},
+				"IsSystemDefined": {
+					"type": "boolean"
+				},
+				"IsCollection": {
+					"type": "boolean"
+				},
+				"OrganizationId": {
+					"type": "string"
+				},
+				"DeletionState": {
+					"type": "boolean"
+				},
+				"CreatedOn": {
+					"format": "date-time",
+					"type": "string"
+				},
+				"ModifiedOn": {
+					"format": "date-time",
+					"type": "string"
+				},
+				"CreatedBy": {
+					"type": "string"
+				},
+				"ModifiedBy": {
+					"type": "string"
+				},
+				"DisplayInMetadata": {
+					"type": "boolean"
+				},
+				"Description": {
+					"type": "string"
+				}
+			}
+		},
+		"GlobalParameter": {
+			"type": "object",
+			"properties": {
+				"GlobalParameterId": {
+					"type": "string"
+				},
+				"GlobalParamGroupId": {
+					"type": "string"
+				},
+				"Name": {
+					"type": "string"
+				},
+				"Description": {
+					"type": "string"
+				},
+				"Type": {
+					"type": "string"
+				},
+				"Value": {
+					"type": "string"
+				},
+				"Persist": {
+					"type": "boolean"
+				},
+				"SortOrder": {
+					"format": "int32",
+					"type": "integer"
+				},
+				"OrganizationId": {
+					"type": "string"
+				},
+				"DeletionState": {
+					"type": "boolean"
+				},
+				"CreatedOn": {
+					"format": "date-time",
+					"type": "string"
+				},
+				"ModifiedOn": {
+					"format": "date-time",
+					"type": "string"
+				},
+				"CreatedBy": {
+					"type": "string"
+				},
+				"ModifiedBy": {
+					"type": "string"
+				},
+				"GlobalParameterExt": {
+					"type": "array",
+					"items": {
+						"$ref": "#/definitions/GlobalParameterExt"
+					}
+				},
+				"DefaultValue": {
+					"type": "string"
+				}
+			}
+		},
+		"BasketConfigurationExt": {
+			"type": "object",
+			"properties": {
+				"BasketConfigurationExtId": {
+					"type": "string"
+				},
+				"BasketConfigurationId": {
+					"type": "string"
+				},
+				"Name": {
+					"type": "string"
+				},
+				"Value": {
+					"type": "string"
+				},
+				"DataType": {
+					"type": "string"
+				},
+				"MessageId": {
+					"type": "string"
+				}
+			}
+		},
+		"BasketProduct": {
+			"type": "object",
+			"properties": {
+				"BasketProductId": {
+					"type": "string"
+				},
+				"BasketConfigurationId": {
+					"type": "string"
+				},
+				"SmartProductId": {
+					"type": "string"
+				},
+				"QueryId": {
+					"type": "string"
+				},
+				"ProductId": {
+					"type": "string"
+				},
+				"VariantId": {
+					"type": "string"
+				},
+				"PriceAdjusted": {
+					"type": "boolean"
+				},
+				"PriceEffDate": {
+					"format": "date-time",
+					"type": "string"
+				},
+				"Type": {
+					"type": "string"
+				},
+				"IsUpsell": {
+					"type": "boolean"
+				},
+				"UserInput": {
+					"type": "string"
+				},
+				"CategoryName": {
+					"type": "string"
+				},
+				"SortOrder": {
+					"format": "int32",
+					"type": "integer"
+				},
+				"ProductType": {
+					"type": "string"
+				},
+				"Name": {
+					"type": "string"
+				},
+				"Description": {
+					"type": "string"
+				},
+				"SerialNumber": {
+					"type": "string"
+				},
+				"ShippingAddressId": {
+					"type": "string"
+				},
+				"Tax": {
+					"format": "double",
+					"type": "number"
+				},
+				"IsTaxable": {
+					"type": "boolean"
+				},
+				"Weight": {
+					"format": "double",
+					"type": "number"
+				},
+				"OrganizationId": {
+					"type": "string"
+				},
+				"DeletionState": {
+					"type": "boolean"
+				},
+				"CreatedOn": {
+					"format": "date-time",
+					"type": "string"
+				},
+				"ModifiedOn": {
+					"format": "date-time",
+					"type": "string"
+				},
+				"CreatedBy": {
+					"type": "string"
+				},
+				"ModifiedBy": {
+					"type": "string"
+				},
+				"ProductCatalogId": {
+					"type": "string"
+				},
+				"SKU": {
+					"type": "string"
+				},
+				"CategoryId": {
+					"type": "string"
+				},
+				"ProductCode": {
+					"type": "string"
+				},
+				"Tag": {
+					"type": "string"
+				},
+				"ImagePath": {
+					"type": "string"
+				},
+				"ThumbnailPath": {
+					"type": "string"
+				},
+				"Family": {
+					"type": "string"
+				},
+				"Model": {
+					"type": "string"
+				},
+				"EffectiveDate": {
+					"format": "date-time",
+					"type": "string"
+				},
+				"ExpirationDate": {
+					"format": "date-time",
+					"type": "string"
+				},
+				"DeletionStateCode": {
+					"format": "int32",
+					"type": "integer"
+				},
+				"DefaultPriceLevelId": {
+					"type": "string"
+				},
+				"ProductTypeCode": {
+					"format": "int32",
+					"type": "integer"
+				},
+				"ProductUrl": {
+					"type": "string"
+				},
+				"CurrencyId": {
+					"type": "string"
+				},
+				"IsKit": {
+					"type": "boolean"
+				},
+				"IsActive": {
+					"type": "boolean"
+				},
+				"Height": {
+					"format": "double",
+					"type": "number"
+				},
+				"Width": {
+					"format": "double",
+					"type": "number"
+				},
+				"Size": {
+					"type": "string"
+				},
+				"CurrentCost": {
+					"format": "double",
+					"type": "number"
+				},
+				"StockVolume": {
+					"format": "double",
+					"type": "number"
+				},
+				"StandardCost": {
+					"format": "double",
+					"type": "number"
+				},
+				"StockWeight": {
+					"format": "double",
+					"type": "number"
+				},
+				"QuantityDecimal": {
+					"format": "int32",
+					"type": "integer"
+				},
+				"QuantityOnHand": {
+					"format": "double",
+					"type": "number"
+				},
+				"IsStockItem": {
+					"type": "boolean"
+				},
+				"SupplierName": {
+					"type": "string"
+				},
+				"VendorName": {
+					"type": "string"
+				},
+				"VendorPartNumber": {
+					"type": "string"
+				},
+				"UserNum1": {
+					"format": "double",
+					"type": "number"
+				},
+				"UserNum2": {
+					"format": "double",
+					"type": "number"
+				},
+				"UserNum3": {
+					"format": "double",
+					"type": "number"
+				},
+				"UserNum4": {
+					"format": "double",
+					"type": "number"
+				},
+				"UserNum5": {
+					"format": "double",
+					"type": "number"
+				},
+				"UserNum6": {
+					"format": "double",
+					"type": "number"
+				},
+				"UserNum7": {
+					"format": "double",
+					"type": "number"
+				},
+				"UserNum8": {
+					"format": "double",
+					"type": "number"
+				},
+				"UserNum9": {
+					"format": "double",
+					"type": "number"
+				},
+				"UserNum10": {
+					"format": "double",
+					"type": "number"
+				},
+				"UserText1": {
+					"type": "string"
+				},
+				"UserText2": {
+					"type": "string"
+				},
+				"UserText3": {
+					"type": "string"
+				},
+				"UserText4": {
+					"type": "string"
+				},
+				"UserText5": {
+					"type": "string"
+				},
+				"UserText6": {
+					"type": "string"
+				},
+				"UserText7": {
+					"type": "string"
+				},
+				"UserText8": {
+					"type": "string"
+				},
+				"UserText9": {
+					"type": "string"
+				},
+				"UserText10": {
+					"type": "string"
+				},
+				"SmartCategoryId": {
+					"type": "string"
+				},
+				"Price2": {
+					"format": "double",
+					"type": "number"
+				},
+				"Price3": {
+					"format": "double",
+					"type": "number"
+				},
+				"Cost2": {
+					"format": "double",
+					"type": "number"
+				},
+				"Cost3": {
+					"format": "double",
+					"type": "number"
+				},
+				"QuoteProductNumber": {
+					"type": "string"
+				},
+				"OriginalListPrice": {
+					"format": "double",
+					"type": "number"
+				},
+				"RenewalQuoteId": {
+					"type": "string"
+				},
+				"IsSubscription": {
+					"type": "boolean"
+				},
+				"FloorPrice": {
+					"format": "double",
+					"type": "number"
+				},
+				"StretchPrice": {
+					"format": "double",
+					"type": "number"
+				},
+				"RiskScore": {
+					"format": "double",
+					"type": "number"
+				},
+				"RiskDescription": {
+					"type": "string"
+				},
+				"RenewalDate": {
+					"format": "date-time",
+					"type": "string"
+				},
+				"RiskLevel": {
+					"type": "string"
+				},
+				"PreviousTargetPrice": {
+					"format": "double",
+					"type": "number"
+				},
+				"ApprovalLevel1Price": {
+					"format": "double",
+					"type": "number"
+				},
+				"ApprovalLevel2Price": {
+					"format": "double",
+					"type": "number"
+				},
+				"ApprovalLevel3Price": {
+					"format": "double",
+					"type": "number"
+				},
+				"BasketProductExt": {
+					"type": "array",
+					"items": {
+						"$ref": "#/definitions/BasketProductExt"
+					}
+				},
+				"BasketProductTier": {
+					"type": "array",
+					"items": {
+						"$ref": "#/definitions/BasketProductTier"
+					}
+				},
+				"Message": {
+					"type": "string"
+				},
+				"TieredPricingProperty": {
+					"type": "string"
+				},
+				"Price": {
+					"format": "double",
+					"type": "number"
+				},
+				"AdjustedPrice": {
+					"format": "double",
+					"type": "number"
+				},
+				"DiscountAmount": {
+					"format": "double",
+					"type": "number"
+				},
+				"DiscountPercentage": {
+					"format": "double",
+					"type": "number"
+				},
+				"MarkupAmount": {
+					"format": "double",
+					"type": "number"
+				},
+				"MarkupPercentage": {
+					"format": "double",
+					"type": "number"
+				},
+				"Quantity": {
+					"format": "double",
+					"type": "number"
+				},
+				"ExtendedPrice": {
+					"format": "double",
+					"type": "number"
+				},
+				"TargetPrice": {
+					"format": "double",
+					"type": "number"
+				},
+				"TargetDiscountPercentage": {
+					"format": "double",
+					"type": "number"
+				},
+				"DistPrice": {
+					"format": "double",
+					"type": "number"
+				},
+				"DistAdjustedPrice": {
+					"format": "double",
+					"type": "number"
+				},
+				"DistDiscountAmount": {
+					"format": "double",
+					"type": "number"
+				},
+				"DistDiscountPercentage": {
+					"format": "double",
+					"type": "number"
+				},
+				"DistExtendedPrice": {
+					"format": "double",
+					"type": "number"
+				},
+				"CalculatedDiscountPercentage": {
+					"format": "double",
+					"type": "number"
+				}
+			}
+		},
+		"BasketConfigurationGlobalParameter": {
+			"type": "object",
+			"properties": {
+				"BasketConfigurationGlobalParameterId": {
+					"type": "string"
+				},
+				"BasketConfigurationId": {
+					"type": "string"
+				},
+				"GlobalParameterId": {
+					"type": "string"
+				},
+				"Name": {
+					"type": "string"
+				},
+				"Value": {
+					"type": "string"
+				},
+				"CreatedOn": {
+					"format": "date-time",
+					"type": "string"
+				},
+				"CreatedBy": {
+					"type": "string"
+				},
+				"ModifiedOn": {
+					"format": "date-time",
+					"type": "string"
+				},
+				"ModifiedBy": {
+					"type": "string"
+				}
+			}
+		},
+		"ApprovalMemberBase": {
+			"type": "object",
+			"properties": {
+				"ProfileId": {
+					"type": "string"
+				},
+				"ProfileName": {
+					"type": "string"
+				},
+				"Status": {
+					"type": "string"
+				},
+				"OriginalStatus": {
+					"type": "string"
+				},
+				"Token": {
+					"type": "string"
+				},
+				"OrganizationId": {
+					"type": "string"
+				},
+				"CreatedOn": {
+					"format": "date-time",
+					"type": "string"
+				},
+				"CreatedBy": {
+					"type": "string"
+				},
+				"ModifiedOn": {
+					"format": "date-time",
+					"type": "string"
+				},
+				"ModifiedBy": {
+					"type": "string"
+				},
+				"DeletionState": {
+					"type": "boolean"
+				},
+				"ApprovalGroupBase": {
+					"$ref": "#/definitions/ApprovalGroupBase"
+				},
+				"ApprovalConditionBase": {
+					"type": "array",
+					"items": {
+						"$ref": "#/definitions/ApprovalConditionBase"
+					}
+				},
+				"ApprovalMemberBaseId": {
+					"type": "string"
+				},
+				"ApprovalGroupBaseId": {
+					"type": "string"
+				},
+				"HasApproved": {
+					"type": "boolean"
+				}
+			}
+		},
+		"PageRuleSet": {
+			"type": "object",
+			"properties": {
+				"PageRuleSetId": {
+					"type": "string"
+				},
+				"PageId": {
+					"type": "string"
+				},
+				"RuleSetId": {
+					"type": "string"
+				},
+				"SortOrder": {
+					"format": "int32",
+					"type": "integer"
+				},
+				"OrganizationId": {
+					"type": "string"
+				},
+				"DeletionState": {
+					"type": "boolean"
+				},
+				"CreatedOn": {
+					"format": "date-time",
+					"type": "string"
+				},
+				"ModifiedOn": {
+					"format": "date-time",
+					"type": "string"
+				},
+				"CreatedBy": {
+					"type": "string"
+				},
+				"ModifiedBy": {
+					"type": "string"
+				},
+				"IsActive": {
+					"type": "boolean"
+				}
+			}
+		},
+		"PageSetting": {
+			"type": "object",
+			"properties": {
+				"PageSettingId": {
+					"type": "string"
+				},
+				"PageId": {
+					"type": "string"
+				},
+				"Name": {
+					"type": "string"
+				},
+				"DisplayName": {
+					"type": "string"
+				},
+				"Value": {
+					"type": "string"
+				},
+				"Type": {
+					"type": "string"
+				},
+				"IsActive": {
+					"type": "boolean"
+				},
+				"SortOrder": {
+					"format": "int32",
+					"type": "integer"
+				},
+				"MessageId": {
+					"type": "string"
+				}
+			}
+		},
+		"PageView": {
+			"type": "object",
+			"properties": {
+				"IsDialog": {
+					"type": "boolean"
+				},
+				"PageViewTabs": {
+					"type": "array",
+					"items": {
+						"$ref": "#/definitions/PageViewTab"
+					}
+				},
+				"PageViewId": {
+					"type": "string"
+				},
+				"PageId": {
+					"type": "string"
+				},
+				"Name": {
+					"type": "string"
+				},
+				"IsDefault": {
+					"type": "boolean"
+				},
+				"CreatedOn": {
+					"format": "date-time",
+					"type": "string"
+				},
+				"ModifiedOn": {
+					"format": "date-time",
+					"type": "string"
+				},
+				"CreatedBy": {
+					"type": "string"
+				},
+				"ModifiedBy": {
+					"type": "string"
+				},
+				"IsSystemDefined": {
+					"type": "boolean"
+				},
+				"ContainersPerRow": {
+					"format": "int32",
+					"type": "integer"
+				},
+				"IsActive": {
+					"type": "boolean"
+				},
+				"PageViewButton": {
+					"type": "array",
+					"items": {
+						"$ref": "#/definitions/PageViewButton"
+					}
+				},
+				"PageViewContainer": {
+					"type": "array",
+					"items": {
+						"$ref": "#/definitions/PageViewContainer"
+					}
+				},
+				"PageViewProfile": {
+					"type": "array",
+					"items": {
+						"$ref": "#/definitions/PageViewProfile"
+					}
+				},
+				"PageViewRole": {
+					"type": "array",
+					"items": {
+						"$ref": "#/definitions/PageViewRole"
+					}
+				},
+				"PageViewTeam": {
+					"type": "array",
+					"items": {
+						"$ref": "#/definitions/PageViewTeam"
+					}
+				}
+			}
+		},
+		"RolePage": {
+			"type": "object",
+			"properties": {
+				"RolePageId": {
+					"type": "string"
+				},
+				"RoleId": {
+					"type": "string"
+				},
+				"PageId": {
+					"type": "string"
+				},
+				"OrganizationId": {
+					"type": "string"
+				},
+				"DeletionState": {
+					"type": "boolean"
+				},
+				"IsDefaultRole": {
+					"type": "boolean"
+				},
+				"CreatedOn": {
+					"format": "date-time",
+					"type": "string"
+				},
+				"ModifiedOn": {
+					"format": "date-time",
+					"type": "string"
+				},
+				"CreatedBy": {
+					"type": "string"
+				},
+				"ModifiedBy": {
+					"type": "string"
+				}
+			}
+		},
+		"MessageDetailExt": {
+			"type": "object",
+			"properties": {
+				"MessageDetailExtId": {
+					"type": "string"
+				},
+				"MessageDetailId": {
+					"type": "string"
+				},
+				"Name": {
+					"type": "string"
+				},
+				"Value": {
+					"type": "string"
+				},
+				"MessageId": {
+					"type": "string"
+				},
+				"DataType": {
+					"type": "string"
+				}
+			}
+		},
+		"GlobalParameterExt": {
+			"type": "object",
+			"properties": {
+				"GlobalParameterExtId": {
+					"type": "string"
+				},
+				"GlobalParameterId": {
+					"type": "string"
+				},
+				"Name": {
+					"type": "string"
+				},
+				"Value": {
+					"type": "string"
+				},
+				"MessageId": {
+					"type": "string"
+				},
+				"DataType": {
+					"type": "string"
+				}
+			}
+		},
+		"BasketProductExt": {
+			"type": "object",
+			"properties": {
+				"BasketProductExtId": {
+					"type": "string"
+				},
+				"BasketProductId": {
+					"type": "string"
+				},
+				"Name": {
+					"type": "string"
+				},
+				"Value": {
+					"type": "string"
+				},
+				"DataType": {
+					"type": "string"
+				},
+				"MessageId": {
+					"type": "string"
+				}
+			}
+		},
+		"BasketProductTier": {
+			"type": "object",
+			"properties": {
+				"BasketProductTierId": {
+					"type": "string"
+				},
+				"BasketProductId": {
+					"type": "string"
+				},
+				"Property": {
+					"type": "string"
+				},
+				"ModifierType": {
+					"type": "string"
+				},
+				"LowerRange": {
+					"format": "double",
+					"type": "number"
+				},
+				"UpperRange": {
+					"format": "double",
+					"type": "number"
+				},
+				"Increment": {
+					"format": "double",
+					"type": "number"
+				},
+				"Value": {
+					"format": "double",
+					"type": "number"
+				}
+			}
+		},
+		"ApprovalGroupBase": {
+			"type": "object",
+			"properties": {
+				"ApprovalGroupName": {
+					"type": "string"
+				},
+				"ApprovalGroupId": {
+					"type": "string"
+				},
+				"Status": {
+					"type": "string"
+				},
+				"OrganizationId": {
+					"type": "string"
+				},
+				"CreatedOn": {
+					"format": "date-time",
+					"type": "string"
+				},
+				"CreatedBy": {
+					"type": "string"
+				},
+				"ModifiedOn": {
+					"format": "date-time",
+					"type": "string"
+				},
+				"ModifiedBy": {
+					"type": "string"
+				},
+				"DeletionState": {
+					"type": "boolean"
+				},
+				"ApprovalMemberBase": {
+					"type": "array",
+					"items": {
+						"$ref": "#/definitions/ApprovalMemberBase"
+					}
+				},
+				"ApprovalGroupBaseId": {
+					"type": "string"
+				},
+				"QuoteApprovalGroupId": {
+					"type": "string"
+				},
+				"BasketApprovalGroupId": {
+					"type": "string"
+				},
+				"ParentId": {
+					"type": "string"
+				}
+			}
+		},
+		"ApprovalConditionBase": {
+			"type": "object",
+			"properties": {
+				"Entity": {
+					"type": "string"
+				},
+				"EntityNumber": {
+					"type": "string"
+				},
+				"Property": {
+					"type": "string"
+				},
+				"ComparisonOperator": {
+					"type": "string"
+				},
+				"LogicalOperator": {
+					"type": "string"
+				},
+				"Value": {
+					"type": "string"
+				},
+				"ConditionValue": {
+					"type": "string"
+				},
+				"SortOrder": {
+					"format": "int32",
+					"type": "integer"
+				},
+				"OrganizationId": {
+					"type": "string"
+				},
+				"CreatedOn": {
+					"format": "date-time",
+					"type": "string"
+				},
+				"CreatedBy": {
+					"type": "string"
+				},
+				"ModifiedOn": {
+					"format": "date-time",
+					"type": "string"
+				},
+				"ModifiedBy": {
+					"type": "string"
+				},
+				"DeletionState": {
+					"type": "boolean"
+				},
+				"ApprovalMemberBase": {
+					"$ref": "#/definitions/ApprovalMemberBase"
+				},
+				"ApprovalConditionBaseId": {
+					"type": "string"
+				},
+				"ApprovalMemberBaseId": {
+					"type": "string"
+				},
+				"IsApproved": {
+					"type": "boolean"
+				}
+			}
+		},
+		"PageViewTab": {
+			"type": "object",
+			"properties": {
+				"Name": {
+					"type": "string"
+				},
+				"DisplayName": {
+					"type": "string"
+				},
+				"SortOrder": {
+					"format": "int32",
+					"type": "integer"
+				},
+				"PageViewContainer": {
+					"type": "array",
+					"items": {
+						"$ref": "#/definitions/PageViewContainer"
+					}
+				},
+				"TabId": {
+					"type": "string"
+				},
+				"IsActive": {
+					"type": "boolean"
+				}
+			}
+		},
+		"PageViewButton": {
+			"type": "object",
+			"properties": {
+				"PageViewButtonId": {
+					"type": "string"
+				},
+				"PageViewId": {
+					"type": "string"
+				},
+				"Name": {
+					"type": "string"
+				},
+				"ButtonId": {
+					"type": "string"
+				},
+				"Script": {
+					"type": "string"
+				},
+				"MessageId": {
+					"type": "string"
+				},
+				"IsSystemDefined": {
+					"type": "boolean"
+				},
+				"Icon": {
+					"type": "string"
+				},
+				"DisplayName": {
+					"type": "string"
+				},
+				"SortOrder": {
+					"format": "int32",
+					"type": "integer"
+				},
+				"HorizontalAlign": {
+					"type": "string"
+				},
+				"IsActive": {
+					"type": "boolean"
+				},
+				"CssClass": {
+					"type": "string"
+				},
+				"IconAlignment": {
+					"type": "string"
+				},
+				"VerticalAlign": {
+					"type": "string"
+				}
+			}
+		},
+		"PageViewContainer": {
+			"type": "object",
+			"properties": {
+				"PageViewContainerId": {
+					"type": "string"
+				},
+				"PageViewId": {
+					"type": "string"
+				},
+				"Name": {
+					"type": "string"
+				},
+				"ContainerType": {
+					"type": "string"
+				},
+				"SortOrder": {
+					"format": "int32",
+					"type": "integer"
+				},
+				"IsSystemDefined": {
+					"type": "boolean"
+				},
+				"ColSpan": {
+					"format": "int32",
+					"type": "integer"
+				},
+				"PropertiesPerRow": {
+					"format": "int32",
+					"type": "integer"
+				},
+				"DisplayName": {
+					"type": "string"
+				},
+				"CustomContent": {
+					"type": "string"
+				},
+				"ExpandedByDefault": {
+					"type": "boolean"
+				},
+				"IsActive": {
+					"type": "boolean"
+				},
+				"PageViewEntity": {
+					"type": "array",
+					"items": {
+						"$ref": "#/definitions/PageViewEntity"
+					}
+				}
+			}
+		},
+		"PageViewProfile": {
+			"type": "object",
+			"properties": {
+				"PageViewProfileId": {
+					"type": "string"
+				},
+				"PageViewId": {
+					"type": "string"
+				},
+				"ProfileId": {
+					"type": "string"
+				},
+				"TeamId": {
+					"type": "string"
+				}
+			}
+		},
+		"PageViewRole": {
+			"type": "object",
+			"properties": {
+				"PageViewRoleId": {
+					"type": "string"
+				},
+				"RoleId": {
+					"type": "string"
+				},
+				"PageViewId": {
+					"type": "string"
+				},
+				"OrganizationId": {
+					"type": "string"
+				},
+				"DeletionState": {
+					"type": "boolean"
+				},
+				"CreatedOn": {
+					"format": "date-time",
+					"type": "string"
+				},
+				"ModifiedOn": {
+					"format": "date-time",
+					"type": "string"
+				},
+				"CreatedBy": {
+					"type": "string"
+				},
+				"ModifiedBy": {
+					"type": "string"
+				}
+			}
+		},
+		"PageViewTeam": {
+			"type": "object",
+			"properties": {
+				"PageViewTeamId": {
+					"type": "string"
+				},
+				"PageViewId": {
+					"type": "string"
+				},
+				"TeamId": {
+					"type": "string"
+				},
+				"IsManager": {
+					"type": "boolean"
+				}
+			}
+		},
+		"PageViewEntity": {
+			"type": "object",
+			"properties": {
+				"PageViewEntityId": {
+					"type": "string"
+				},
+				"PageViewContainerId": {
+					"type": "string"
+				},
+				"Entity": {
+					"type": "string"
+				},
+				"Name": {
+					"type": "string"
+				},
+				"SortOrder": {
+					"format": "int32",
+					"type": "integer"
+				},
+				"IsSystemDefined": {
+					"type": "boolean"
+				},
+				"CssClass": {
+					"type": "string"
+				},
+				"DisplayColumnHeaders": {
+					"type": "boolean"
+				},
+				"SortProperty": {
+					"type": "string"
+				},
+				"SortType": {
+					"type": "string"
+				},
+				"SortPropertyDisplayName": {
+					"type": "string"
+				},
+				"ResultsPerPage": {
+					"format": "int32",
+					"type": "integer"
+				},
+				"IsSearchable": {
+					"type": "boolean"
+				},
+				"PageViewProperty": {
+					"type": "array",
+					"items": {
+						"$ref": "#/definitions/PageViewProperty"
+					}
+				},
+				"PageViewEntityButton": {
+					"type": "array",
+					"items": {
+						"$ref": "#/definitions/PageViewEntityButton"
+					}
+				}
+			}
+		},
+		"PageViewProperty": {
+			"type": "object",
+			"properties": {
+				"SortProperty": {
+					"type": "string"
+				},
+				"RelatedEntity": {
+					"type": "string"
+				},
+				"RelatedEntityProperty": {
+					"type": "string"
+				},
+				"RelatedEntityPrimaryKey": {
+					"type": "string"
+				},
+				"CommandName": {
+					"type": "string"
+				},
+				"NavigateUrl": {
+					"type": "string"
+				},
+				"DisplayQueryName": {
+					"type": "string"
+				},
+				"IsSearchable": {
+					"type": "boolean"
+				},
+				"PageViewPropertyId": {
+					"type": "string"
+				},
+				"PageViewEntityId": {
+					"type": "string"
+				},
+				"HeaderName": {
+					"type": "string"
+				},
+				"Property": {
+					"type": "string"
+				},
+				"ControlType": {
+					"type": "string"
+				},
+				"SortOrder": {
+					"format": "int32",
+					"type": "integer"
+				},
+				"Width": {
+					"type": "string"
+				},
+				"DataType": {
+					"type": "string"
+				},
+				"PrefixText": {
+					"type": "string"
+				},
+				"SuffixText": {
+					"type": "string"
+				},
+				"Required": {
+					"type": "boolean"
+				},
+				"IsSystemDefined": {
+					"type": "boolean"
+				},
+				"PropertyDisplayName": {
+					"type": "string"
+				},
+				"ColSpan": {
+					"format": "int32",
+					"type": "integer"
+				},
+				"Script": {
+					"type": "string"
+				},
+				"Icon": {
+					"type": "string"
+				},
+				"IsReadOnly": {
+					"type": "boolean"
+				},
+				"ConditionOperator": {
+					"type": "string"
+				},
+				"ConditionValue": {
+					"type": "string"
+				},
+				"IsNestedOnLargeScreen": {
+					"type": "boolean"
+				},
+				"IsNestedOnMediumScreen": {
+					"type": "boolean"
+				},
+				"IsNestedOnSmallScreen": {
+					"type": "boolean"
+				},
+				"IsActive": {
+					"type": "boolean"
+				},
+				"IconAlignment": {
+					"type": "string"
+				},
+				"MinWidth": {
+					"type": "string"
+				},
+				"Persist": {
+					"type": "boolean"
+				},
+				"IsVisible": {
+					"type": "boolean"
+				},
+				"DisplayHelpText": {
+					"type": "boolean"
+				},
+				"CssClass": {
+					"type": "string"
+				}
+			}
+		},
+		"PageViewEntityButton": {
+			"type": "object",
+			"properties": {
+				"PageViewEntityButtonId": {
+					"type": "string"
+				},
+				"PageViewEntityId": {
+					"type": "string"
+				},
+				"Name": {
+					"type": "string"
+				},
+				"DisplayName": {
+					"type": "string"
+				},
+				"IsActive": {
+					"type": "boolean"
+				},
+				"IsSystemDefined": {
+					"type": "boolean"
+				},
+				"Script": {
+					"type": "string"
+				},
+				"CssClass": {
+					"type": "string"
+				},
+				"Icon": {
+					"type": "string"
+				},
+				"IconAlignment": {
+					"type": "string"
+				},
+				"SortOrder": {
+					"format": "int32",
+					"type": "integer"
+				}
+			}
+		},
+		"PropertyUpdate": {
+			"type": "object",
+			"properties": {
+				"EntityId": {
+					"type": "string"
+				},
+				"Entity": {
+					"type": "string"
+				},
+				"Property": {
+					"type": "string"
+				},
+				"Value": {
+					"type": "string"
+				},
+				"ContainerName": {
+					"type": "string"
+				},
+				"Selected": {
+					"type": "boolean"
+				}
+			}
+		},
+		"Quote": {
+			"type": "object",
+			"properties": {
+				"PreviousQuoteId": {
+					"type": "string"
+				},
+				"CurrentUserIsApprover": {
+					"type": "boolean"
+				},
+				"ReviseOnSave": {
+					"type": "boolean"
+				},
+				"Message": {
+					"type": "string"
+				},
+				"SystemMessages": {
+					"type": "array",
+					"items": {
+						"$ref": "#/definitions/MessageDetail"
+					}
+				},
+				"EntityMetadata": {
+					"type": "array",
+					"items": {
+						"$ref": "#/definitions/EntityInfo"
+					}
+				},
+				"QuoteAttachment": {
+					"type": "array",
+					"items": {
+						"$ref": "#/definitions/QuoteAttachment"
+					}
+				},
+				"QuoteId": {
+					"type": "string"
+				},
+				"ProfileId": {
+					"type": "string"
+				},
+				"IsPrivate": {
+					"type": "boolean"
+				},
+				"OwningTeamId": {
+					"type": "string"
+				},
+				"RequiresApproval": {
+					"type": "boolean"
+				},
+				"ApproverId": {
+					"type": "string"
+				},
+				"CustomerId": {
+					"type": "string"
+				},
+				"CustomerType": {
+					"format": "int32",
+					"type": "integer"
+				},
+				"ContactId": {
+					"type": "string"
+				},
+				"OpportunityId": {
+					"type": "string"
+				},
+				"LeadId": {
+					"type": "string"
+				},
+				"IsCurrent": {
+					"type": "boolean"
+				},
+				"ExpiresOn": {
+					"format": "date-time",
+					"type": "string"
+				},
+				"Note": {
+					"type": "string"
+				},
+				"ApprovalNotes": {
+					"type": "string"
+				},
+				"Description": {
+					"type": "string"
+				},
+				"QuoteNumber": {
+					"type": "string"
+				},
+				"PriceLevelId": {
+					"type": "string"
+				},
+				"Revision": {
+					"format": "int32",
+					"type": "integer"
+				},
+				"ShippingMethodId": {
+					"type": "string"
+				},
+				"ShipToName": {
+					"type": "string"
+				},
+				"ShipToAddress1": {
+					"type": "string"
+				},
+				"ShipToAddress2": {
+					"type": "string"
+				},
+				"ShipToAddress3": {
+					"type": "string"
+				},
+				"ShipToCity": {
+					"type": "string"
+				},
+				"ShipToState": {
+					"type": "string"
+				},
+				"ShipToCountry": {
+					"type": "string"
+				},
+				"ShipToPostalCode": {
+					"type": "string"
+				},
+				"ShipToAddressId": {
+					"type": "string"
+				},
+				"ShipFromAddressId": {
+					"type": "string"
+				},
+				"BillToName": {
+					"type": "string"
+				},
+				"BillToAddress1": {
+					"type": "string"
+				},
+				"BillToAddress2": {
+					"type": "string"
+				},
+				"BillToAddress3": {
+					"type": "string"
+				},
+				"BillToCity": {
+					"type": "string"
+				},
+				"BillToState": {
+					"type": "string"
+				},
+				"BillToCountry": {
+					"type": "string"
+				},
+				"BillToPostalCode": {
+					"type": "string"
+				},
+				"BillToAddressId": {
+					"type": "string"
+				},
+				"PurchaseOrderNumber": {
+					"type": "string"
+				},
+				"CreditCardAuthCode": {
+					"type": "string"
+				},
+				"Total": {
+					"format": "double",
+					"type": "number"
+				},
+				"TaxTotal": {
+					"format": "double",
+					"type": "number"
+				},
+				"ShippingTotal": {
+					"format": "double",
+					"type": "number"
+				},
+				"CurrencyId": {
+					"type": "string"
+				},
+				"ExchangeRate": {
+					"format": "double",
+					"type": "number"
+				},
+				"Status": {
+					"type": "string"
+				},
+				"StatusReason": {
+					"type": "string"
+				},
+				"DiscountPercentage": {
+					"format": "double",
+					"type": "number"
+				},
+				"DiscountAmount": {
+					"format": "double",
+					"type": "number"
+				},
+				"MarkupPercentage": {
+					"format": "double",
+					"type": "number"
+				},
+				"MarkupAmount": {
+					"format": "double",
+					"type": "number"
+				},
+				"OrganizationId": {
+					"type": "string"
+				},
+				"DeletionState": {
+					"type": "boolean"
+				},
+				"CreatedOn": {
+					"format": "date-time",
+					"type": "string"
+				},
+				"ModifiedOn": {
+					"format": "date-time",
+					"type": "string"
+				},
+				"CreatedBy": {
+					"type": "string"
+				},
+				"ModifiedBy": {
+					"type": "string"
+				},
+				"UserText1": {
+					"type": "string"
+				},
+				"UserText2": {
+					"type": "string"
+				},
+				"UserText3": {
+					"type": "string"
+				},
+				"UserText4": {
+					"type": "string"
+				},
+				"UserText5": {
+					"type": "string"
+				},
+				"UserText6": {
+					"type": "string"
+				},
+				"UserText7": {
+					"type": "string"
+				},
+				"UserText8": {
+					"type": "string"
+				},
+				"UserText9": {
+					"type": "string"
+				},
+				"UserText10": {
+					"type": "string"
+				},
+				"CustomerName": {
+					"type": "string"
+				},
+				"ContactName": {
+					"type": "string"
+				},
+				"CurrencyCode": {
+					"type": "string"
+				},
+				"PriceLevelName": {
+					"type": "string"
+				},
+				"Culture": {
+					"type": "string"
+				},
+				"ApprovalStatus": {
+					"type": "string"
+				},
+				"SubscriberOrganizationName": {
+					"type": "string"
+				},
+				"SubscriberUserFullName": {
+					"type": "string"
+				},
+				"CustomerRiskScore": {
+					"format": "double",
+					"type": "number"
+				},
+				"CustomerRiskLevel": {
+					"type": "string"
+				},
+				"CustomerRiskDescription": {
+					"type": "string"
+				},
+				"PricingSegmentId": {
+					"type": "string"
+				},
+				"LanguageId": {
+					"type": "string"
+				},
+				"ShippingMethod": {
+					"type": "string"
+				},
+				"QuoteConfiguration": {
+					"type": "array",
+					"items": {
+						"$ref": "#/definitions/QuoteConfiguration"
+					}
+				},
+				"QuoteExt": {
+					"type": "array",
+					"items": {
+						"$ref": "#/definitions/QuoteExt"
+					}
+				},
+				"QuoteApprovalGroup": {
+					"type": "array",
+					"items": {
+						"$ref": "#/definitions/QuoteApprovalGroup"
+					}
+				},
+				"QuoteActivity": {
+					"type": "array",
+					"items": {
+						"$ref": "#/definitions/QuoteActivity"
+					}
+				},
+				"QuoteGlobalParameter": {
+					"type": "array",
+					"items": {
+						"$ref": "#/definitions/QuoteGlobalParameter"
+					}
+				},
+				"QuoteEmail": {
+					"type": "array",
+					"items": {
+						"$ref": "#/definitions/QuoteEmail"
+					}
+				}
+			}
+		},
+		"QuoteAttachment": {
+			"type": "object",
+			"properties": {
+				"Quote": {
+					"$ref": "#/definitions/Quote"
+				},
+				"QuoteAttachmentId": {
+					"type": "string"
+				},
+				"QuoteNumber": {
+					"type": "string"
+				},
+				"Name": {
+					"type": "string"
+				},
+				"Attachment": {
+					"type": "string"
+				},
+				"Revision": {
+					"format": "int32",
+					"type": "integer"
+				},
+				"CreatedOn": {
+					"format": "date-time",
+					"type": "string"
+				},
+				"CreatedBy": {
+					"type": "string"
+				},
+				"DeletionState": {
+					"type": "boolean"
+				},
+				"AttachmentType": {
+					"type": "string"
+				},
+				"FileName": {
+					"type": "string"
+				}
+			}
+		},
+		"QuoteConfiguration": {
+			"type": "object",
+			"properties": {
+				"QuoteConfigurationId": {
+					"type": "string"
+				},
+				"QuoteId": {
+					"type": "string"
+				},
+				"SmartCatalogId": {
+					"type": "string"
+				},
+				"SmartCatalogInstanceId": {
+					"type": "string"
+				},
+				"SavedGuidedSellingId": {
+					"type": "string"
+				},
+				"Name": {
+					"type": "string"
+				},
+				"ImagePath": {
+					"type": "string"
+				},
+				"Quantity": {
+					"format": "double",
+					"type": "number"
+				},
+				"Type": {
+					"type": "string"
+				},
+				"BaseProductId": {
+					"type": "string"
+				},
+				"SortOrder": {
+					"format": "int32",
+					"type": "integer"
+				},
+				"DiscountPercentage": {
+					"format": "double",
+					"type": "number"
+				},
+				"DiscountAmount": {
+					"format": "double",
+					"type": "number"
+				},
+				"MarkupPercentage": {
+					"format": "double",
+					"type": "number"
+				},
+				"MarkupAmount": {
+					"format": "double",
+					"type": "number"
+				},
+				"ExtendedPrice": {
+					"format": "double",
+					"type": "number"
+				},
+				"AdjustedPrice": {
+					"format": "double",
+					"type": "number"
+				},
+				"Price": {
+					"format": "double",
+					"type": "number"
+				},
+				"OrganizationId": {
+					"type": "string"
+				},
+				"DeletionState": {
+					"type": "boolean"
+				},
+				"CreatedOn": {
+					"format": "date-time",
+					"type": "string"
+				},
+				"ModifiedOn": {
+					"format": "date-time",
+					"type": "string"
+				},
+				"CreatedBy": {
+					"type": "string"
+				},
+				"ModifiedBy": {
+					"type": "string"
+				},
+				"IsUpsell": {
+					"type": "boolean"
+				},
+				"UserText1": {
+					"type": "string"
+				},
+				"UserText2": {
+					"type": "string"
+				},
+				"UserText3": {
+					"type": "string"
+				},
+				"UserText4": {
+					"type": "string"
+				},
+				"UserText5": {
+					"type": "string"
+				},
+				"UserText6": {
+					"type": "string"
+				},
+				"UserText7": {
+					"type": "string"
+				},
+				"UserText8": {
+					"type": "string"
+				},
+				"UserText9": {
+					"type": "string"
+				},
+				"UserText10": {
+					"type": "string"
+				},
+				"SmartCatalogName": {
+					"type": "string"
+				},
+				"GuidedSellingTreeName": {
+					"type": "string"
+				},
+				"QuoteConfigurationNumber": {
+					"type": "string"
+				},
+				"SavedCatalogGuidedSellingId": {
+					"type": "string"
+				},
+				"QuoteConfigurationExt": {
+					"type": "array",
+					"items": {
+						"$ref": "#/definitions/QuoteConfigurationExt"
+					}
+				},
+				"QuoteProduct": {
+					"type": "array",
+					"items": {
+						"$ref": "#/definitions/QuoteProduct"
+					}
+				},
+				"QuoteConfigurationGlobalParameter": {
+					"type": "array",
+					"items": {
+						"$ref": "#/definitions/QuoteConfigurationGlobalParameter"
+					}
+				}
+			}
+		},
+		"QuoteExt": {
+			"type": "object",
+			"properties": {
+				"QuoteExtId": {
+					"type": "string"
+				},
+				"QuoteId": {
+					"type": "string"
+				},
+				"Name": {
+					"type": "string"
+				},
+				"DataType": {
+					"type": "string"
+				},
+				"Value": {
+					"type": "string"
+				},
+				"MessageId": {
+					"type": "string"
+				}
+			}
+		},
+		"QuoteApprovalGroup": {
+			"type": "object",
+			"properties": {
+				"ApprovalGroupName": {
+					"type": "string"
+				},
+				"ApprovalGroupId": {
+					"type": "string"
+				},
+				"Status": {
+					"type": "string"
+				},
+				"OrganizationId": {
+					"type": "string"
+				},
+				"CreatedOn": {
+					"format": "date-time",
+					"type": "string"
+				},
+				"CreatedBy": {
+					"type": "string"
+				},
+				"ModifiedOn": {
+					"format": "date-time",
+					"type": "string"
+				},
+				"ModifiedBy": {
+					"type": "string"
+				},
+				"DeletionState": {
+					"type": "boolean"
+				},
+				"ApprovalMemberBase": {
+					"type": "array",
+					"items": {
+						"$ref": "#/definitions/ApprovalMemberBase"
+					}
+				},
+				"ApprovalGroupBaseId": {
+					"type": "string"
+				},
+				"ParentId": {
+					"type": "string"
+				},
+				"QuoteApprovalGroupId": {
+					"type": "string"
+				},
+				"BasketApprovalGroupId": {
+					"type": "string"
+				}
+			}
+		},
+		"QuoteGlobalParameter": {
+			"type": "object",
+			"properties": {
+				"QuoteGlobalParameterId": {
+					"type": "string"
+				},
+				"QuoteId": {
+					"type": "string"
+				},
+				"GlobalParameterId": {
+					"type": "string"
+				},
+				"Name": {
+					"type": "string"
+				},
+				"Value": {
+					"type": "string"
+				},
+				"CreatedOn": {
+					"format": "date-time",
+					"type": "string"
+				},
+				"CreatedBy": {
+					"type": "string"
+				},
+				"ModifiedOn": {
+					"format": "date-time",
+					"type": "string"
+				},
+				"ModifiedBy": {
+					"type": "string"
+				}
+			}
+		},
+		"QuoteEmail": {
+			"type": "object",
+			"properties": {
+				"QuoteEmailId": {
+					"type": "string"
+				},
+				"QuoteId": {
+					"type": "string"
+				},
+				"QuoteNumber": {
+					"type": "string"
+				},
+				"DocumentStorageId": {
+					"type": "string"
+				},
+				"DocumentName": {
+					"type": "string"
+				},
+				"DocumentFileName": {
+					"type": "string"
+				},
+				"MailFrom": {
+					"type": "string"
+				},
+				"MailSubject": {
+					"type": "string"
+				},
+				"MailBody": {
+					"type": "string"
+				},
+				"OrganizationId": {
+					"type": "string"
+				},
+				"DeletionState": {
+					"type": "boolean"
+				},
+				"CreatedOn": {
+					"format": "date-time",
+					"type": "string"
+				},
+				"ModifiedOn": {
+					"format": "date-time",
+					"type": "string"
+				},
+				"CreatedBy": {
+					"type": "string"
+				},
+				"ModifiedBy": {
+					"type": "string"
+				},
+				"QuoteEmailRecipient": {
+					"type": "array",
+					"items": {
+						"$ref": "#/definitions/QuoteEmailRecipient"
+					}
+				},
+				"QuoteEmailReminder": {
+					"type": "array",
+					"items": {
+						"$ref": "#/definitions/QuoteEmailReminder"
+					}
+				},
+				"QuoteEmailAttachment": {
+					"type": "array",
+					"items": {
+						"$ref": "#/definitions/QuoteEmailAttachment"
+					}
+				}
+			}
+		},
+		"QuoteConfigurationExt": {
+			"type": "object",
+			"properties": {
+				"QuoteConfigurationExtId": {
+					"type": "string"
+				},
+				"QuoteConfigurationId": {
+					"type": "string"
+				},
+				"Name": {
+					"type": "string"
+				},
+				"Value": {
+					"type": "string"
+				},
+				"DataType": {
+					"type": "string"
+				},
+				"MessageId": {
+					"type": "string"
+				}
+			}
+		},
+		"QuoteProduct": {
+			"type": "object",
+			"properties": {
+				"TieredPricingProperty": {
+					"type": "string"
+				},
+				"QuoteProductId": {
+					"type": "string"
+				},
+				"QuoteConfigurationId": {
+					"type": "string"
+				},
+				"SmartProductId": {
+					"type": "string"
+				},
+				"QueryId": {
+					"type": "string"
+				},
+				"ProductId": {
+					"type": "string"
+				},
+				"VariantId": {
+					"type": "string"
+				},
+				"PriceAdjusted": {
+					"type": "boolean"
+				},
+				"PriceEffDate": {
+					"format": "date-time",
+					"type": "string"
+				},
+				"Type": {
+					"type": "string"
+				},
+				"IsUpsell": {
+					"type": "boolean"
+				},
+				"UserInput": {
+					"type": "string"
+				},
+				"CategoryName": {
+					"type": "string"
+				},
+				"SortOrder": {
+					"format": "int32",
+					"type": "integer"
+				},
+				"ProductType": {
+					"type": "string"
+				},
+				"Name": {
+					"type": "string"
+				},
+				"Description": {
+					"type": "string"
+				},
+				"SerialNumber": {
+					"type": "string"
+				},
+				"ShippingAddressId": {
+					"type": "string"
+				},
+				"Tax": {
+					"format": "double",
+					"type": "number"
+				},
+				"IsTaxable": {
+					"type": "boolean"
+				},
+				"Weight": {
+					"format": "double",
+					"type": "number"
+				},
+				"OrganizationId": {
+					"type": "string"
+				},
+				"DeletionState": {
+					"type": "boolean"
+				},
+				"CreatedOn": {
+					"format": "date-time",
+					"type": "string"
+				},
+				"ModifiedOn": {
+					"format": "date-time",
+					"type": "string"
+				},
+				"CreatedBy": {
+					"type": "string"
+				},
+				"ModifiedBy": {
+					"type": "string"
+				},
+				"ProductCatalogId": {
+					"type": "string"
+				},
+				"SKU": {
+					"type": "string"
+				},
+				"CategoryId": {
+					"type": "string"
+				},
+				"ProductCode": {
+					"type": "string"
+				},
+				"Tag": {
+					"type": "string"
+				},
+				"ImagePath": {
+					"type": "string"
+				},
+				"ThumbnailPath": {
+					"type": "string"
+				},
+				"Family": {
+					"type": "string"
+				},
+				"Model": {
+					"type": "string"
+				},
+				"EffectiveDate": {
+					"format": "date-time",
+					"type": "string"
+				},
+				"ExpirationDate": {
+					"format": "date-time",
+					"type": "string"
+				},
+				"DeletionStateCode": {
+					"format": "int32",
+					"type": "integer"
+				},
+				"DefaultPriceLevelId": {
+					"type": "string"
+				},
+				"ProductTypeCode": {
+					"format": "int32",
+					"type": "integer"
+				},
+				"ProductUrl": {
+					"type": "string"
+				},
+				"CurrencyId": {
+					"type": "string"
+				},
+				"IsKit": {
+					"type": "boolean"
+				},
+				"IsActive": {
+					"type": "boolean"
+				},
+				"Height": {
+					"format": "double",
+					"type": "number"
+				},
+				"Width": {
+					"format": "double",
+					"type": "number"
+				},
+				"Size": {
+					"type": "string"
+				},
+				"CurrentCost": {
+					"format": "double",
+					"type": "number"
+				},
+				"StockVolume": {
+					"format": "double",
+					"type": "number"
+				},
+				"StandardCost": {
+					"format": "double",
+					"type": "number"
+				},
+				"StockWeight": {
+					"format": "double",
+					"type": "number"
+				},
+				"QuantityDecimal": {
+					"format": "int32",
+					"type": "integer"
+				},
+				"QuantityOnHand": {
+					"format": "double",
+					"type": "number"
+				},
+				"IsStockItem": {
+					"type": "boolean"
+				},
+				"SupplierName": {
+					"type": "string"
+				},
+				"VendorName": {
+					"type": "string"
+				},
+				"VendorPartNumber": {
+					"type": "string"
+				},
+				"UserNum1": {
+					"format": "double",
+					"type": "number"
+				},
+				"UserNum2": {
+					"format": "double",
+					"type": "number"
+				},
+				"UserNum3": {
+					"format": "double",
+					"type": "number"
+				},
+				"UserNum4": {
+					"format": "double",
+					"type": "number"
+				},
+				"UserNum5": {
+					"format": "double",
+					"type": "number"
+				},
+				"UserNum6": {
+					"format": "double",
+					"type": "number"
+				},
+				"UserNum7": {
+					"format": "double",
+					"type": "number"
+				},
+				"UserNum8": {
+					"format": "double",
+					"type": "number"
+				},
+				"UserNum9": {
+					"format": "double",
+					"type": "number"
+				},
+				"UserNum10": {
+					"format": "double",
+					"type": "number"
+				},
+				"UserText1": {
+					"type": "string"
+				},
+				"UserText2": {
+					"type": "string"
+				},
+				"UserText3": {
+					"type": "string"
+				},
+				"UserText4": {
+					"type": "string"
+				},
+				"UserText5": {
+					"type": "string"
+				},
+				"UserText6": {
+					"type": "string"
+				},
+				"UserText7": {
+					"type": "string"
+				},
+				"UserText8": {
+					"type": "string"
+				},
+				"UserText9": {
+					"type": "string"
+				},
+				"UserText10": {
+					"type": "string"
+				},
+				"SmartCategoryId": {
+					"type": "string"
+				},
+				"QuoteProductNumber": {
+					"type": "string"
+				},
+				"Price2": {
+					"format": "double",
+					"type": "number"
+				},
+				"Price3": {
+					"format": "double",
+					"type": "number"
+				},
+				"Cost2": {
+					"format": "double",
+					"type": "number"
+				},
+				"Cost3": {
+					"format": "double",
+					"type": "number"
+				},
+				"OriginalListPrice": {
+					"format": "double",
+					"type": "number"
+				},
+				"RenewalQuoteId": {
+					"type": "string"
+				},
+				"IsSubscription": {
+					"type": "boolean"
+				},
+				"FloorPrice": {
+					"format": "double",
+					"type": "number"
+				},
+				"StretchPrice": {
+					"format": "double",
+					"type": "number"
+				},
+				"RiskScore": {
+					"format": "double",
+					"type": "number"
+				},
+				"RiskDescription": {
+					"type": "string"
+				},
+				"RenewalDate": {
+					"format": "date-time",
+					"type": "string"
+				},
+				"RiskLevel": {
+					"type": "string"
+				},
+				"ApprovalLevel1Price": {
+					"format": "double",
+					"type": "number"
+				},
+				"ApprovalLevel2Price": {
+					"format": "double",
+					"type": "number"
+				},
+				"ApprovalLevel3Price": {
+					"format": "double",
+					"type": "number"
+				},
+				"QuoteProductExt": {
+					"type": "array",
+					"items": {
+						"$ref": "#/definitions/QuoteProductExt"
+					}
+				},
+				"QuoteProductTier": {
+					"type": "array",
+					"items": {
+						"$ref": "#/definitions/QuoteProductTier"
+					}
+				},
+				"Price": {
+					"format": "double",
+					"type": "number"
+				},
+				"AdjustedPrice": {
+					"format": "double",
+					"type": "number"
+				},
+				"DiscountAmount": {
+					"format": "double",
+					"type": "number"
+				},
+				"DiscountPercentage": {
+					"format": "double",
+					"type": "number"
+				},
+				"MarkupAmount": {
+					"format": "double",
+					"type": "number"
+				},
+				"MarkupPercentage": {
+					"format": "double",
+					"type": "number"
+				},
+				"Quantity": {
+					"format": "double",
+					"type": "number"
+				},
+				"ExtendedPrice": {
+					"format": "double",
+					"type": "number"
+				},
+				"TargetPrice": {
+					"format": "double",
+					"type": "number"
+				},
+				"TargetDiscountPercentage": {
+					"format": "double",
+					"type": "number"
+				},
+				"DistPrice": {
+					"format": "double",
+					"type": "number"
+				},
+				"DistAdjustedPrice": {
+					"format": "double",
+					"type": "number"
+				},
+				"DistDiscountAmount": {
+					"format": "double",
+					"type": "number"
+				},
+				"DistDiscountPercentage": {
+					"format": "double",
+					"type": "number"
+				},
+				"DistExtendedPrice": {
+					"format": "double",
+					"type": "number"
+				},
+				"CalculatedDiscountPercentage": {
+					"format": "double",
+					"type": "number"
+				}
+			}
+		},
+		"QuoteConfigurationGlobalParameter": {
+			"type": "object",
+			"properties": {
+				"QuoteConfigurationGlobalParameterId": {
+					"type": "string"
+				},
+				"QuoteConfigurationId": {
+					"type": "string"
+				},
+				"GlobalParameterId": {
+					"type": "string"
+				},
+				"Name": {
+					"type": "string"
+				},
+				"Value": {
+					"type": "string"
+				},
+				"CreatedOn": {
+					"format": "date-time",
+					"type": "string"
+				},
+				"CreatedBy": {
+					"type": "string"
+				},
+				"ModifiedOn": {
+					"format": "date-time",
+					"type": "string"
+				},
+				"ModifiedBy": {
+					"type": "string"
+				}
+			}
+		},
+		"QuoteEmailRecipient": {
+			"type": "object",
+			"properties": {
+				"QuoteEmailRecipientId": {
+					"type": "string"
+				},
+				"QuoteEmailId": {
+					"type": "string"
+				},
+				"MailTo": {
+					"type": "string"
+				},
+				"FirstName": {
+					"type": "string"
+				},
+				"LastName": {
+					"type": "string"
+				},
+				"OrganizationId": {
+					"type": "string"
+				},
+				"DeletionState": {
+					"type": "boolean"
+				},
+				"CreatedOn": {
+					"format": "date-time",
+					"type": "string"
+				},
+				"ModifiedOn": {
+					"format": "date-time",
+					"type": "string"
+				},
+				"CreatedBy": {
+					"type": "string"
+				},
+				"ModifiedBy": {
+					"type": "string"
+				}
+			}
+		},
+		"QuoteEmailReminder": {
+			"type": "object",
+			"properties": {
+				"QuoteEmailReminderId": {
+					"type": "string"
+				},
+				"QuoteEmailId": {
+					"type": "string"
+				},
+				"RemindOn": {
+					"format": "date-time",
+					"type": "string"
+				},
+				"ReminderSentOn": {
+					"format": "date-time",
+					"type": "string"
+				},
+				"OrganizationId": {
+					"type": "string"
+				},
+				"DeletionState": {
+					"type": "boolean"
+				},
+				"CreatedOn": {
+					"format": "date-time",
+					"type": "string"
+				},
+				"ModifiedOn": {
+					"format": "date-time",
+					"type": "string"
+				},
+				"CreatedBy": {
+					"type": "string"
+				},
+				"ModifiedBy": {
+					"type": "string"
+				},
+				"QuoteEmailRecipientId": {
+					"type": "string"
+				},
+				"IsActive": {
+					"type": "boolean"
+				}
+			}
+		},
+		"QuoteEmailAttachment": {
+			"type": "object",
+			"properties": {
+				"QuoteEmailAttachmentId": {
+					"type": "string"
+				},
+				"QuoteEmailId": {
+					"type": "string"
+				},
+				"AttachmentType": {
+					"type": "string"
+				},
+				"FileName": {
+					"type": "string"
+				},
+				"OrganizationId": {
+					"type": "string"
+				},
+				"DeletionState": {
+					"type": "boolean"
+				},
+				"CreatedOn": {
+					"format": "date-time",
+					"type": "string"
+				},
+				"ModifiedOn": {
+					"format": "date-time",
+					"type": "string"
+				},
+				"CreatedBy": {
+					"type": "string"
+				},
+				"ModifiedBy": {
+					"type": "string"
+				}
+			}
+		},
+		"QuoteProductExt": {
+			"type": "object",
+			"properties": {
+				"QuoteProductExtId": {
+					"type": "string"
+				},
+				"QuoteProductId": {
+					"type": "string"
+				},
+				"Name": {
+					"type": "string"
+				},
+				"DataType": {
+					"type": "string"
+				},
+				"Value": {
+					"type": "string"
+				},
+				"MessageId": {
+					"type": "string"
+				}
+			}
+		},
+		"QuoteProductTier": {
+			"type": "object",
+			"properties": {
+				"QuoteProductTierId": {
+					"type": "string"
+				},
+				"QuoteProductId": {
+					"type": "string"
+				},
+				"Property": {
+					"type": "string"
+				},
+				"ModifierType": {
+					"type": "string"
+				},
+				"LowerRange": {
+					"format": "double",
+					"type": "number"
+				},
+				"UpperRange": {
+					"format": "double",
+					"type": "number"
+				},
+				"Increment": {
+					"format": "double",
+					"type": "number"
+				},
+				"Value": {
+					"format": "double",
+					"type": "number"
+				}
+			}
+		},
+		"EntityChange": {
+			"type": "object",
+			"properties": {
+				"EntityName": {
+					"type": "string"
+				},
+				"EntityId": {
+					"type": "string"
+				},
+				"Entity": {
+					"$ref": "#/definitions/Object"
+				},
+				"Type": {
+					"type": "string"
+				}
+			}
+		},
+		"Object": {
+			"type": "object",
+			"properties": {}
+		},
+		"SaveResult": {
+			"type": "object",
+			"properties": {
+				"Entity": {
+					"$ref": "#/definitions/Object"
+				},
+				"EntityId": {
+					"type": "string"
+				},
+				"EntityName": {
+					"type": "string"
+				},
+				"Valid": {
+					"type": "boolean"
+				},
+				"Errors": {
+					"type": "array",
+					"items": {
+						"$ref": "#/definitions/GuidedSellingWebException"
+					}
+				}
+			}
+		},
+		"GuidedSellingWebException": {
+			"type": "object",
+			"properties": {
+				"ErrorCode": {
+					"format": "int32",
+					"enum": [0, 100, 200, 201, 3001, 3002, 3003, 3004, 3005, 3006, 3007, 3008, 4000, 4001, 4002, 4003, 4004, 4005, 4006, 4007, 4008, 4009, 4010, 4011, 4012, 4013, 4014, 4015, 4016, 4017, 4018, 4019, 4100, 4101, 4102, 5000, 5001, 5002, 5003, 5004, 5005, 5006, 5007, 6001, 6002, 6003, 6004, 6005, 6006, 6007, 7000, 7001, 7002, 8001, 8010, 8011, 9010, 9020, 9021, 9022, 9023, 9024, 9025],
+					"type": "integer"
+				},
+				"ErrorDetails": {
+					"type": "string"
+				}
+			}
+		},
+		"QueryResponse": {
+			"type": "object",
+			"properties": {
+				"entity": {
+					"type": "string"
+				},
+				"resultcount": {
+					"format": "int32",
+					"type": "integer"
+				},
+				"elapsedtime": {
+					"type": "string"
+				},
+				"_paging": {
+					"$ref": "#/definitions/QueryPage"
+				},
+				"data": {
+					"type": "array",
+					"items": {
+						"$ref": "#/definitions/Object"
+					}
+				}
+			}
+		},
+		"QueryPage": {
+			"type": "object",
+			"properties": {
+				"page": {
+					"format": "int32",
+					"type": "integer"
+				},
+				"perPage": {
+					"format": "int32",
+					"type": "integer"
+				},
+				"morerecords": {
+					"type": "boolean"
+				}
+			}
+		},
+		"GuidedSellingTree": {
+			"type": "object",
+			"properties": {
+				"GuidedSellingTreeId": {
+					"type": "string"
+				},
+				"GuidedSellingSeriesId": {
+					"type": "string"
+				},
+				"RuleSetId": {
+					"type": "string"
+				},
+				"Name": {
+					"type": "string"
+				},
+				"Description": {
+					"type": "string"
+				},
+				"ImagePath": {
+					"type": "string"
+				},
+				"ProductionState": {
+					"format": "int32",
+					"type": "integer"
+				},
+				"AutoPostback": {
+					"type": "boolean"
+				},
+				"Active": {
+					"type": "boolean"
+				},
+				"Archive": {
+					"type": "boolean"
+				},
+				"ActiveStartDate": {
+					"format": "date-time",
+					"type": "string"
+				},
+				"ActiveEndDate": {
+					"format": "date-time",
+					"type": "string"
+				},
+				"Locked": {
+					"type": "boolean"
+				},
+				"LockedUser": {
+					"type": "string"
+				},
+				"LockedComputer": {
+					"type": "string"
+				},
+				"SortOrder": {
+					"format": "int32",
+					"type": "integer"
+				},
+				"OrganizationId": {
+					"type": "string"
+				},
+				"DeletionState": {
+					"type": "boolean"
+				},
+				"CreatedOn": {
+					"format": "date-time",
+					"type": "string"
+				},
+				"ModifiedOn": {
+					"format": "date-time",
+					"type": "string"
+				},
+				"CreatedBy": {
+					"type": "string"
+				},
+				"ModifiedBy": {
+					"type": "string"
+				},
+				"DisplayLog": {
+					"type": "boolean"
+				},
+				"OnLoadScript": {
+					"type": "string"
+				},
+				"Type": {
+					"type": "string"
+				},
+				"LinkedGuidedSellingTreeId": {
+					"type": "string"
+				},
+				"LinkedGuidedSellingTreeName": {
+					"type": "string"
+				},
+				"LinkedOrganizationId": {
+					"type": "string"
+				},
+				"LinkedOrganizationName": {
+					"type": "string"
+				},
+				"LinkedSmartCatalogId": {
+					"type": "string"
+				},
+				"CacheRefreshOn": {
+					"format": "date-time",
+					"type": "string"
+				},
+				"GuidedSellingElement": {
+					"type": "array",
+					"items": {
+						"$ref": "#/definitions/GuidedSellingElement"
+					}
+				},
+				"GuidedSellingTreeExt": {
+					"type": "array",
+					"items": {
+						"$ref": "#/definitions/GuidedSellingTreeExt"
+					}
+				},
+				"GuidedSellingTreeTeam": {
+					"type": "array",
+					"items": {
+						"$ref": "#/definitions/GuidedSellingTreeTeam"
+					}
+				},
+				"PageGroup": {
+					"type": "array",
+					"items": {
+						"$ref": "#/definitions/PageGroup"
+					}
+				},
+				"GuidedSellingTree_RuleSet": {
+					"type": "array",
+					"items": {
+						"$ref": "#/definitions/GuidedSellingTree_RuleSet"
+					}
+				},
+				"SmartProduct": {
+					"type": "array",
+					"items": {
+						"$ref": "#/definitions/SmartProduct"
+					}
+				},
+				"InstanceId": {
+					"type": "string"
+				},
+				"RuleLogCacheId": {
+					"type": "string"
+				},
+				"BasketConfigurationId": {
+					"type": "string"
+				},
+				"Basket": {
+					"$ref": "#/definitions/Basket"
+				},
+				"CDNBaseUrl": {
+					"type": "string"
+				},
+				"CurrentPageGroupId": {
+					"type": "string"
+				},
+				"GroupConstraint": {
+					"type": "array",
+					"items": {
+						"$ref": "#/definitions/GroupConstraint"
+					}
+				},
+				"Finished": {
+					"type": "boolean"
+				},
+				"RedirectToTarget": {
+					"type": "boolean"
+				},
+				"TargetId": {
+					"type": "string"
+				},
+				"GlobalParameters": {
+					"type": "array",
+					"items": {
+						"$ref": "#/definitions/GlobalParameter"
+					}
+				},
+				"Target": {
+					"$ref": "#/definitions/GuidedSellingElement"
+				},
+				"Message": {
+					"type": "string"
+				},
+				"SystemMessages": {
+					"type": "array",
+					"items": {
+						"$ref": "#/definitions/MessageDetail"
+					}
+				},
+				"SmartCatalogInstanceId": {
+					"type": "string"
+				},
+				"RuleLog": {
+					"type": "string"
+				},
+				"BaseProductId": {
+					"type": "string"
+				},
+				"ConfigurationName": {
+					"type": "string"
+				},
+				"SmartCatalogName": {
+					"type": "string"
+				},
+				"IsUpsell": {
+					"type": "boolean"
+				},
+				"UserText1": {
+					"type": "string"
+				},
+				"UserText2": {
+					"type": "string"
+				},
+				"UserText3": {
+					"type": "string"
+				},
+				"UserText4": {
+					"type": "string"
+				},
+				"UserText5": {
+					"type": "string"
+				},
+				"UserText6": {
+					"type": "string"
+				},
+				"UserText7": {
+					"type": "string"
+				},
+				"UserText8": {
+					"type": "string"
+				},
+				"UserText9": {
+					"type": "string"
+				},
+				"UserText10": {
+					"type": "string"
+				},
+				"Quantity": {
+					"format": "double",
+					"type": "number"
+				},
+				"DiscountPercentage": {
+					"format": "double",
+					"type": "number"
+				},
+				"DiscountAmount": {
+					"format": "double",
+					"type": "number"
+				},
+				"MarkupPercentage": {
+					"format": "double",
+					"type": "number"
+				},
+				"MarkupAmount": {
+					"format": "double",
+					"type": "number"
+				},
+				"ExtendedPrice": {
+					"format": "double",
+					"type": "number"
+				},
+				"AdjustedPrice": {
+					"format": "double",
+					"type": "number"
+				},
+				"Price": {
+					"format": "double",
+					"type": "number"
+				}
+			}
+		},
+		"GuidedSellingElement": {
+			"type": "object",
+			"properties": {
+				"GuidedSellingElementId": {
+					"type": "string"
+				},
+				"GuidedSellingTreeId": {
+					"type": "string"
+				},
+				"ParentId": {
+					"type": "string"
+				},
+				"Name": {
+					"type": "string"
+				},
+				"Description": {
+					"type": "string"
+				},
+				"ElementId": {
+					"type": "string"
+				},
+				"Type": {
+					"type": "string"
+				},
+				"OverrideAnswerValue": {
+					"type": "boolean"
+				},
+				"Value": {
+					"type": "string"
+				},
+				"Action": {
+					"type": "string"
+				},
+				"SortOrder": {
+					"format": "int32",
+					"type": "integer"
+				},
+				"OrganizationId": {
+					"type": "string"
+				},
+				"DeletionState": {
+					"type": "boolean"
+				},
+				"CreatedOn": {
+					"format": "date-time",
+					"type": "string"
+				},
+				"ModifiedOn": {
+					"format": "date-time",
+					"type": "string"
+				},
+				"CreatedBy": {
+					"type": "string"
+				},
+				"ModifiedBy": {
+					"type": "string"
+				},
+				"GuidedSellingElementExt": {
+					"$ref": "#/definitions/GuidedSellingElementExt"
+				}
+			}
+		},
+		"GuidedSellingTreeExt": {
+			"type": "object",
+			"properties": {
+				"GuidedSellingTreeExtId": {
+					"type": "string"
+				},
+				"GuidedSellingTreeId": {
+					"type": "string"
+				},
+				"Name": {
+					"type": "string"
+				},
+				"Value": {
+					"type": "string"
+				},
+				"MessageId": {
+					"type": "string"
+				},
+				"DataType": {
+					"type": "string"
+				}
+			}
+		},
+		"GuidedSellingTreeTeam": {
+			"type": "object",
+			"properties": {
+				"GuidedSellingTreeTeamId": {
+					"type": "string"
+				},
+				"GuidedSellingTreeId": {
+					"type": "string"
+				},
+				"TeamId": {
+					"type": "string"
+				},
+				"OrganizationId": {
+					"type": "string"
+				},
+				"DeletionState": {
+					"type": "boolean"
+				},
+				"CreatedOn": {
+					"format": "date-time",
+					"type": "string"
+				},
+				"ModifiedOn": {
+					"format": "date-time",
+					"type": "string"
+				},
+				"CreatedBy": {
+					"type": "string"
+				},
+				"ModifiedBy": {
+					"type": "string"
+				}
+			}
+		},
+		"PageGroup": {
+			"type": "object",
+			"properties": {
+				"Answered": {
+					"type": "boolean"
+				},
+				"Message": {
+					"type": "string"
+				},
+				"IsFirst": {
+					"type": "boolean"
+				},
+				"PageGroupId": {
+					"type": "string"
+				},
+				"GuidedSellingTreeId": {
+					"type": "string"
+				},
+				"ParentId": {
+					"type": "string"
+				},
+				"Name": {
+					"type": "string"
+				},
+				"IsNameVisible": {
+					"type": "boolean"
+				},
+				"Description": {
+					"type": "string"
+				},
+				"Type": {
+					"type": "string"
+				},
+				"SortOrder": {
+					"format": "int32",
+					"type": "integer"
+				},
+				"Visible": {
+					"type": "boolean"
+				},
+				"CustomTemplate": {
+					"type": "string"
+				},
+				"RepeatDirection": {
+					"type": "string"
+				},
+				"OrganizationId": {
+					"type": "string"
+				},
+				"DeletionState": {
+					"type": "boolean"
+				},
+				"CreatedOn": {
+					"format": "date-time",
+					"type": "string"
+				},
+				"ModifiedOn": {
+					"format": "date-time",
+					"type": "string"
+				},
+				"CreatedBy": {
+					"type": "string"
+				},
+				"ModifiedBy": {
+					"type": "string"
+				},
+				"NestedLevel": {
+					"format": "int32",
+					"type": "integer"
+				},
+				"PageGroupExt": {
+					"type": "array",
+					"items": {
+						"$ref": "#/definitions/PageGroupExt"
+					}
+				},
+				"QuestionGroup": {
+					"type": "array",
+					"items": {
+						"$ref": "#/definitions/QuestionGroup"
+					}
+				}
+			}
+		},
+		"GuidedSellingTree_RuleSet": {
+			"type": "object",
+			"properties": {
+				"GuidedSellingTree_RuleSetId": {
+					"type": "string"
+				},
+				"GuidedSellingTreeId": {
+					"type": "string"
+				},
+				"RuleSetId": {
+					"type": "string"
+				},
+				"SortOrder": {
+					"format": "int32",
+					"type": "integer"
+				},
+				"OrganizationId": {
+					"type": "string"
+				},
+				"DeletionState": {
+					"type": "boolean"
+				},
+				"CreatedOn": {
+					"format": "date-time",
+					"type": "string"
+				},
+				"ModifiedOn": {
+					"format": "date-time",
+					"type": "string"
+				},
+				"CreatedBy": {
+					"type": "string"
+				},
+				"ModifiedBy": {
+					"type": "string"
+				}
+			}
+		},
+		"SmartProduct": {
+			"type": "object",
+			"properties": {
+				"ConfigurationId": {
+					"type": "string"
+				},
+				"QueryId": {
+					"type": "string"
+				},
+				"ProductCatalogDisplayName": {
+					"type": "string"
+				},
+				"CategoryId": {
+					"type": "string"
+				},
+				"IsUpsell": {
+					"type": "boolean"
+				},
+				"OriginalListPrice": {
+					"format": "double",
+					"type": "number"
+				},
+				"TieredPricingProperty": {
+					"type": "string"
+				},
+				"Price2": {
+					"format": "double",
+					"type": "number"
+				},
+				"Price3": {
+					"format": "double",
+					"type": "number"
+				},
+				"Selected": {
+					"type": "boolean"
+				},
+				"TotalPrice": {
+					"format": "double",
+					"type": "number"
+				},
+				"ProductCode": {
+					"type": "string"
+				},
+				"Tag": {
+					"type": "string"
+				},
+				"ThumbnailPath": {
+					"type": "string"
+				},
+				"Family": {
+					"type": "string"
+				},
+				"Model": {
+					"type": "string"
+				},
+				"ProductTypeCode": {
+					"type": "string"
+				},
+				"ProductUrl": {
+					"type": "string"
+				},
+				"CurrencyId": {
+					"type": "string"
+				},
+				"IsKit": {
+					"type": "boolean"
+				},
+				"IsActive": {
+					"type": "boolean"
+				},
+				"Height": {
+					"format": "double",
+					"type": "number"
+				},
+				"Width": {
+					"format": "double",
+					"type": "number"
+				},
+				"CurrentCost": {
+					"format": "double",
+					"type": "number"
+				},
+				"Cost2": {
+					"format": "double",
+					"type": "number"
+				},
+				"Cost3": {
+					"format": "double",
+					"type": "number"
+				},
+				"StockVolume": {
+					"format": "double",
+					"type": "number"
+				},
+				"StockWeight": {
+					"format": "double",
+					"type": "number"
+				},
+				"IsStockItem": {
+					"type": "boolean"
+				},
+				"QuantityOnHand": {
+					"format": "double",
+					"type": "number"
+				},
+				"QuantityDecimal": {
+					"format": "int32",
+					"type": "integer"
+				},
+				"Size": {
+					"type": "string"
+				},
+				"SupplierName": {
+					"type": "string"
+				},
+				"VendorName": {
+					"type": "string"
+				},
+				"VendorPartNumber": {
+					"type": "string"
+				},
+				"UserText1": {
+					"type": "string"
+				},
+				"UserText2": {
+					"type": "string"
+				},
+				"UserText3": {
+					"type": "string"
+				},
+				"UserText4": {
+					"type": "string"
+				},
+				"UserText5": {
+					"type": "string"
+				},
+				"UserText6": {
+					"type": "string"
+				},
+				"UserText7": {
+					"type": "string"
+				},
+				"UserText8": {
+					"type": "string"
+				},
+				"UserText9": {
+					"type": "string"
+				},
+				"UserText10": {
+					"type": "string"
+				},
+				"UserNum1": {
+					"format": "double",
+					"type": "number"
+				},
+				"UserNum2": {
+					"format": "double",
+					"type": "number"
+				},
+				"UserNum3": {
+					"format": "double",
+					"type": "number"
+				},
+				"UserNum4": {
+					"format": "double",
+					"type": "number"
+				},
+				"UserNum5": {
+					"format": "double",
+					"type": "number"
+				},
+				"UserNum6": {
+					"format": "double",
+					"type": "number"
+				},
+				"UserNum7": {
+					"format": "double",
+					"type": "number"
+				},
+				"UserNum8": {
+					"format": "double",
+					"type": "number"
+				},
+				"UserNum9": {
+					"format": "double",
+					"type": "number"
+				},
+				"UserNum10": {
+					"format": "double",
+					"type": "number"
+				},
+				"Message": {
+					"type": "string"
+				},
+				"Updated": {
+					"type": "boolean"
+				},
+				"Enabled": {
+					"type": "boolean"
+				},
+				"Disabled": {
+					"type": "boolean"
+				},
+				"Included": {
+					"type": "boolean"
+				},
+				"InclusionMessage": {
+					"type": "string"
+				},
+				"Excluded": {
+					"type": "boolean"
+				},
+				"ExclusionMessage": {
+					"type": "string"
+				},
+				"Recommended": {
+					"type": "boolean"
+				},
+				"RecommendedMessage": {
+					"type": "string"
+				},
+				"Discouraged": {
+					"type": "boolean"
+				},
+				"DiscouragedMessage": {
+					"type": "string"
+				},
+				"FloorPrice": {
+					"format": "double",
+					"type": "number"
+				},
+				"StretchPrice": {
+					"format": "double",
+					"type": "number"
+				},
+				"RiskScore": {
+					"format": "double",
+					"type": "number"
+				},
+				"RiskDescription": {
+					"type": "string"
+				},
+				"RiskLevel": {
+					"type": "string"
+				},
+				"ApprovalLevel1Price": {
+					"format": "double",
+					"type": "number"
+				},
+				"ApprovalLevel2Price": {
+					"format": "double",
+					"type": "number"
+				},
+				"ApprovalLevel3Price": {
+					"format": "double",
+					"type": "number"
+				},
+				"RowIndex": {
+					"format": "int32",
+					"type": "integer"
+				},
+				"ColumnIndex": {
+					"format": "int32",
+					"type": "integer"
+				},
+				"ExpandDescriptions": {
+					"type": "boolean"
+				},
+				"SmartProductId": {
+					"type": "string"
+				},
+				"SmartCatalogId": {
+					"type": "string"
+				},
+				"SmartCategoryId": {
+					"type": "string"
+				},
+				"ContentTemplateId": {
+					"type": "string"
+				},
+				"GuidedSellingTreeId": {
+					"type": "string"
+				},
+				"ParentEntity": {
+					"type": "string"
+				},
+				"ParentId": {
+					"type": "string"
+				},
+				"Name": {
+					"type": "string"
+				},
+				"Description": {
+					"type": "string"
+				},
+				"ImagePath": {
+					"type": "string"
+				},
+				"Type": {
+					"type": "string"
+				},
+				"ControlType": {
+					"type": "string"
+				},
+				"SortOrder": {
+					"format": "int32",
+					"type": "integer"
+				},
+				"Visible": {
+					"type": "boolean"
+				},
+				"ActionType": {
+					"type": "string"
+				},
+				"DefaultQuantity": {
+					"format": "double",
+					"type": "number"
+				},
+				"OrganizationId": {
+					"type": "string"
+				},
+				"DeletionState": {
+					"type": "boolean"
+				},
+				"CreatedOn": {
+					"format": "date-time",
+					"type": "string"
+				},
+				"ModifiedOn": {
+					"format": "date-time",
+					"type": "string"
+				},
+				"CreatedBy": {
+					"type": "string"
+				},
+				"ModifiedBy": {
+					"type": "string"
+				},
+				"ProductCatalogId": {
+					"type": "string"
+				},
+				"ProductId": {
+					"type": "string"
+				},
+				"VariantId": {
+					"type": "string"
+				},
+				"SKU": {
+					"type": "string"
+				},
+				"SmartProductExt": {
+					"type": "array",
+					"items": {
+						"$ref": "#/definitions/SmartProductExt"
+					}
+				},
+				"Price": {
+					"format": "double",
+					"type": "number"
+				},
+				"AdjustedPrice": {
+					"format": "double",
+					"type": "number"
+				},
+				"DiscountAmount": {
+					"format": "double",
+					"type": "number"
+				},
+				"DiscountPercentage": {
+					"format": "double",
+					"type": "number"
+				},
+				"MarkupAmount": {
+					"format": "double",
+					"type": "number"
+				},
+				"MarkupPercentage": {
+					"format": "double",
+					"type": "number"
+				},
+				"Quantity": {
+					"format": "double",
+					"type": "number"
+				},
+				"ExtendedPrice": {
+					"format": "double",
+					"type": "number"
+				},
+				"TargetPrice": {
+					"format": "double",
+					"type": "number"
+				},
+				"TargetDiscountPercentage": {
+					"format": "double",
+					"type": "number"
+				},
+				"DistPrice": {
+					"format": "double",
+					"type": "number"
+				},
+				"DistAdjustedPrice": {
+					"format": "double",
+					"type": "number"
+				},
+				"DistDiscountAmount": {
+					"format": "double",
+					"type": "number"
+				},
+				"DistDiscountPercentage": {
+					"format": "double",
+					"type": "number"
+				},
+				"DistExtendedPrice": {
+					"format": "double",
+					"type": "number"
+				},
+				"CalculatedDiscountPercentage": {
+					"format": "double",
+					"type": "number"
+				}
+			}
+		},
+		"GroupConstraint": {
+			"type": "object",
+			"properties": {
+				"Id": {
+					"type": "string"
+				},
+				"EntityId": {
+					"type": "string"
+				},
+				"DisplayName": {
+					"type": "string"
+				},
+				"Description": {
+					"type": "string"
+				},
+				"Entity": {
+					"type": "string"
+				},
+				"Value": {
+					"type": "string"
+				},
+				"Property": {
+					"type": "string"
+				},
+				"SmartProducts": {
+					"type": "array",
+					"items": {
+						"$ref": "#/definitions/SmartProduct"
+					}
+				},
+				"Type": {
+					"type": "string"
+				}
+			}
+		},
+		"GuidedSellingElementExt": {
+			"type": "object",
+			"properties": {
+				"GuidedSellingElementExtId": {
+					"type": "string"
+				},
+				"GuidedSellingElementId": {
+					"type": "string"
+				},
+				"Name": {
+					"type": "string"
+				},
+				"Value": {
+					"type": "string"
+				},
+				"MessageId": {
+					"type": "string"
+				},
+				"DataType": {
+					"type": "string"
+				},
+				"GuidedSellingElement": {
+					"$ref": "#/definitions/GuidedSellingElement"
+				}
+			}
+		},
+		"PageGroupExt": {
+			"type": "object",
+			"properties": {
+				"PageGroupExtId": {
+					"type": "string"
+				},
+				"PageGroupId": {
+					"type": "string"
+				},
+				"Name": {
+					"type": "string"
+				},
+				"Value": {
+					"type": "string"
+				},
+				"MessageId": {
+					"type": "string"
+				},
+				"DataType": {
+					"type": "string"
+				}
+			}
+		},
+		"QuestionGroup": {
+			"type": "object",
+			"properties": {
+				"Message": {
+					"type": "string"
+				},
+				"QuestionGroupId": {
+					"type": "string"
+				},
+				"PageGroupId": {
+					"type": "string"
+				},
+				"Name": {
+					"type": "string"
+				},
+				"IsNameVisible": {
+					"type": "boolean"
+				},
+				"Description": {
+					"type": "string"
+				},
+				"AlternateText": {
+					"type": "string"
+				},
+				"HeaderText": {
+					"type": "string"
+				},
+				"Image": {
+					"type": "string"
+				},
+				"AnswerRequired": {
+					"type": "boolean"
+				},
+				"SortOrder": {
+					"format": "int32",
+					"type": "integer"
+				},
+				"Visible": {
+					"type": "boolean"
+				},
+				"RepeatDirection": {
+					"type": "string"
+				},
+				"ProcessRulesOnChange": {
+					"type": "boolean"
+				},
+				"OrganizationId": {
+					"type": "string"
+				},
+				"DeletionState": {
+					"type": "boolean"
+				},
+				"CreatedOn": {
+					"format": "date-time",
+					"type": "string"
+				},
+				"ModifiedOn": {
+					"format": "date-time",
+					"type": "string"
+				},
+				"CreatedBy": {
+					"type": "string"
+				},
+				"ModifiedBy": {
+					"type": "string"
+				},
+				"NestedLevel": {
+					"format": "int32",
+					"type": "integer"
+				},
+				"ParentId": {
+					"type": "string"
+				},
+				"SmartCatalogId": {
+					"type": "string"
+				},
+				"Question": {
+					"type": "array",
+					"items": {
+						"$ref": "#/definitions/Question"
+					}
+				},
+				"QuestionGroupExt": {
+					"type": "array",
+					"items": {
+						"$ref": "#/definitions/QuestionGroupExt"
+					}
+				}
+			}
+		},
+		"SmartProductExt": {
+			"type": "object",
+			"properties": {
+				"SmartProductExtId": {
+					"type": "string"
+				},
+				"SmartProductId": {
+					"type": "string"
+				},
+				"Name": {
+					"type": "string"
+				},
+				"Value": {
+					"type": "string"
+				},
+				"MessageId": {
+					"type": "string"
+				},
+				"DataType": {
+					"type": "string"
+				}
+			}
+		},
+		"Question": {
+			"type": "object",
+			"properties": {
+				"AnswersProvided": {
+					"type": "boolean"
+				},
+				"Message": {
+					"type": "string"
+				},
+				"Hidden": {
+					"type": "boolean"
+				},
+				"Value": {
+					"type": "string"
+				},
+				"QuestionId": {
+					"type": "string"
+				},
+				"QuestionGroupId": {
+					"type": "string"
+				},
+				"Name": {
+					"type": "string"
+				},
+				"IsNameVisible": {
+					"type": "boolean"
+				},
+				"Description": {
+					"type": "string"
+				},
+				"Image": {
+					"type": "string"
+				},
+				"ControlType": {
+					"type": "string"
+				},
+				"RepeatDirection": {
+					"type": "string"
+				},
+				"SortOrder": {
+					"format": "int32",
+					"type": "integer"
+				},
+				"Visible": {
+					"type": "boolean"
+				},
+				"Selected": {
+					"type": "boolean"
+				},
+				"ProcessRulesOnChange": {
+					"type": "boolean"
+				},
+				"PreAnswerScript": {
+					"type": "string"
+				},
+				"PostAnswerScript": {
+					"type": "string"
+				},
+				"OrganizationId": {
+					"type": "string"
+				},
+				"DeletionState": {
+					"type": "boolean"
+				},
+				"CreatedOn": {
+					"format": "date-time",
+					"type": "string"
+				},
+				"ModifiedOn": {
+					"format": "date-time",
+					"type": "string"
+				},
+				"CreatedBy": {
+					"type": "string"
+				},
+				"ModifiedBy": {
+					"type": "string"
+				},
+				"Required": {
+					"type": "boolean"
+				},
+				"UpdateVisualization": {
+					"type": "boolean"
+				},
+				"ReferenceId": {
+					"type": "string"
+				},
+				"Answer": {
+					"type": "array",
+					"items": {
+						"$ref": "#/definitions/Answer"
+					}
+				},
+				"DynamicAnswer": {
+					"type": "array",
+					"items": {
+						"$ref": "#/definitions/DynamicAnswer"
+					}
+				},
+				"QuestionExt": {
+					"type": "array",
+					"items": {
+						"$ref": "#/definitions/QuestionExt"
+					}
+				}
+			}
+		},
+		"QuestionGroupExt": {
+			"type": "object",
+			"properties": {
+				"QuestionGroupExtId": {
+					"type": "string"
+				},
+				"QuestionGroupId": {
+					"type": "string"
+				},
+				"Name": {
+					"type": "string"
+				},
+				"Value": {
+					"type": "string"
+				},
+				"MessageId": {
+					"type": "string"
+				},
+				"DataType": {
+					"type": "string"
+				}
+			}
+		},
+		"Answer": {
+			"type": "object",
+			"properties": {
+				"AnswerId": {
+					"type": "string"
+				},
+				"QuestionId": {
+					"type": "string"
+				},
+				"Name": {
+					"type": "string"
+				},
+				"IsNameVisible": {
+					"type": "boolean"
+				},
+				"Description": {
+					"type": "string"
+				},
+				"Image": {
+					"type": "string"
+				},
+				"ClearAnswersUponSelection": {
+					"type": "boolean"
+				},
+				"Value": {
+					"type": "string"
+				},
+				"ValueType": {
+					"type": "string"
+				},
+				"InputType": {
+					"type": "string"
+				},
+				"RepeatDirection": {
+					"type": "string"
+				},
+				"ValidationExpression": {
+					"type": "string"
+				},
+				"SortOrder": {
+					"format": "int32",
+					"type": "integer"
+				},
+				"Visible": {
+					"type": "boolean"
+				},
+				"Selected": {
+					"type": "boolean"
+				},
+				"ProcessRulesOnChange": {
+					"type": "boolean"
+				},
+				"PreAnswerScript": {
+					"type": "string"
+				},
+				"PostAnswerScript": {
+					"type": "string"
+				},
+				"OrganizationId": {
+					"type": "string"
+				},
+				"DeletionState": {
+					"type": "boolean"
+				},
+				"CreatedOn": {
+					"format": "date-time",
+					"type": "string"
+				},
+				"ModifiedOn": {
+					"format": "date-time",
+					"type": "string"
+				},
+				"CreatedBy": {
+					"type": "string"
+				},
+				"ModifiedBy": {
+					"type": "string"
+				},
+				"Required": {
+					"type": "boolean"
+				},
+				"AnswerExt": {
+					"type": "array",
+					"items": {
+						"$ref": "#/definitions/AnswerExt"
+					}
+				},
+				"DynamicAnswerId": {
+					"type": "string"
+				},
+				"Message": {
+					"type": "string"
+				},
+				"QueryProcessed": {
+					"type": "boolean"
+				},
+				"IsDynamic": {
+					"type": "boolean"
+				},
+				"MinimumValue": {
+					"format": "double",
+					"type": "number"
+				},
+				"MaximumValue": {
+					"format": "double",
+					"type": "number"
+				},
+				"Hidden": {
+					"type": "boolean"
+				}
+			}
+		},
+		"DynamicAnswer": {
+			"type": "object",
+			"properties": {
+				"DynamicAnswerId": {
+					"type": "string"
+				},
+				"QuestionId": {
+					"type": "string"
+				},
+				"Name": {
+					"type": "string"
+				},
+				"IsNameVisible": {
+					"type": "boolean"
+				},
+				"Description": {
+					"type": "string"
+				},
+				"Image": {
+					"type": "string"
+				},
+				"ClearAnswersUponSelection": {
+					"type": "boolean"
+				},
+				"Value": {
+					"type": "string"
+				},
+				"ValueType": {
+					"type": "string"
+				},
+				"InputType": {
+					"type": "string"
+				},
+				"RepeatDirection": {
+					"type": "string"
+				},
+				"ValidationExpression": {
+					"type": "string"
+				},
+				"QueryId": {
+					"type": "string"
+				},
+				"QueryProperty": {
+					"type": "string"
+				},
+				"QueryDisplayProperty": {
+					"type": "string"
+				},
+				"PickListId": {
+					"type": "string"
+				},
+				"SortOrder": {
+					"format": "int32",
+					"type": "integer"
+				},
+				"Visible": {
+					"type": "boolean"
+				},
+				"Selected": {
+					"type": "boolean"
+				},
+				"ProcessRulesOnChange": {
+					"type": "boolean"
+				},
+				"PreAnswerScript": {
+					"type": "string"
+				},
+				"PostAnswerScript": {
+					"type": "string"
+				},
+				"OrganizationId": {
+					"type": "string"
+				},
+				"DeletionState": {
+					"type": "boolean"
+				},
+				"CreatedOn": {
+					"format": "date-time",
+					"type": "string"
+				},
+				"ModifiedOn": {
+					"format": "date-time",
+					"type": "string"
+				},
+				"CreatedBy": {
+					"type": "string"
+				},
+				"ModifiedBy": {
+					"type": "string"
+				},
+				"Required": {
+					"type": "boolean"
+				},
+				"DynamicAnswerExt": {
+					"type": "array",
+					"items": {
+						"$ref": "#/definitions/DynamicAnswerExt"
+					}
+				},
+				"Message": {
+					"type": "string"
+				}
+			}
+		},
+		"QuestionExt": {
+			"type": "object",
+			"properties": {
+				"QuestionExtId": {
+					"type": "string"
+				},
+				"QuestionId": {
+					"type": "string"
+				},
+				"Name": {
+					"type": "string"
+				},
+				"Value": {
+					"type": "string"
+				},
+				"MessageId": {
+					"type": "string"
+				},
+				"DataType": {
+					"type": "string"
+				}
+			}
+		},
+		"AnswerExt": {
+			"type": "object",
+			"properties": {
+				"AnswerExtId": {
+					"type": "string"
+				},
+				"AnswerId": {
+					"type": "string"
+				},
+				"Name": {
+					"type": "string"
+				},
+				"Value": {
+					"type": "string"
+				},
+				"MessageId": {
+					"type": "string"
+				},
+				"DataType": {
+					"type": "string"
+				}
+			}
+		},
+		"DynamicAnswerExt": {
+			"type": "object",
+			"properties": {
+				"DynamicAnswerExtId": {
+					"type": "string"
+				},
+				"DynamicAnswerId": {
+					"type": "string"
+				},
+				"Name": {
+					"type": "string"
+				},
+				"Value": {
+					"type": "string"
+				},
+				"MessageId": {
+					"type": "string"
+				},
+				"DataType": {
+					"type": "string"
+				}
+			}
+		},
+		"SavedGuidedSelling": {
+			"type": "object",
+			"properties": {
+				"SavedGuidedSellingId": {
+					"type": "string"
+				},
+				"ProfileId": {
+					"type": "string"
+				},
+				"OwningRoleId": {
+					"type": "string"
+				},
+				"GuidedSellingId": {
+					"type": "string"
+				},
+				"GuidedSellingInstanceId": {
+					"type": "string"
+				},
+				"DisplayName": {
+					"type": "string"
+				},
+				"IsTemplate": {
+					"type": "boolean"
+				},
+				"SortOrder": {
+					"format": "int32",
+					"type": "integer"
+				},
+				"MessageId": {
+					"type": "string"
+				},
+				"OrganizationId": {
+					"type": "string"
+				},
+				"DeletionState": {
+					"type": "boolean"
+				},
+				"CreatedOn": {
+					"format": "date-time",
+					"type": "string"
+				},
+				"ModifiedOn": {
+					"format": "date-time",
+					"type": "string"
+				},
+				"CreatedBy": {
+					"type": "string"
+				},
+				"ModifiedBy": {
+					"type": "string"
+				},
+				"SavedGuidedSellingData": {
+					"type": "array",
+					"items": {
+						"$ref": "#/definitions/SavedGuidedSellingData"
+					}
+				}
+			}
+		},
+		"SavedGuidedSellingData": {
+			"type": "object",
+			"properties": {
+				"SavedGuidedSellingDataId": {
+					"type": "string"
+				},
+				"SavedGuidedSellingId": {
+					"type": "string"
+				},
+				"ElementId": {
+					"type": "string"
+				},
+				"Type": {
+					"type": "string"
+				},
+				"Data": {
+					"type": "string"
+				},
+				"SortOrder": {
+					"format": "int32",
+					"type": "integer"
+				},
+				"MessageId": {
+					"type": "string"
+				},
+				"DisplayName": {
+					"type": "string"
+				},
+				"ParentId": {
+					"type": "string"
+				},
+				"ParentMessageId": {
+					"type": "string"
+				},
+				"ParentDisplayName": {
+					"type": "string"
+				},
+				"OrganizationId": {
+					"type": "string"
+				},
+				"DeletionState": {
+					"type": "boolean"
+				},
+				"CreatedOn": {
+					"format": "date-time",
+					"type": "string"
+				},
+				"ModifiedOn": {
+					"format": "date-time",
+					"type": "string"
+				},
+				"CreatedBy": {
+					"type": "string"
+				},
+				"ModifiedBy": {
+					"type": "string"
+				},
+				"Visible": {
+					"type": "boolean"
+				},
+				"SavedGuidedSellingDataExt": {
+					"type": "array",
+					"items": {
+						"$ref": "#/definitions/SavedGuidedSellingDataExt"
+					}
+				}
+			}
+		},
+		"SavedGuidedSellingDataExt": {
+			"type": "object",
+			"properties": {
+				"SavedGuidedSellingDataExtId": {
+					"type": "string"
+				},
+				"SavedGuidedSellingDataId": {
+					"type": "string"
+				},
+				"Name": {
+					"type": "string"
+				},
+				"Value": {
+					"type": "string"
+				},
+				"MessageId": {
+					"type": "string"
+				}
+			}
+		},
+		"AuthTokenRequest": {
+			"type": "object",
+			"properties": {
+				"client_id": {
+					"type": "string"
+				},
+				"grant_type": {
+					"type": "string"
+				},
+				"username": {
+					"type": "string"
+				},
+				"password": {
+					"type": "string"
+				},
+				"client_secret": {
+					"type": "string"
+				},
+				"platform": {
+					"type": "string"
+				}
+			}
+		},
+		"AuthToken": {
+			"type": "object",
+			"properties": {
+				"access_token": {
+					"type": "string"
+				},
+				"expires_in": {
+					"format": "int32",
+					"type": "integer"
+				},
+				"token_type": {
+					"type": "string",
+					"readOnly": true
+				},
+				"scope": {
+					"type": "string"
+				},
+				"id_token": {
+					"type": "string"
+				},
+				"refresh_token": {
+					"type": "string"
+				},
+				"signature": {
+					"type": "string"
+				},
+				"refresh_expires_in": {
+					"type": "string"
+				},
+				"download_token": {
+					"type": "string"
+				},
+				"state": {
+					"type": "string"
+				}
+			}
+		},
+		"SmartCatalog": {
+			"type": "object",
+			"properties": {
+				"RuleProcessState": {
+					"type": "string"
+				},
+				"ConfigurationName": {
+					"type": "string"
+				},
+				"GuidedSellingTreeName": {
+					"type": "string"
+				},
+				"IsUpsell": {
+					"type": "boolean"
+				},
+				"UserText1": {
+					"type": "string"
+				},
+				"UserText2": {
+					"type": "string"
+				},
+				"UserText3": {
+					"type": "string"
+				},
+				"UserText4": {
+					"type": "string"
+				},
+				"UserText5": {
+					"type": "string"
+				},
+				"UserText6": {
+					"type": "string"
+				},
+				"UserText7": {
+					"type": "string"
+				},
+				"UserText8": {
+					"type": "string"
+				},
+				"UserText9": {
+					"type": "string"
+				},
+				"UserText10": {
+					"type": "string"
+				},
+				"Quantity": {
+					"format": "double",
+					"type": "number"
+				},
+				"DiscountPercentage": {
+					"format": "double",
+					"type": "number"
+				},
+				"DiscountAmount": {
+					"format": "double",
+					"type": "number"
+				},
+				"MarkupPercentage": {
+					"format": "double",
+					"type": "number"
+				},
+				"MarkupAmount": {
+					"format": "double",
+					"type": "number"
+				},
+				"ExtendedPrice": {
+					"format": "double",
+					"type": "number"
+				},
+				"AdjustedPrice": {
+					"format": "double",
+					"type": "number"
+				},
+				"Price": {
+					"format": "double",
+					"type": "number"
+				},
+				"InstanceId": {
+					"type": "string"
+				},
+				"SearchText": {
+					"type": "string"
+				},
+				"GuidedSellingTreeInstanceId": {
+					"type": "string"
+				},
+				"GuidedSellingTreeId": {
+					"type": "string"
+				},
+				"Message": {
+					"type": "string"
+				},
+				"SystemMessages": {
+					"type": "array",
+					"items": {
+						"$ref": "#/definitions/MessageDetail"
+					}
+				},
+				"Basket": {
+					"$ref": "#/definitions/Basket"
+				},
+				"ContentTemplates": {
+					"type": "array",
+					"items": {
+						"$ref": "#/definitions/ContentTemplate"
+					}
+				},
+				"BasketConfigurationId": {
+					"type": "string"
+				},
+				"CDNBaseUrl": {
+					"type": "string"
+				},
+				"TotalPrice": {
+					"format": "double",
+					"type": "number"
+				},
+				"GlobalParameter": {
+					"type": "array",
+					"items": {
+						"$ref": "#/definitions/GlobalParameter"
+					}
+				},
+				"AnsweredPages": {
+					"type": "array",
+					"items": {
+						"$ref": "#/definitions/PageGroup"
+					}
+				},
+				"Question": {
+					"type": "array",
+					"items": {
+						"$ref": "#/definitions/Question"
+					}
+				},
+				"GroupConstraint": {
+					"type": "array",
+					"items": {
+						"$ref": "#/definitions/GroupConstraint"
+					}
+				},
+				"LinkedGroupConstraint": {
+					"type": "array",
+					"items": {
+						"$ref": "#/definitions/GroupConstraint"
+					}
+				},
+				"SavedGuidedSellingId": {
+					"type": "string"
+				},
+				"SavedCatalogGuidedSellingId": {
+					"type": "string"
+				},
+				"PickLists": {
+					"type": "array",
+					"items": {
+						"$ref": "#/definitions/PickList"
+					}
+				},
+				"LinkedEntityMetadata": {
+					"type": "array",
+					"items": {
+						"$ref": "#/definitions/EntityInfo"
+					}
+				},
+				"LinkedCurrencies": {
+					"type": "array",
+					"items": {
+						"$ref": "#/definitions/PickListValue"
+					}
+				},
+				"RuleLogCacheId": {
+					"type": "string"
+				},
+				"SmartCatalogId": {
+					"type": "string"
+				},
+				"SmartCatalogSeriesId": {
+					"type": "string"
+				},
+				"RuleSetId": {
+					"type": "string"
+				},
+				"ContentTemplateId": {
+					"type": "string"
+				},
+				"QueryId": {
+					"type": "string"
+				},
+				"Name": {
+					"type": "string"
+				},
+				"Description": {
+					"type": "string"
+				},
+				"ImagePath": {
+					"type": "string"
+				},
+				"ProductionState": {
+					"format": "int32",
+					"type": "integer"
+				},
+				"Active": {
+					"type": "boolean"
+				},
+				"ActiveStartDate": {
+					"format": "date-time",
+					"type": "string"
+				},
+				"ActiveEndDate": {
+					"format": "date-time",
+					"type": "string"
+				},
+				"DisplayLog": {
+					"type": "boolean"
+				},
+				"AutoPostback": {
+					"type": "boolean"
+				},
+				"Locked": {
+					"type": "boolean"
+				},
+				"LockedUser": {
+					"type": "string"
+				},
+				"LockedComputer": {
+					"type": "string"
+				},
+				"SortOrder": {
+					"format": "int32",
+					"type": "integer"
+				},
+				"CatalogType": {
+					"type": "string"
+				},
+				"CatalogLayout": {
+					"type": "string"
+				},
+				"OrganizationId": {
+					"type": "string"
+				},
+				"DeletionState": {
+					"type": "boolean"
+				},
+				"CreatedOn": {
+					"format": "date-time",
+					"type": "string"
+				},
+				"ModifiedOn": {
+					"format": "date-time",
+					"type": "string"
+				},
+				"CreatedBy": {
+					"type": "string"
+				},
+				"ModifiedBy": {
+					"type": "string"
+				},
+				"OnLoadScript": {
+					"type": "string"
+				},
+				"EnableSearch": {
+					"type": "boolean"
+				},
+				"ProcessRulesBeforeLinkedSmartCatalogRules": {
+					"type": "boolean"
+				},
+				"CacheRefreshOn": {
+					"format": "date-time",
+					"type": "string"
+				},
+				"BaseProductId": {
+					"type": "string"
+				},
+				"VisualizationKey": {
+					"type": "string"
+				},
+				"Group": {
+					"type": "array",
+					"items": {
+						"$ref": "#/definitions/Group"
+					}
+				},
+				"SmartCatalog_RuleSet": {
+					"type": "array",
+					"items": {
+						"$ref": "#/definitions/SmartCatalog_RuleSet"
+					}
+				},
+				"SmartCatalogElement": {
+					"type": "array",
+					"items": {
+						"$ref": "#/definitions/SmartCatalogElement"
+					}
+				},
+				"SmartCategory": {
+					"type": "array",
+					"items": {
+						"$ref": "#/definitions/SmartCategory"
+					}
+				},
+				"SmartCatalogExt": {
+					"type": "array",
+					"items": {
+						"$ref": "#/definitions/SmartCatalogExt"
+					}
+				},
+				"SmartCatalogTeam": {
+					"type": "array",
+					"items": {
+						"$ref": "#/definitions/SmartCatalogTeam"
+					}
+				},
+				"SmartProduct": {
+					"type": "array",
+					"items": {
+						"$ref": "#/definitions/SmartProduct"
+					}
+				},
+				"SmartCatalogLink": {
+					"type": "array",
+					"items": {
+						"$ref": "#/definitions/SmartCatalogLink"
+					}
+				},
+				"QuestionGroup": {
+					"type": "array",
+					"items": {
+						"$ref": "#/definitions/QuestionGroup"
+					}
+				}
+			}
+		},
+		"ContentTemplate": {
+			"type": "object",
+			"properties": {
+				"ContentTemplateId": {
+					"type": "string"
+				},
+				"ContentGroupId": {
+					"type": "string"
+				},
+				"Name": {
+					"type": "string"
+				},
+				"Description": {
+					"type": "string"
+				},
+				"ExpandDescriptionsByDefault": {
+					"type": "boolean"
+				},
+				"RepeatColumns": {
+					"format": "int32",
+					"type": "integer"
+				},
+				"RepeatDirection": {
+					"type": "string"
+				},
+				"SortOrder": {
+					"format": "int32",
+					"type": "integer"
+				},
+				"OrganizationId": {
+					"type": "string"
+				},
+				"DeletionState": {
+					"type": "boolean"
+				},
+				"CreatedOn": {
+					"format": "date-time",
+					"type": "string"
+				},
+				"ModifiedOn": {
+					"format": "date-time",
+					"type": "string"
+				},
+				"CreatedBy": {
+					"type": "string"
+				},
+				"ModifiedBy": {
+					"type": "string"
+				},
+				"IsDefault": {
+					"type": "boolean"
+				},
+				"ContentSetting": {
+					"type": "array",
+					"items": {
+						"$ref": "#/definitions/ContentSetting"
+					}
+				},
+				"ContentTemplateExt": {
+					"type": "array",
+					"items": {
+						"$ref": "#/definitions/ContentTemplateExt"
+					}
+				},
+				"SmartCatalog": {
+					"type": "array",
+					"items": {
+						"$ref": "#/definitions/SmartCatalog"
+					}
+				},
+				"SmartCategory": {
+					"type": "array",
+					"items": {
+						"$ref": "#/definitions/SmartCategory"
+					}
+				},
+				"SmartProduct": {
+					"type": "array",
+					"items": {
+						"$ref": "#/definitions/SmartProduct"
+					}
+				}
+			}
+		},
+		"PickList": {
+			"type": "object",
+			"properties": {
+				"PickListId": {
+					"type": "string"
+				},
+				"Name": {
+					"type": "string"
+				},
+				"IsSystemDefined": {
+					"type": "boolean"
+				},
+				"MessageId": {
+					"type": "string"
+				},
+				"OrganizationId": {
+					"type": "string"
+				},
+				"DeletionState": {
+					"type": "boolean"
+				},
+				"CreatedOn": {
+					"format": "date-time",
+					"type": "string"
+				},
+				"ModifiedOn": {
+					"format": "date-time",
+					"type": "string"
+				},
+				"CreatedBy": {
+					"type": "string"
+				},
+				"ModifiedBy": {
+					"type": "string"
+				},
+				"Description": {
+					"type": "string"
+				},
+				"DataType": {
+					"type": "string"
+				},
+				"DynamicAnswer": {
+					"type": "array",
+					"items": {
+						"$ref": "#/definitions/DynamicAnswer"
+					}
+				},
+				"PickListValue": {
+					"type": "array",
+					"items": {
+						"$ref": "#/definitions/PickListValue"
+					}
+				},
+				"Property": {
+					"type": "array",
+					"items": {
+						"$ref": "#/definitions/Property"
+					}
+				}
+			}
+		},
+		"PickListValue": {
+			"type": "object",
+			"properties": {
+				"PickListValueId": {
+					"type": "string"
+				},
+				"PickListId": {
+					"type": "string"
+				},
+				"Name": {
+					"type": "string"
+				},
+				"Code": {
+					"type": "string"
+				},
+				"Value": {
+					"type": "string"
+				},
+				"MessageId": {
+					"type": "string"
+				},
+				"SortOrder": {
+					"format": "int32",
+					"type": "integer"
+				},
+				"OrganizationId": {
+					"type": "string"
+				},
+				"DeletionState": {
+					"type": "boolean"
+				},
+				"CreatedOn": {
+					"format": "date-time",
+					"type": "string"
+				},
+				"ModifiedOn": {
+					"format": "date-time",
+					"type": "string"
+				},
+				"CreatedBy": {
+					"type": "string"
+				},
+				"ModifiedBy": {
+					"type": "string"
+				},
+				"IsSystemDefined": {
+					"type": "boolean"
+				},
+				"IsDefault": {
+					"type": "boolean"
+				},
+				"MessageDetail": {
+					"type": "array",
+					"items": {
+						"$ref": "#/definitions/MessageDetail"
+					}
+				},
+				"PickListValueExt": {
+					"type": "array",
+					"items": {
+						"$ref": "#/definitions/PickListValueExt"
+					}
+				},
+				"TeamPriceCurrency": {
+					"type": "array",
+					"items": {
+						"$ref": "#/definitions/TeamPrice"
+					}
+				},
+				"TeamPricePriceLevel": {
+					"type": "array",
+					"items": {
+						"$ref": "#/definitions/TeamPrice"
+					}
+				},
+				"ProductPrice": {
+					"type": "array",
+					"items": {
+						"$ref": "#/definitions/ProductPrice"
+					}
+				},
+				"ProductPrice1": {
+					"type": "array",
+					"items": {
+						"$ref": "#/definitions/ProductPrice"
+					}
+				},
+				"Localization": {
+					"type": "array",
+					"items": {
+						"$ref": "#/definitions/Localization"
+					}
+				},
+				"ReportParameter": {
+					"type": "array",
+					"items": {
+						"$ref": "#/definitions/ReportParameter"
+					}
+				}
+			}
+		},
+		"Group": {
+			"type": "object",
+			"properties": {
+				"GroupId": {
+					"type": "string"
+				},
+				"SmartCatalogId": {
+					"type": "string"
+				},
+				"Name": {
+					"type": "string"
+				},
+				"Description": {
+					"type": "string"
+				},
+				"SortOrder": {
+					"format": "int32",
+					"type": "integer"
+				},
+				"OrganizationId": {
+					"type": "string"
+				},
+				"DeletionState": {
+					"type": "boolean"
+				},
+				"CreatedOn": {
+					"format": "date-time",
+					"type": "string"
+				},
+				"ModifiedOn": {
+					"format": "date-time",
+					"type": "string"
+				},
+				"CreatedBy": {
+					"type": "string"
+				},
+				"ModifiedBy": {
+					"type": "string"
+				},
+				"GroupElement": {
+					"type": "array",
+					"items": {
+						"$ref": "#/definitions/GroupElement"
+					}
+				},
+				"GroupExt": {
+					"type": "array",
+					"items": {
+						"$ref": "#/definitions/GroupExt"
+					}
+				},
+				"GroupConstraint": {
+					"type": "array",
+					"items": {
+						"$ref": "#/definitions/GroupConstraint"
+					}
+				}
+			}
+		},
+		"SmartCatalog_RuleSet": {
+			"type": "object",
+			"properties": {
+				"SmartCatalog_RuleSetId": {
+					"type": "string"
+				},
+				"SmartCatalogId": {
+					"type": "string"
+				},
+				"RuleSetId": {
+					"type": "string"
+				},
+				"SortOrder": {
+					"format": "int32",
+					"type": "integer"
+				},
+				"OrganizationId": {
+					"type": "string"
+				},
+				"DeletionState": {
+					"type": "boolean"
+				},
+				"CreatedOn": {
+					"format": "date-time",
+					"type": "string"
+				},
+				"ModifiedOn": {
+					"format": "date-time",
+					"type": "string"
+				},
+				"CreatedBy": {
+					"type": "string"
+				},
+				"ModifiedBy": {
+					"type": "string"
+				}
+			}
+		},
+		"SmartCatalogElement": {
+			"type": "object",
+			"properties": {
+				"SmartCatalogElementId": {
+					"type": "string"
+				},
+				"SmartCatalogId": {
+					"type": "string"
+				},
+				"ParentId": {
+					"type": "string"
+				},
+				"ElementId": {
+					"type": "string"
+				},
+				"Name": {
+					"type": "string"
+				},
+				"Description": {
+					"type": "string"
+				},
+				"Type": {
+					"type": "string"
+				},
+				"Value": {
+					"type": "string"
+				},
+				"SortOrder": {
+					"format": "int32",
+					"type": "integer"
+				},
+				"OrganizationId": {
+					"type": "string"
+				},
+				"DeletionState": {
+					"type": "boolean"
+				},
+				"CreatedOn": {
+					"format": "date-time",
+					"type": "string"
+				},
+				"ModifiedOn": {
+					"format": "date-time",
+					"type": "string"
+				},
+				"CreatedBy": {
+					"type": "string"
+				},
+				"ModifiedBy": {
+					"type": "string"
+				},
+				"SmartCatalogElementExt": {
+					"type": "array",
+					"items": {
+						"$ref": "#/definitions/SmartCatalogElementExt"
+					}
+				}
+			}
+		},
+		"SmartCategory": {
+			"type": "object",
+			"properties": {
+				"Message": {
+					"type": "string"
+				},
+				"RepeatColumns": {
+					"format": "int32",
+					"type": "integer"
+				},
+				"ExpandDescriptions": {
+					"type": "boolean"
+				},
+				"SmartCategoryId": {
+					"type": "string"
+				},
+				"SmartCatalogId": {
+					"type": "string"
+				},
+				"ParentId": {
+					"type": "string"
+				},
+				"ContentTemplateId": {
+					"type": "string"
+				},
+				"QueryId": {
+					"type": "string"
+				},
+				"Name": {
+					"type": "string"
+				},
+				"Description": {
+					"type": "string"
+				},
+				"ImagePath": {
+					"type": "string"
+				},
+				"Type": {
+					"type": "string"
+				},
+				"SortOrder": {
+					"format": "int32",
+					"type": "integer"
+				},
+				"Visible": {
+					"type": "boolean"
+				},
+				"NestedLevel": {
+					"format": "int32",
+					"type": "integer"
+				},
+				"Opened": {
+					"type": "boolean"
+				},
+				"ProcessRulesOnChange": {
+					"type": "boolean"
+				},
+				"OrganizationId": {
+					"type": "string"
+				},
+				"DeletionState": {
+					"type": "boolean"
+				},
+				"CreatedOn": {
+					"format": "date-time",
+					"type": "string"
+				},
+				"ModifiedOn": {
+					"format": "date-time",
+					"type": "string"
+				},
+				"CreatedBy": {
+					"type": "string"
+				},
+				"ModifiedBy": {
+					"type": "string"
+				},
+				"DisplayType": {
+					"type": "string"
+				},
+				"SmartCategoryExt": {
+					"type": "array",
+					"items": {
+						"$ref": "#/definitions/SmartCategoryExt"
+					}
+				},
+				"SmartProduct": {
+					"type": "array",
+					"items": {
+						"$ref": "#/definitions/SmartProduct"
+					}
+				},
+				"Query": {
+					"$ref": "#/definitions/Query"
+				}
+			}
+		},
+		"SmartCatalogExt": {
+			"type": "object",
+			"properties": {
+				"SmartCatalogExtId": {
+					"type": "string"
+				},
+				"SmartCatalogId": {
+					"type": "string"
+				},
+				"Name": {
+					"type": "string"
+				},
+				"Value": {
+					"type": "string"
+				},
+				"MessageId": {
+					"type": "string"
+				},
+				"DataType": {
+					"type": "string"
+				}
+			}
+		},
+		"SmartCatalogTeam": {
+			"type": "object",
+			"properties": {
+				"SmartCatalogTeamId": {
+					"type": "string"
+				},
+				"SmartCatalogId": {
+					"type": "string"
+				},
+				"TeamId": {
+					"type": "string"
+				},
+				"OrganizationId": {
+					"type": "string"
+				},
+				"DeletionState": {
+					"type": "boolean"
+				},
+				"CreatedOn": {
+					"format": "date-time",
+					"type": "string"
+				},
+				"ModifiedOn": {
+					"format": "date-time",
+					"type": "string"
+				},
+				"CreatedBy": {
+					"type": "string"
+				},
+				"ModifiedBy": {
+					"type": "string"
+				}
+			}
+		},
+		"SmartCatalogLink": {
+			"type": "object",
+			"properties": {
+				"SmartCatalogLinkId": {
+					"type": "string"
+				},
+				"SmartCatalogId": {
+					"type": "string"
+				},
+				"LinkedOrganizationId": {
+					"type": "string"
+				},
+				"LinkedOrganizationName": {
+					"type": "string"
+				},
+				"LinkedSmartCatalogId": {
+					"type": "string"
+				},
+				"LinkedSmartCatalogName": {
+					"type": "string"
+				},
+				"IsActive": {
+					"type": "boolean"
+				},
+				"SortOrder": {
+					"format": "int32",
+					"type": "integer"
+				}
+			}
+		},
+		"ContentSetting": {
+			"type": "object",
+			"properties": {
+				"ContentSettingId": {
+					"type": "string"
+				},
+				"ContentTemplateId": {
+					"type": "string"
+				},
+				"DisplayName": {
+					"type": "string"
+				},
+				"MessageId": {
+					"type": "string"
+				},
+				"Entity": {
+					"type": "string"
+				},
+				"Property": {
+					"type": "string"
+				},
+				"ControlType": {
+					"type": "string"
+				},
+				"InputType": {
+					"type": "string"
+				},
+				"DisplayAsName": {
+					"type": "boolean"
+				},
+				"DisplayAsDescription": {
+					"type": "boolean"
+				},
+				"Height": {
+					"format": "int32",
+					"type": "integer"
+				},
+				"Width": {
+					"format": "int32",
+					"type": "integer"
+				},
+				"CssClass": {
+					"type": "string"
+				},
+				"Persist": {
+					"type": "boolean"
+				},
+				"DataType": {
+					"type": "string"
+				},
+				"IsVisible": {
+					"type": "boolean"
+				},
+				"SettingKey": {
+					"type": "string"
+				},
+				"SettingValue": {
+					"type": "string"
+				},
+				"SortOrder": {
+					"format": "int32",
+					"type": "integer"
+				},
+				"OrganizationId": {
+					"type": "string"
+				},
+				"DeletionState": {
+					"type": "boolean"
+				},
+				"CreatedOn": {
+					"format": "date-time",
+					"type": "string"
+				},
+				"ModifiedOn": {
+					"format": "date-time",
+					"type": "string"
+				},
+				"CreatedBy": {
+					"type": "string"
+				},
+				"ModifiedBy": {
+					"type": "string"
+				},
+				"IsReadOnly": {
+					"type": "boolean"
+				},
+				"IsNestedOnLargeScreen": {
+					"type": "boolean"
+				},
+				"IsNestedOnMediumScreen": {
+					"type": "boolean"
+				},
+				"IsNestedOnSmallScreen": {
+					"type": "boolean"
+				},
+				"MinWidth": {
+					"type": "string"
+				},
+				"PropertyDisplayName": {
+					"type": "string"
+				},
+				"IsActive": {
+					"type": "boolean"
+				},
+				"DisplayHelpText": {
+					"type": "boolean"
+				},
+				"ContentSettingExt": {
+					"type": "array",
+					"items": {
+						"$ref": "#/definitions/ContentSettingExt"
+					}
+				},
+				"MaxLength": {
+					"type": "string"
+				},
+				"Required": {
+					"type": "boolean"
+				},
+				"Format": {
+					"type": "string"
+				},
+				"PickListId": {
+					"type": "string"
+				},
+				"HelpText": {
+					"type": "string"
+				}
+			}
+		},
+		"ContentTemplateExt": {
+			"type": "object",
+			"properties": {
+				"ContentTemplateExtId": {
+					"type": "string"
+				},
+				"ContentTemplateId": {
+					"type": "string"
+				},
+				"Name": {
+					"type": "string"
+				},
+				"Value": {
+					"type": "string"
+				},
+				"MessageId": {
+					"type": "string"
+				},
+				"DataType": {
+					"type": "string"
+				}
+			}
+		},
+		"Property": {
+			"type": "object",
+			"properties": {
+				"Value": {
+					"type": "string"
+				},
+				"DataTypeDisplayName": {
+					"type": "string"
+				},
+				"PropertyId": {
+					"type": "string"
+				},
+				"EntityInfoId": {
+					"type": "string"
+				},
+				"Name": {
+					"type": "string"
+				},
+				"DisplayName": {
+					"type": "string"
+				},
+				"PropertyGroup": {
+					"type": "string"
+				},
+				"MessageId": {
+					"type": "string"
+				},
+				"DataType": {
+					"type": "string"
+				},
+				"Display": {
+					"type": "boolean"
+				},
+				"DisplayInLookup": {
+					"type": "boolean"
+				},
+				"ControlType": {
+					"type": "string"
+				},
+				"ControlLength": {
+					"format": "int32",
+					"type": "integer"
+				},
+				"SortOrder": {
+					"format": "int32",
+					"type": "integer"
+				},
+				"DefaultValue": {
+					"type": "string"
+				},
+				"AllowedValues": {
+					"type": "string"
+				},
+				"ValidationExpression": {
+					"type": "string"
+				},
+				"Target": {
+					"type": "string"
+				},
+				"AllowInRules": {
+					"type": "boolean"
+				},
+				"Required": {
+					"type": "boolean"
+				},
+				"IsSystemDefined": {
+					"type": "boolean"
+				},
+				"IsDataBound": {
+					"type": "boolean"
+				},
+				"OrganizationId": {
+					"type": "string"
+				},
+				"DeletionState": {
+					"type": "boolean"
+				},
+				"CreatedOn": {
+					"format": "date-time",
+					"type": "string"
+				},
+				"ModifiedOn": {
+					"format": "date-time",
+					"type": "string"
+				},
+				"CreatedBy": {
+					"type": "string"
+				},
+				"ModifiedBy": {
+					"type": "string"
+				},
+				"Description": {
+					"type": "string"
+				},
+				"PickListId": {
+					"type": "string"
+				},
+				"Format": {
+					"type": "string"
+				},
+				"Persist": {
+					"type": "boolean"
+				},
+				"ShareWithLinkedOrgs": {
+					"type": "boolean"
+				},
+				"PickListDataType": {
+					"type": "string"
+				},
+				"HelpText": {
+					"type": "string"
+				},
+				"DisplayOnPageHeader": {
+					"type": "boolean"
+				},
+				"PropertyExt": {
+					"type": "array",
+					"items": {
+						"$ref": "#/definitions/PropertyExt"
+					}
+				}
+			}
+		},
+		"PickListValueExt": {
+			"type": "object",
+			"properties": {
+				"PickListValueExtId": {
+					"type": "string"
+				},
+				"PickListValueId": {
+					"type": "string"
+				},
+				"Name": {
+					"type": "string"
+				},
+				"DataType": {
+					"type": "string"
+				},
+				"Value": {
+					"type": "string"
+				},
+				"MessageId": {
+					"type": "string"
+				}
+			}
+		},
+		"TeamPrice": {
+			"type": "object",
+			"properties": {
+				"TeamPriceId": {
+					"type": "string"
+				},
+				"TeamId": {
+					"type": "string"
+				},
+				"PriceLevelId": {
+					"type": "string"
+				},
+				"CurrencyId": {
+					"type": "string"
+				},
+				"IsDefault": {
+					"type": "boolean"
+				},
+				"IsSystemDefined": {
+					"type": "boolean"
+				},
+				"OrganizationId": {
+					"type": "string"
+				},
+				"CreatedOn": {
+					"format": "date-time",
+					"type": "string"
+				},
+				"ModifiedOn": {
+					"format": "date-time",
+					"type": "string"
+				},
+				"CreatedBy": {
+					"type": "string"
+				},
+				"ModifiedBy": {
+					"type": "string"
+				}
+			}
+		},
+		"ProductPrice": {
+			"type": "object",
+			"properties": {
+				"ProductPriceId": {
+					"type": "string"
+				},
+				"ProductId": {
+					"type": "string"
+				},
+				"PriceLevelId": {
+					"type": "string"
+				},
+				"CurrencyId": {
+					"type": "string"
+				},
+				"Price": {
+					"format": "double",
+					"type": "number"
+				},
+				"EffectiveDate": {
+					"format": "date-time",
+					"type": "string"
+				},
+				"ExpirationDate": {
+					"format": "date-time",
+					"type": "string"
+				},
+				"OrganizationId": {
+					"type": "string"
+				},
+				"DeletionState": {
+					"type": "boolean"
+				},
+				"CreatedOn": {
+					"format": "date-time",
+					"type": "string"
+				},
+				"ModifiedOn": {
+					"format": "date-time",
+					"type": "string"
+				},
+				"CreatedBy": {
+					"type": "string"
+				},
+				"ModifiedBy": {
+					"type": "string"
+				},
+				"Cost": {
+					"format": "double",
+					"type": "number"
+				},
+				"Price2": {
+					"format": "double",
+					"type": "number"
+				},
+				"Price3": {
+					"format": "double",
+					"type": "number"
+				},
+				"Cost2": {
+					"format": "double",
+					"type": "number"
+				},
+				"Cost3": {
+					"format": "double",
+					"type": "number"
+				},
+				"DistPrice": {
+					"format": "double",
+					"type": "number"
+				},
+				"ProductPriceExt": {
+					"type": "array",
+					"items": {
+						"$ref": "#/definitions/ProductPriceExt"
+					}
+				},
+				"ProductPriceTier": {
+					"type": "array",
+					"items": {
+						"$ref": "#/definitions/ProductPriceTier"
+					}
+				}
+			}
+		},
+		"Localization": {
+			"type": "object",
+			"properties": {
+				"LocalizationId": {
+					"type": "string"
+				},
+				"EntityName": {
+					"type": "string"
+				},
+				"EntityId": {
+					"type": "string"
+				},
+				"LanguageId": {
+					"type": "string"
+				},
+				"PropertyName": {
+					"type": "string"
+				},
+				"Value": {
+					"type": "string"
+				},
+				"CreatedOn": {
+					"format": "date-time",
+					"type": "string"
+				},
+				"ModifiedOn": {
+					"format": "date-time",
+					"type": "string"
+				},
+				"CreatedBy": {
+					"type": "string"
+				},
+				"ModifiedBy": {
+					"type": "string"
+				}
+			}
+		},
+		"ReportParameter": {
+			"type": "object",
+			"properties": {
+				"ReportParameterId": {
+					"type": "string"
+				},
+				"ReportId": {
+					"type": "string"
+				},
+				"DataType": {
+					"type": "string"
+				},
+				"CreatedOn": {
+					"format": "date-time",
+					"type": "string"
+				},
+				"CreatedBy": {
+					"type": "string"
+				},
+				"ModifiedOn": {
+					"format": "date-time",
+					"type": "string"
+				},
+				"ModifiedBy": {
+					"type": "string"
+				},
+				"DataSourceName": {
+					"type": "string"
+				},
+				"ParameterId": {
+					"type": "string"
+				}
+			}
+		},
+		"GroupElement": {
+			"type": "object",
+			"properties": {
+				"GroupElementId": {
+					"type": "string"
+				},
+				"GroupId": {
+					"type": "string"
+				},
+				"ReferenceId": {
+					"type": "string"
+				},
+				"Name": {
+					"type": "string"
+				},
+				"Description": {
+					"type": "string"
+				},
+				"Type": {
+					"type": "string"
+				},
+				"SortOrder": {
+					"format": "int32",
+					"type": "integer"
+				},
+				"OrganizationId": {
+					"type": "string"
+				},
+				"DeletionState": {
+					"type": "boolean"
+				},
+				"CreatedOn": {
+					"format": "date-time",
+					"type": "string"
+				},
+				"ModifiedOn": {
+					"format": "date-time",
+					"type": "string"
+				},
+				"CreatedBy": {
+					"type": "string"
+				},
+				"ModifiedBy": {
+					"type": "string"
+				},
+				"GroupElementExt": {
+					"type": "array",
+					"items": {
+						"$ref": "#/definitions/GroupElementExt"
+					}
+				}
+			}
+		},
+		"GroupExt": {
+			"type": "object",
+			"properties": {
+				"GroupExtId": {
+					"type": "string"
+				},
+				"GroupId": {
+					"type": "string"
+				},
+				"Name": {
+					"type": "string"
+				},
+				"Value": {
+					"type": "string"
+				},
+				"MessageId": {
+					"type": "string"
+				},
+				"DataType": {
+					"type": "string"
+				}
+			}
+		},
+		"SmartCatalogElementExt": {
+			"type": "object",
+			"properties": {
+				"SmartCatalogElementExtId": {
+					"type": "string"
+				},
+				"SmartCatalogElementId": {
+					"type": "string"
+				},
+				"Name": {
+					"type": "string"
+				},
+				"Value": {
+					"type": "string"
+				},
+				"MessageId": {
+					"type": "string"
+				},
+				"DataType": {
+					"type": "string"
+				}
+			}
+		},
+		"SmartCategoryExt": {
+			"type": "object",
+			"properties": {
+				"SmartCategoryExtId": {
+					"type": "string"
+				},
+				"SmartCategoryId": {
+					"type": "string"
+				},
+				"Name": {
+					"type": "string"
+				},
+				"Value": {
+					"type": "string"
+				},
+				"MessageId": {
+					"type": "string"
+				},
+				"DataType": {
+					"type": "string"
+				}
+			}
+		},
+		"Query": {
+			"type": "object",
+			"properties": {
+				"AttributesToRetrieve": {
+					"type": "array",
+					"items": {
+						"type": "string"
+					}
+				},
+				"Distinct": {
+					"type": "boolean"
+				},
+				"HasExecuted": {
+					"type": "boolean"
+				},
+				"ProcessTime": {
+					"type": "string"
+				},
+				"Source": {
+					"format": "int32",
+					"enum": [0, 1, 2],
+					"type": "integer"
+				},
+				"QueryId": {
+					"type": "string"
+				},
+				"QueryGroupId": {
+					"type": "string"
+				},
+				"ParentId": {
+					"type": "string"
+				},
+				"Name": {
+					"type": "string"
+				},
+				"Description": {
+					"type": "string"
+				},
+				"Entity": {
+					"type": "string"
+				},
+				"RelatedEntities": {
+					"type": "string"
+				},
+				"Properties": {
+					"type": "string"
+				},
+				"SearchElement": {
+					"type": "string"
+				},
+				"SearchScope": {
+					"type": "string"
+				},
+				"MaxResults": {
+					"format": "int32",
+					"type": "integer"
+				},
+				"SortProperty": {
+					"type": "string"
+				},
+				"SortType": {
+					"type": "string"
+				},
+				"SortOrder": {
+					"format": "int32",
+					"type": "integer"
+				},
+				"OrganizationId": {
+					"type": "string"
+				},
+				"DeletionState": {
+					"type": "boolean"
+				},
+				"CreatedOn": {
+					"format": "date-time",
+					"type": "string"
+				},
+				"ModifiedOn": {
+					"format": "date-time",
+					"type": "string"
+				},
+				"CreatedBy": {
+					"type": "string"
+				},
+				"ModifiedBy": {
+					"type": "string"
+				},
+				"Skip": {
+					"format": "int32",
+					"type": "integer"
+				},
+				"EntityTypeDisplayName": {
+					"type": "string"
+				},
+				"SortPropertyDisplayName": {
+					"type": "string"
+				},
+				"QueryClause": {
+					"type": "array",
+					"items": {
+						"$ref": "#/definitions/QueryClause"
+					}
+				},
+				"QueryExt": {
+					"type": "array",
+					"items": {
+						"$ref": "#/definitions/QueryExt"
+					}
+				},
+				"SmartCatalog": {
+					"type": "array",
+					"items": {
+						"$ref": "#/definitions/SmartCatalog"
+					}
+				}
+			}
+		},
+		"ContentSettingExt": {
+			"type": "object",
+			"properties": {
+				"ContentSettingExtId": {
+					"type": "string"
+				},
+				"ContentSettingId": {
+					"type": "string"
+				},
+				"Name": {
+					"type": "string"
+				},
+				"Value": {
+					"type": "string"
+				},
+				"MessageId": {
+					"type": "string"
+				},
+				"DataType": {
+					"type": "string"
+				}
+			}
+		},
+		"PropertyExt": {
+			"type": "object",
+			"properties": {
+				"PropertyExtId": {
+					"type": "string"
+				},
+				"PropertyId": {
+					"type": "string"
+				},
+				"Name": {
+					"type": "string"
+				},
+				"DisplayName": {
+					"type": "string"
+				},
+				"Value": {
+					"type": "string"
+				},
+				"MessageId": {
+					"type": "string"
+				},
+				"DataType": {
+					"type": "string"
+				},
+				"IsSystemDefined": {
+					"type": "boolean"
+				},
+				"EntityMap": {
+					"type": "string"
+				}
+			}
+		},
+		"ProductPriceExt": {
+			"type": "object",
+			"properties": {
+				"ProductPriceExtId": {
+					"type": "string"
+				},
+				"ProductPriceId": {
+					"type": "string"
+				},
+				"Name": {
+					"type": "string"
+				},
+				"Value": {
+					"type": "string"
+				},
+				"DataType": {
+					"type": "string"
+				},
+				"MessageId": {
+					"type": "string"
+				}
+			}
+		},
+		"ProductPriceTier": {
+			"type": "object",
+			"properties": {
+				"ProductPriceTierId": {
+					"type": "string"
+				},
+				"ProductPriceId": {
+					"type": "string"
+				},
+				"Property": {
+					"type": "string"
+				},
+				"ModifierType": {
+					"type": "string"
+				},
+				"LowerRange": {
+					"format": "double",
+					"type": "number"
+				},
+				"UpperRange": {
+					"format": "double",
+					"type": "number"
+				},
+				"Increment": {
+					"format": "double",
+					"type": "number"
+				},
+				"Value": {
+					"format": "double",
+					"type": "number"
+				},
+				"DeletionState": {
+					"type": "boolean"
+				},
+				"CreatedOn": {
+					"format": "date-time",
+					"type": "string"
+				},
+				"ModifiedOn": {
+					"format": "date-time",
+					"type": "string"
+				},
+				"CreatedBy": {
+					"type": "string"
+				},
+				"ModifiedBy": {
+					"type": "string"
+				}
+			}
+		},
+		"GroupElementExt": {
+			"type": "object",
+			"properties": {
+				"GroupElementExtId": {
+					"type": "string"
+				},
+				"GroupElementId": {
+					"type": "string"
+				},
+				"Name": {
+					"type": "string"
+				},
+				"Value": {
+					"type": "string"
+				},
+				"MessageId": {
+					"type": "string"
+				},
+				"DataType": {
+					"type": "string"
+				}
+			}
+		},
+		"QueryClause": {
+			"type": "object",
+			"properties": {
+				"_group": {
+					"type": "string"
+				},
+				"DataboundType": {
+					"type": "string"
+				},
+				"TypedValue": {
+					"$ref": "#/definitions/Object"
+				},
+				"QueryClauseId": {
+					"type": "string"
+				},
+				"QueryId": {
+					"type": "string"
+				},
+				"ParentId": {
+					"type": "string"
+				},
+				"Entity": {
+					"type": "string"
+				},
+				"PropertyName": {
+					"type": "string"
+				},
+				"PropertyDisplayName": {
+					"type": "string"
+				},
+				"IsSystemDefinedProperty": {
+					"type": "boolean"
+				},
+				"LogicalOperator": {
+					"type": "string"
+				},
+				"ComparisonOperator": {
+					"type": "string"
+				},
+				"ValueType": {
+					"type": "string"
+				},
+				"Value": {
+					"type": "string"
+				},
+				"ValueDisplay": {
+					"type": "string"
+				},
+				"SortOrder": {
+					"format": "int32",
+					"type": "integer"
+				},
+				"OrganizationId": {
+					"type": "string"
+				},
+				"DeletionState": {
+					"type": "boolean"
+				},
+				"CreatedOn": {
+					"format": "date-time",
+					"type": "string"
+				},
+				"ModifiedOn": {
+					"format": "date-time",
+					"type": "string"
+				},
+				"CreatedBy": {
+					"type": "string"
+				},
+				"ModifiedBy": {
+					"type": "string"
+				},
+				"EntityTypeDisplayName": {
+					"type": "string"
+				},
+				"DataType": {
+					"type": "string"
+				},
+				"IgnoreNullParameters": {
+					"type": "boolean"
+				}
+			}
+		},
+		"QueryExt": {
+			"type": "object",
+			"properties": {
+				"QueryExtId": {
+					"type": "string"
+				},
+				"QueryId": {
+					"type": "string"
+				},
+				"Name": {
+					"type": "string"
+				},
+				"Value": {
+					"type": "string"
+				},
+				"MessageId": {
+					"type": "string"
+				},
+				"DataType": {
+					"type": "string"
+				}
+			}
+		},
+		"Order": {
+			"type": "object",
+			"properties": {
+				"QuoteActivity": {
+					"type": "array",
+					"items": {
+						"$ref": "#/definitions/QuoteActivity"
+					}
+				},
+				"OrderId": {
+					"type": "string"
+				},
+				"ProfileId": {
+					"type": "string"
+				},
+				"IsPrivate": {
+					"type": "boolean"
+				},
+				"OwningTeamId": {
+					"type": "string"
+				},
+				"QuoteId": {
+					"type": "string"
+				},
+				"LeadId": {
+					"type": "string"
+				},
+				"OpportunityId": {
+					"type": "string"
+				},
+				"JobId": {
+					"type": "string"
+				},
+				"Type": {
+					"type": "string"
+				},
+				"ExpiresOn": {
+					"format": "date-time",
+					"type": "string"
+				},
+				"Note": {
+					"type": "string"
+				},
+				"ApprovalNotes": {
+					"type": "string"
+				},
+				"Description": {
+					"type": "string"
+				},
+				"OrderNumber": {
+					"type": "string"
+				},
+				"PriceLevelId": {
+					"type": "string"
+				},
+				"ShippingMethod": {
+					"type": "string"
+				},
+				"ShippingMethodId": {
+					"type": "string"
+				},
+				"ShipToName": {
+					"type": "string"
+				},
+				"ShipToAddress1": {
+					"type": "string"
+				},
+				"ShipToAddress2": {
+					"type": "string"
+				},
+				"ShipToAddress3": {
+					"type": "string"
+				},
+				"ShipToCity": {
+					"type": "string"
+				},
+				"ShipToState": {
+					"type": "string"
+				},
+				"ShipToCountry": {
+					"type": "string"
+				},
+				"ShipToPostalCode": {
+					"type": "string"
+				},
+				"ShipToAddressId": {
+					"type": "string"
+				},
+				"ShipFromAddressId": {
+					"type": "string"
+				},
+				"BillToName": {
+					"type": "string"
+				},
+				"BillToAddress1": {
+					"type": "string"
+				},
+				"BillToAddress2": {
+					"type": "string"
+				},
+				"BillToAddress3": {
+					"type": "string"
+				},
+				"BillToCity": {
+					"type": "string"
+				},
+				"BillToState": {
+					"type": "string"
+				},
+				"BillToCountry": {
+					"type": "string"
+				},
+				"BillToPostalCode": {
+					"type": "string"
+				},
+				"BillToAddressId": {
+					"type": "string"
+				},
+				"PurchaseOrderNumber": {
+					"type": "string"
+				},
+				"CreditCardAuthCode": {
+					"type": "string"
+				},
+				"Total": {
+					"format": "double",
+					"type": "number"
+				},
+				"TaxTotal": {
+					"format": "double",
+					"type": "number"
+				},
+				"ShippingTotal": {
+					"format": "double",
+					"type": "number"
+				},
+				"CurrencyId": {
+					"type": "string"
+				},
+				"ExchangeRate": {
+					"format": "double",
+					"type": "number"
+				},
+				"DiscountPercentage": {
+					"format": "double",
+					"type": "number"
+				},
+				"DiscountAmount": {
+					"format": "double",
+					"type": "number"
+				},
+				"MarkupPercentage": {
+					"format": "double",
+					"type": "number"
+				},
+				"MarkupAmount": {
+					"format": "double",
+					"type": "number"
+				},
+				"OrganizationId": {
+					"type": "string"
+				},
+				"DeletionState": {
+					"type": "boolean"
+				},
+				"CreatedOn": {
+					"format": "date-time",
+					"type": "string"
+				},
+				"ModifiedOn": {
+					"format": "date-time",
+					"type": "string"
+				},
+				"CreatedBy": {
+					"type": "string"
+				},
+				"ModifiedBy": {
+					"type": "string"
+				},
+				"CustomerId": {
+					"type": "string"
+				},
+				"CustomerType": {
+					"format": "int32",
+					"type": "integer"
+				},
+				"ContactId": {
+					"type": "string"
+				},
+				"Status": {
+					"type": "string"
+				},
+				"StatusReason": {
+					"type": "string"
+				},
+				"UserText1": {
+					"type": "string"
+				},
+				"UserText2": {
+					"type": "string"
+				},
+				"UserText3": {
+					"type": "string"
+				},
+				"UserText4": {
+					"type": "string"
+				},
+				"UserText5": {
+					"type": "string"
+				},
+				"UserText6": {
+					"type": "string"
+				},
+				"UserText7": {
+					"type": "string"
+				},
+				"UserText8": {
+					"type": "string"
+				},
+				"UserText9": {
+					"type": "string"
+				},
+				"UserText10": {
+					"type": "string"
+				},
+				"CustomerName": {
+					"type": "string"
+				},
+				"ContactName": {
+					"type": "string"
+				},
+				"CurrencyCode": {
+					"type": "string"
+				},
+				"PriceLevelName": {
+					"type": "string"
+				},
+				"Culture": {
+					"type": "string"
+				},
+				"ApprovalStatus": {
+					"type": "string"
+				},
+				"QuoteNumber": {
+					"type": "string"
+				},
+				"Revision": {
+					"format": "int32",
+					"type": "integer"
+				},
+				"IsCurrent": {
+					"type": "boolean"
+				},
+				"SubscriberOrganizationName": {
+					"type": "string"
+				},
+				"SubscriberUserFullName": {
+					"type": "string"
+				},
+				"CustomerRiskScore": {
+					"format": "double",
+					"type": "number"
+				},
+				"CustomerRiskLevel": {
+					"type": "string"
+				},
+				"CustomerRiskDescription": {
+					"type": "string"
+				},
+				"PricingSegmentId": {
+					"type": "string"
+				},
+				"OrderConfiguration": {
+					"type": "array",
+					"items": {
+						"$ref": "#/definitions/OrderConfiguration"
+					}
+				},
+				"OrderExt": {
+					"type": "array",
+					"items": {
+						"$ref": "#/definitions/OrderExt"
+					}
+				},
+				"OrderPublisher": {
+					"type": "array",
+					"items": {
+						"$ref": "#/definitions/OrderPublisher"
+					}
+				},
+				"OrderGlobalParameter": {
+					"type": "array",
+					"items": {
+						"$ref": "#/definitions/OrderGlobalParameter"
+					}
+				}
+			}
+		},
+		"OrderConfiguration": {
+			"type": "object",
+			"properties": {
+				"OrderConfigurationId": {
+					"type": "string"
+				},
+				"OrderId": {
+					"type": "string"
+				},
+				"SmartCatalogId": {
+					"type": "string"
+				},
+				"SmartCatalogInstanceId": {
+					"type": "string"
+				},
+				"SavedGuidedSellingId": {
+					"type": "string"
+				},
+				"Name": {
+					"type": "string"
+				},
+				"ImagePath": {
+					"type": "string"
+				},
+				"Quantity": {
+					"format": "double",
+					"type": "number"
+				},
+				"Type": {
+					"type": "string"
+				},
+				"BaseProductId": {
+					"type": "string"
+				},
+				"SortOrder": {
+					"format": "int32",
+					"type": "integer"
+				},
+				"DiscountPercentage": {
+					"format": "double",
+					"type": "number"
+				},
+				"DiscountAmount": {
+					"format": "double",
+					"type": "number"
+				},
+				"MarkupPercentage": {
+					"format": "double",
+					"type": "number"
+				},
+				"MarkupAmount": {
+					"format": "double",
+					"type": "number"
+				},
+				"ExtendedPrice": {
+					"format": "double",
+					"type": "number"
+				},
+				"AdjustedPrice": {
+					"format": "double",
+					"type": "number"
+				},
+				"Price": {
+					"format": "double",
+					"type": "number"
+				},
+				"OrganizationId": {
+					"type": "string"
+				},
+				"DeletionState": {
+					"type": "boolean"
+				},
+				"CreatedOn": {
+					"format": "date-time",
+					"type": "string"
+				},
+				"ModifiedOn": {
+					"format": "date-time",
+					"type": "string"
+				},
+				"CreatedBy": {
+					"type": "string"
+				},
+				"ModifiedBy": {
+					"type": "string"
+				},
+				"UserText1": {
+					"type": "string"
+				},
+				"UserText2": {
+					"type": "string"
+				},
+				"UserText3": {
+					"type": "string"
+				},
+				"UserText4": {
+					"type": "string"
+				},
+				"UserText5": {
+					"type": "string"
+				},
+				"UserText6": {
+					"type": "string"
+				},
+				"UserText7": {
+					"type": "string"
+				},
+				"UserText8": {
+					"type": "string"
+				},
+				"UserText9": {
+					"type": "string"
+				},
+				"UserText10": {
+					"type": "string"
+				},
+				"SmartCatalogName": {
+					"type": "string"
+				},
+				"GuidedSellingTreeName": {
+					"type": "string"
+				},
+				"QuoteConfigurationNumber": {
+					"type": "string"
+				},
+				"SavedCatalogGuidedSellingId": {
+					"type": "string"
+				},
+				"OrderConfigurationExt": {
+					"type": "array",
+					"items": {
+						"$ref": "#/definitions/OrderConfigurationExt"
+					}
+				},
+				"OrderProduct": {
+					"type": "array",
+					"items": {
+						"$ref": "#/definitions/OrderProduct"
+					}
+				},
+				"OrderShipping": {
+					"type": "array",
+					"items": {
+						"$ref": "#/definitions/OrderShipping"
+					}
+				},
+				"OrderConfigurationGlobalParameter": {
+					"type": "array",
+					"items": {
+						"$ref": "#/definitions/OrderConfigurationGlobalParameter"
+					}
+				}
+			}
+		},
+		"OrderExt": {
+			"type": "object",
+			"properties": {
+				"OrderExtId": {
+					"type": "string"
+				},
+				"OrderId": {
+					"type": "string"
+				},
+				"Name": {
+					"type": "string"
+				},
+				"DataType": {
+					"type": "string"
+				},
+				"Value": {
+					"type": "string"
+				},
+				"MessageId": {
+					"type": "string"
+				}
+			}
+		},
+		"OrderPublisher": {
+			"type": "object",
+			"properties": {
+				"OrderPublisherId": {
+					"type": "string"
+				},
+				"OrderId": {
+					"type": "string"
+				},
+				"PublisherId": {
+					"type": "string"
+				},
+				"PublisherName": {
+					"type": "string"
+				},
+				"PONumber": {
+					"type": "string"
+				},
+				"CreatedOn": {
+					"format": "date-time",
+					"type": "string"
+				},
+				"CreatedBy": {
+					"type": "string"
+				},
+				"ModifiedOn": {
+					"format": "date-time",
+					"type": "string"
+				},
+				"ModifiedBy": {
+					"type": "string"
+				}
+			}
+		},
+		"OrderGlobalParameter": {
+			"type": "object",
+			"properties": {
+				"OrderGlobalParameterId": {
+					"type": "string"
+				},
+				"OrderId": {
+					"type": "string"
+				},
+				"GlobalParameterId": {
+					"type": "string"
+				},
+				"Name": {
+					"type": "string"
+				},
+				"Value": {
+					"type": "string"
+				},
+				"CreatedOn": {
+					"format": "date-time",
+					"type": "string"
+				},
+				"CreatedBy": {
+					"type": "string"
+				},
+				"ModifiedOn": {
+					"format": "date-time",
+					"type": "string"
+				},
+				"ModifiedBy": {
+					"type": "string"
+				}
+			}
+		},
+		"OrderConfigurationExt": {
+			"type": "object",
+			"properties": {
+				"OrderConfigurationExtId": {
+					"type": "string"
+				},
+				"OrderConfigurationId": {
+					"type": "string"
+				},
+				"Name": {
+					"type": "string"
+				},
+				"DataType": {
+					"type": "string"
+				},
+				"Value": {
+					"type": "string"
+				},
+				"MessageId": {
+					"type": "string"
+				}
+			}
+		},
+		"OrderProduct": {
+			"type": "object",
+			"properties": {
+				"OrderProductId": {
+					"type": "string"
+				},
+				"OrderConfigurationId": {
+					"type": "string"
+				},
+				"SmartProductId": {
+					"type": "string"
+				},
+				"QueryId": {
+					"type": "string"
+				},
+				"ProductId": {
+					"type": "string"
+				},
+				"VariantId": {
+					"type": "string"
+				},
+				"SKU": {
+					"type": "string"
+				},
+				"PriceAdjusted": {
+					"type": "boolean"
+				},
+				"PriceEffDate": {
+					"format": "date-time",
+					"type": "string"
+				},
+				"Type": {
+					"type": "string"
+				},
+				"IsUpsell": {
+					"type": "boolean"
+				},
+				"UserInput": {
+					"type": "string"
+				},
+				"CategoryName": {
+					"type": "string"
+				},
+				"SortOrder": {
+					"format": "int32",
+					"type": "integer"
+				},
+				"ProductType": {
+					"type": "string"
+				},
+				"Name": {
+					"type": "string"
+				},
+				"Description": {
+					"type": "string"
+				},
+				"SerialNumber": {
+					"type": "string"
+				},
+				"ShippingAddressId": {
+					"type": "string"
+				},
+				"Tax": {
+					"format": "double",
+					"type": "number"
+				},
+				"IsTaxable": {
+					"type": "boolean"
+				},
+				"Weight": {
+					"format": "double",
+					"type": "number"
+				},
+				"OrganizationId": {
+					"type": "string"
+				},
+				"DeletionState": {
+					"type": "boolean"
+				},
+				"CreatedOn": {
+					"format": "date-time",
+					"type": "string"
+				},
+				"ModifiedOn": {
+					"format": "date-time",
+					"type": "string"
+				},
+				"CreatedBy": {
+					"type": "string"
+				},
+				"ModifiedBy": {
+					"type": "string"
+				},
+				"ProductCatalogId": {
+					"type": "string"
+				},
+				"CategoryId": {
+					"type": "string"
+				},
+				"ProductCode": {
+					"type": "string"
+				},
+				"Tag": {
+					"type": "string"
+				},
+				"ImagePath": {
+					"type": "string"
+				},
+				"ThumbnailPath": {
+					"type": "string"
+				},
+				"Family": {
+					"type": "string"
+				},
+				"Model": {
+					"type": "string"
+				},
+				"EffectiveDate": {
+					"format": "date-time",
+					"type": "string"
+				},
+				"ExpirationDate": {
+					"format": "date-time",
+					"type": "string"
+				},
+				"DeletionStateCode": {
+					"format": "int32",
+					"type": "integer"
+				},
+				"DefaultPriceLevelId": {
+					"type": "string"
+				},
+				"ProductTypeCode": {
+					"format": "int32",
+					"type": "integer"
+				},
+				"ProductUrl": {
+					"type": "string"
+				},
+				"CurrencyId": {
+					"type": "string"
+				},
+				"IsKit": {
+					"type": "boolean"
+				},
+				"IsActive": {
+					"type": "boolean"
+				},
+				"Height": {
+					"format": "double",
+					"type": "number"
+				},
+				"Width": {
+					"format": "double",
+					"type": "number"
+				},
+				"Size": {
+					"type": "string"
+				},
+				"CurrentCost": {
+					"format": "double",
+					"type": "number"
+				},
+				"StockVolume": {
+					"format": "double",
+					"type": "number"
+				},
+				"StandardCost": {
+					"format": "double",
+					"type": "number"
+				},
+				"StockWeight": {
+					"format": "double",
+					"type": "number"
+				},
+				"QuantityDecimal": {
+					"format": "int32",
+					"type": "integer"
+				},
+				"QuantityOnHand": {
+					"format": "double",
+					"type": "number"
+				},
+				"IsStockItem": {
+					"type": "boolean"
+				},
+				"SupplierName": {
+					"type": "string"
+				},
+				"VendorName": {
+					"type": "string"
+				},
+				"VendorPartNumber": {
+					"type": "string"
+				},
+				"UserNum1": {
+					"format": "double",
+					"type": "number"
+				},
+				"UserNum2": {
+					"format": "double",
+					"type": "number"
+				},
+				"UserNum3": {
+					"format": "double",
+					"type": "number"
+				},
+				"UserNum4": {
+					"format": "double",
+					"type": "number"
+				},
+				"UserNum5": {
+					"format": "double",
+					"type": "number"
+				},
+				"UserNum6": {
+					"format": "double",
+					"type": "number"
+				},
+				"UserNum7": {
+					"format": "double",
+					"type": "number"
+				},
+				"UserNum8": {
+					"format": "double",
+					"type": "number"
+				},
+				"UserNum9": {
+					"format": "double",
+					"type": "number"
+				},
+				"UserNum10": {
+					"format": "double",
+					"type": "number"
+				},
+				"UserText1": {
+					"type": "string"
+				},
+				"UserText2": {
+					"type": "string"
+				},
+				"UserText3": {
+					"type": "string"
+				},
+				"UserText4": {
+					"type": "string"
+				},
+				"UserText5": {
+					"type": "string"
+				},
+				"UserText6": {
+					"type": "string"
+				},
+				"UserText7": {
+					"type": "string"
+				},
+				"UserText8": {
+					"type": "string"
+				},
+				"UserText9": {
+					"type": "string"
+				},
+				"UserText10": {
+					"type": "string"
+				},
+				"SmartCategoryId": {
+					"type": "string"
+				},
+				"Price2": {
+					"format": "double",
+					"type": "number"
+				},
+				"Price3": {
+					"format": "double",
+					"type": "number"
+				},
+				"Cost2": {
+					"format": "double",
+					"type": "number"
+				},
+				"Cost3": {
+					"format": "double",
+					"type": "number"
+				},
+				"QuoteProductNumber": {
+					"type": "string"
+				},
+				"OriginalListPrice": {
+					"format": "double",
+					"type": "number"
+				},
+				"RenewalQuoteId": {
+					"type": "string"
+				},
+				"IsSubscription": {
+					"type": "boolean"
+				},
+				"FloorPrice": {
+					"format": "double",
+					"type": "number"
+				},
+				"StretchPrice": {
+					"format": "double",
+					"type": "number"
+				},
+				"RiskScore": {
+					"format": "double",
+					"type": "number"
+				},
+				"RiskDescription": {
+					"type": "string"
+				},
+				"RenewalDate": {
+					"format": "date-time",
+					"type": "string"
+				},
+				"RiskLevel": {
+					"type": "string"
+				},
+				"ApprovalLevel1Price": {
+					"format": "double",
+					"type": "number"
+				},
+				"ApprovalLevel2Price": {
+					"format": "double",
+					"type": "number"
+				},
+				"ApprovalLevel3Price": {
+					"format": "double",
+					"type": "number"
+				},
+				"OrderProductExt": {
+					"type": "array",
+					"items": {
+						"$ref": "#/definitions/OrderProductExt"
+					}
+				},
+				"OrderProductTier": {
+					"type": "array",
+					"items": {
+						"$ref": "#/definitions/OrderProductTier"
+					}
+				},
+				"Price": {
+					"format": "double",
+					"type": "number"
+				},
+				"AdjustedPrice": {
+					"format": "double",
+					"type": "number"
+				},
+				"DiscountAmount": {
+					"format": "double",
+					"type": "number"
+				},
+				"DiscountPercentage": {
+					"format": "double",
+					"type": "number"
+				},
+				"MarkupAmount": {
+					"format": "double",
+					"type": "number"
+				},
+				"MarkupPercentage": {
+					"format": "double",
+					"type": "number"
+				},
+				"Quantity": {
+					"format": "double",
+					"type": "number"
+				},
+				"ExtendedPrice": {
+					"format": "double",
+					"type": "number"
+				},
+				"TargetPrice": {
+					"format": "double",
+					"type": "number"
+				},
+				"TargetDiscountPercentage": {
+					"format": "double",
+					"type": "number"
+				},
+				"DistPrice": {
+					"format": "double",
+					"type": "number"
+				},
+				"DistAdjustedPrice": {
+					"format": "double",
+					"type": "number"
+				},
+				"DistDiscountAmount": {
+					"format": "double",
+					"type": "number"
+				},
+				"DistDiscountPercentage": {
+					"format": "double",
+					"type": "number"
+				},
+				"DistExtendedPrice": {
+					"format": "double",
+					"type": "number"
+				},
+				"CalculatedDiscountPercentage": {
+					"format": "double",
+					"type": "number"
+				}
+			}
+		},
+		"OrderShipping": {
+			"type": "object",
+			"properties": {
+				"OrderShippingId": {
+					"type": "string"
+				},
+				"OrderConfigurationId": {
+					"type": "string"
+				},
+				"PublisherId": {
+					"type": "string"
+				},
+				"PublisherName": {
+					"type": "string"
+				},
+				"Address1": {
+					"type": "string"
+				},
+				"Address2": {
+					"type": "string"
+				},
+				"Address3": {
+					"type": "string"
+				},
+				"City": {
+					"type": "string"
+				},
+				"State": {
+					"type": "string"
+				},
+				"Country": {
+					"type": "string"
+				},
+				"Zip": {
+					"type": "string"
+				},
+				"Status": {
+					"type": "string"
+				},
+				"OrderNumber": {
+					"type": "string"
+				},
+				"CreatedOn": {
+					"format": "date-time",
+					"type": "string"
+				},
+				"CreatedBy": {
+					"type": "string"
+				},
+				"ModifiedOn": {
+					"format": "date-time",
+					"type": "string"
+				},
+				"ModifiedBy": {
+					"type": "string"
+				},
+				"AddressId": {
+					"type": "string"
+				}
+			}
+		},
+		"OrderConfigurationGlobalParameter": {
+			"type": "object",
+			"properties": {
+				"OrderConfigurationGlobalParameterId": {
+					"type": "string"
+				},
+				"OrderConfigurationId": {
+					"type": "string"
+				},
+				"GlobalParameterId": {
+					"type": "string"
+				},
+				"Name": {
+					"type": "string"
+				},
+				"Value": {
+					"type": "string"
+				},
+				"CreatedOn": {
+					"format": "date-time",
+					"type": "string"
+				},
+				"CreatedBy": {
+					"type": "string"
+				},
+				"ModifiedOn": {
+					"format": "date-time",
+					"type": "string"
+				},
+				"ModifiedBy": {
+					"type": "string"
+				}
+			}
+		},
+		"OrderProductExt": {
+			"type": "object",
+			"properties": {
+				"OrderProductExtId": {
+					"type": "string"
+				},
+				"OrderProductId": {
+					"type": "string"
+				},
+				"Name": {
+					"type": "string"
+				},
+				"DataType": {
+					"type": "string"
+				},
+				"Value": {
+					"type": "string"
+				},
+				"MessageId": {
+					"type": "string"
+				}
+			}
+		},
+		"OrderProductTier": {
+			"type": "object",
+			"properties": {
+				"OrderProductTierId": {
+					"type": "string"
+				},
+				"OrderProductId": {
+					"type": "string"
+				},
+				"Property": {
+					"type": "string"
+				},
+				"ModifierType": {
+					"type": "string"
+				},
+				"LowerRange": {
+					"format": "double",
+					"type": "number"
+				},
+				"UpperRange": {
+					"format": "double",
+					"type": "number"
+				},
+				"Increment": {
+					"format": "double",
+					"type": "number"
+				},
+				"Value": {
+					"format": "double",
+					"type": "number"
+				}
+			}
+		},
+		"Template": {
+			"type": "object",
+			"properties": {
+				"TemplateId": {
+					"type": "string"
+				}
+			}
+		},
+		"ProposalResponse": {
+			"type": "object",
+			"properties": {
+				"FileName": {
+					"type": "string"
+				},
+				"OutputType": {
+					"type": "string"
+				},
+				"ByteArray": {
+					"type": "string"
+				}
+			}
+		},
+		"ProcessWorkflowResult": {
+			"type": "object",
+			"properties": {
+				"Valid": {
+					"type": "boolean"
+				},
+				"Entities": {
+					"type": "array",
+					"items": {
+						"$ref": "#/definitions/Object"
+					}
+				},
+				"Messages": {
+					"type": "array",
+					"items": {
+						"$ref": "#/definitions/MessageDetail"
+					}
+				}
+			}
+		}
+	}
+}
