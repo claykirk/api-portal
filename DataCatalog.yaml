@@ -1,7 +1,7 @@
 ---
 openapi: 3.0.0
 info:
-  title: Data Catalog API
+  title: DataCatalog
   description: An API for managing and querying items within the Data Catalog.
   version: 1.0.0
 paths:
