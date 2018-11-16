@@ -46,6 +46,7 @@ paths:
       schema:
         type: string
   /api/v1/datacatalog/items:
+    summary: This is the api endpoint to fetch data catalog items
     get:
       summary: Get data catalog items.
       description: Retrieves all data catalog items visible to the authenticated user.
