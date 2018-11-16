@@ -13,8 +13,12 @@ paths:
       parameters:
       - name: createdAt
         in: query
-        description: Time when referenced Data Set was created within the data lake.  Format
-          -> 2018-11-16T19:34:59.331Z
+        description: Time when referenced Data Set was created within the data lake.
+        schema:
+          type: string
+      - name: expiresAt
+        in: query
+        description: Time when Data Set within the data lake expires.
         schema:
           type: string
       responses:
