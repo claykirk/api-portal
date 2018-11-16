@@ -10,6 +10,13 @@ paths:
       summary: Query data catalog with query params.
       description: Queries the data catalog, using query params to form the search
         query.  Query params may include createdAt or expiresAt.
+      parameters:
+      - name: createdAt
+        in: query
+        description: Time when referenced Data Set was created within the data lake.  Format
+          -> 2018-11-16T19:34:59.331Z
+        schema:
+          type: string
       responses:
         200:
           description: Success
