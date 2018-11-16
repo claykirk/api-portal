@@ -14,6 +14,7 @@ paths:
       - name: createdAt
         in: query
         description: Time when referenced Data Set was created within the data lake.
+          format -> 2018-10-18T17:08:55.000+0000
         schema:
           type: string
       - name: expiresAt
