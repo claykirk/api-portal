@@ -9,7 +9,7 @@ paths:
     get:
       summary: Query data catalog with query params.
       description: Queries the data catalog, using query params to form the search
-        query.
+        query.  Query params may include createdAt or expiresAt.
       responses:
         200:
           description: Success
